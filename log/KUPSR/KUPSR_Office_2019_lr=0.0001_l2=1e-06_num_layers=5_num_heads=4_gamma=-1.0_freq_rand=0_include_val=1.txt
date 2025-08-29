@@ -1,0 +1,259 @@
+INFO:root:Namespace(model_name='KUPSR')
+INFO:root:--------------------------------------------- BEGIN: 2025-08-28 08:48:02 ---------------------------------------------
+INFO:root:
+=================================
+ Arguments       | Values        
+=================================
+ attention_size  | 10           
+ batch_size      | 256          
+ buffer          | 1            
+ dataset         | Office       
+ dropout         | 0            
+ early_stop      | 5            
+ emb_size        | 64           
+ epoch           | 200          
+ eval_batch_size | 256          
+ freq_rand       | 0            
+ gamma           | -1.0         
+ gpu             | 0            
+ history_max     | 20           
+ include_attr    | 1            
+ include_kge     | 1            
+ include_val     | 1            
+ l2              | 1e-06        
+ load            | 0            
+ lr              | 0.0001       
+ metric          | ["NDCG","HR"]
+ n_dft           | 64           
+ neg_head_p      | 0.5          
+ num_heads       | 4            
+ num_layers      | 5            
+ num_neg         | 1            
+ num_workers     | 5            
+ only_predict    | 0            
+ optimizer       | Adam         
+ pooling         | average      
+ random_seed     | 2019         
+ t_scalar        | 60           
+ topk            | [5,10,50]    
+=================================
+INFO:root:cuda available: False
+INFO:root:# cuda devices: 0
+INFO:root:Load corpus from ../data/Office\DFTReader.pkl
+INFO:root:#params: 624768
+INFO:root:KUPSR(
+  (user_embeddings): Embedding(4906, 64)
+  (entity_embeddings): Embedding(2803, 64)
+  (relation_embeddings): Embedding(5, 64)
+  (relational_dynamic_aggregation): RelationalDynamicAggregation(
+    (relation_embeddings): Embedding(5, 64)
+    (freq_real): Embedding(5, 33)
+    (freq_imag): Embedding(5, 33)
+  )
+  (attn_head): MultiHeadAttention(
+    (q_linear): Linear(in_features=64, out_features=64, bias=False)
+    (k_linear): Linear(in_features=64, out_features=64, bias=False)
+    (v_linear): Linear(in_features=64, out_features=64, bias=False)
+  )
+  (W1): Linear(in_features=64, out_features=64, bias=True)
+  (W2): Linear(in_features=64, out_features=64, bias=True)
+  (dropout_layer): Dropout(p=0, inplace=False)
+  (layer_norm): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+  (item_bias): Embedding(2422, 1)
+  (blstm): LSTM(128, 64, batch_first=True, bidirectional=True)
+  (fusion_layer): Linear(in_features=128, out_features=64, bias=True)
+)
+INFO:root:Test Before Training: (HR@10:0.0977,HR@5:0.0471,HR@50:0.5034,NDCG@10:0.0442,NDCG@5:0.0282,NDCG@50:0.1287)
+INFO:root:Optimizer: Adam
+INFO:root:all_losses: [1.4282793  0.69314706]
+INFO:root:Epoch 1     loss=1.4283 [53.6 s]	 dev=(HR@5:0.1062,NDCG@5:0.0618) test=(HR@5:0.0691,NDCG@5:0.0384) [38.6 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [1.3374134 0.6931466]
+INFO:root:Epoch 2     loss=1.3374 [53.4 s]	 dev=(HR@5:0.1087,NDCG@5:0.0644) test=(HR@5:0.0703,NDCG@5:0.0404) [38.3 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [1.2917881  0.69314426]
+INFO:root:Epoch 3     loss=1.2918 [53.4 s]	 dev=(HR@5:0.1078,NDCG@5:0.0632) test=(HR@5:0.0695,NDCG@5:0.0392) [38.5 s] 
+INFO:root:all_losses: [1.2653462  0.69314057]
+INFO:root:Epoch 4     loss=1.2653 [53.3 s]	 dev=(HR@5:0.1081,NDCG@5:0.0636) test=(HR@5:0.0681,NDCG@5:0.0384) [38.3 s] 
+INFO:root:all_losses: [1.2489282  0.69313496]
+INFO:root:Epoch 5     loss=1.2489 [53.3 s]	 dev=(HR@5:0.1076,NDCG@5:0.0633) test=(HR@5:0.0693,NDCG@5:0.0393) [38.6 s] 
+INFO:root:all_losses: [1.2415881 0.6931251]
+INFO:root:Epoch 6     loss=1.2416 [53.0 s]	 dev=(HR@5:0.1068,NDCG@5:0.0624) test=(HR@5:0.0689,NDCG@5:0.0388) [38.3 s] 
+INFO:root:all_losses: [1.2328608  0.69311845]
+INFO:root:Epoch 7     loss=1.2329 [53.4 s]	 dev=(HR@5:0.1052,NDCG@5:0.0628) test=(HR@5:0.0679,NDCG@5:0.0385) [38.4 s] 
+INFO:root:all_losses: [1.2307594  0.69310945]
+INFO:root:Epoch 8     loss=1.2308 [52.9 s]	 dev=(HR@5:0.1060,NDCG@5:0.0632) test=(HR@5:0.0656,NDCG@5:0.0374) [38.4 s] 
+INFO:root:all_losses: [1.2304797 0.693101 ]
+INFO:root:Epoch 9     loss=1.2305 [52.9 s]	 dev=(HR@5:0.1089,NDCG@5:0.0640) test=(HR@5:0.0675,NDCG@5:0.0388) [38.4 s] 
+INFO:root:all_losses: [1.2278043  0.69308925]
+INFO:root:Epoch 10    loss=1.2278 [52.9 s]	 dev=(HR@5:0.1058,NDCG@5:0.0618) test=(HR@5:0.0671,NDCG@5:0.0385) [38.3 s] 
+INFO:root:all_losses: [1.2258701 0.693081 ]
+INFO:root:Epoch 11    loss=1.2259 [51.8 s]	 dev=(HR@5:0.1074,NDCG@5:0.0638) test=(HR@5:0.0671,NDCG@5:0.0383) [38.4 s] 
+INFO:root:all_losses: [1.2221555 0.693065 ]
+INFO:root:Epoch 12    loss=1.2222 [51.5 s]	 dev=(HR@5:0.1076,NDCG@5:0.0641) test=(HR@5:0.0689,NDCG@5:0.0386) [38.4 s] 
+INFO:root:all_losses: [1.2212926 0.6930538]
+INFO:root:Epoch 13    loss=1.2213 [52.7 s]	 dev=(HR@5:0.1091,NDCG@5:0.0639) test=(HR@5:0.0714,NDCG@5:0.0399) [38.3 s] 
+INFO:root:all_losses: [1.2201226  0.69304836]
+INFO:root:Epoch 14    loss=1.2201 [52.8 s]	 dev=(HR@5:0.1058,NDCG@5:0.0630) test=(HR@5:0.0677,NDCG@5:0.0380) [38.2 s] 
+INFO:root:all_losses: [1.22101    0.69304234]
+INFO:root:Epoch 15    loss=1.2210 [52.7 s]	 dev=(HR@5:0.1048,NDCG@5:0.0621) test=(HR@5:0.0650,NDCG@5:0.0371) [38.3 s] 
+INFO:root:all_losses: [1.2250446  0.69302624]
+INFO:root:Epoch 16    loss=1.2250 [52.9 s]	 dev=(HR@5:0.1066,NDCG@5:0.0623) test=(HR@5:0.0693,NDCG@5:0.0386) [38.4 s] 
+INFO:root:all_losses: [1.2260596 0.6930119]
+INFO:root:Epoch 17    loss=1.2261 [53.0 s]	 dev=(HR@5:0.1105,NDCG@5:0.0643) test=(HR@5:0.0669,NDCG@5:0.0387) [38.1 s] 
+INFO:root:all_losses: [1.2198849 0.6929972]
+INFO:root:Epoch 18    loss=1.2199 [53.4 s]	 dev=(HR@5:0.1089,NDCG@5:0.0638) test=(HR@5:0.0665,NDCG@5:0.0379) [38.4 s] 
+INFO:root:all_losses: [1.2255067 0.6929975]
+INFO:root:Epoch 19    loss=1.2255 [53.6 s]	 dev=(HR@5:0.1078,NDCG@5:0.0639) test=(HR@5:0.0654,NDCG@5:0.0373) [38.5 s] 
+INFO:root:all_losses: [1.2248344  0.69297934]
+INFO:root:Epoch 20    loss=1.2248 [54.3 s]	 dev=(HR@5:0.1058,NDCG@5:0.0625) test=(HR@5:0.0669,NDCG@5:0.0379) [38.2 s] 
+INFO:root:all_losses: [1.2244437 0.6929674]
+INFO:root:Epoch 21    loss=1.2244 [55.3 s]	 dev=(HR@5:0.1072,NDCG@5:0.0630) test=(HR@5:0.0654,NDCG@5:0.0377) [38.2 s] 
+INFO:root:all_losses: [1.2245797 0.6929647]
+INFO:root:Epoch 22    loss=1.2246 [56.8 s]	 dev=(HR@5:0.1121,NDCG@5:0.0655) test=(HR@5:0.0667,NDCG@5:0.0379) [38.4 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [1.227962  0.6929571]
+INFO:root:Epoch 23    loss=1.2280 [57.6 s]	 dev=(HR@5:0.1095,NDCG@5:0.0644) test=(HR@5:0.0656,NDCG@5:0.0376) [38.3 s] 
+INFO:root:all_losses: [1.2243012 0.6929296]
+INFO:root:Epoch 24    loss=1.2243 [58.9 s]	 dev=(HR@5:0.1078,NDCG@5:0.0637) test=(HR@5:0.0646,NDCG@5:0.0366) [38.3 s] 
+INFO:root:all_losses: [1.2219876  0.69292516]
+INFO:root:Epoch 25    loss=1.2220 [59.6 s]	 dev=(HR@5:0.1085,NDCG@5:0.0638) test=(HR@5:0.0661,NDCG@5:0.0370) [38.5 s] 
+INFO:root:all_losses: [1.2219746 0.6929286]
+INFO:root:Epoch 26    loss=1.2220 [59.5 s]	 dev=(HR@5:0.1078,NDCG@5:0.0646) test=(HR@5:0.0673,NDCG@5:0.0380) [38.6 s] 
+INFO:root:all_losses: [1.2212787  0.69288814]
+INFO:root:Epoch 27    loss=1.2213 [59.5 s]	 dev=(HR@5:0.1099,NDCG@5:0.0645) test=(HR@5:0.0677,NDCG@5:0.0387) [38.2 s] 
+INFO:root:all_losses: [1.2200578 0.6928936]
+INFO:root:Epoch 28    loss=1.2201 [59.3 s]	 dev=(HR@5:0.1099,NDCG@5:0.0646) test=(HR@5:0.0677,NDCG@5:0.0382) [52.3 s] 
+INFO:root:all_losses: [1.2192767 0.6929118]
+INFO:root:Epoch 29    loss=1.2193 [191.0 s]	 dev=(HR@5:0.1087,NDCG@5:0.0636) test=(HR@5:0.0675,NDCG@5:0.0382) [56.8 s] 
+INFO:root:all_losses: [1.2214359 0.6928489]
+INFO:root:Epoch 30    loss=1.2214 [185.8 s]	 dev=(HR@5:0.1095,NDCG@5:0.0645) test=(HR@5:0.0675,NDCG@5:0.0386) [57.4 s] 
+INFO:root:all_losses: [1.2047592 0.6928282]
+INFO:root:Epoch 31    loss=1.2048 [171.8 s]	 dev=(HR@5:0.1089,NDCG@5:0.0644) test=(HR@5:0.0722,NDCG@5:0.0404) [58.0 s] 
+INFO:root:all_losses: [1.1942223 0.6927576]
+INFO:root:Epoch 32    loss=1.1942 [165.7 s]	 dev=(HR@5:0.1197,NDCG@5:0.0698) test=(HR@5:0.0862,NDCG@5:0.0472) [59.2 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [1.179135   0.69269985]
+INFO:root:Epoch 33    loss=1.1791 [163.9 s]	 dev=(HR@5:0.1501,NDCG@5:0.0881) test=(HR@5:0.1083,NDCG@5:0.0625) [60.9 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [1.1720732  0.69253737]
+INFO:root:Epoch 34    loss=1.1721 [166.0 s]	 dev=(HR@5:0.1664,NDCG@5:0.0978) test=(HR@5:0.1178,NDCG@5:0.0695) [65.2 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [1.1624457 0.6924776]
+INFO:root:Epoch 35    loss=1.1624 [166.0 s]	 dev=(HR@5:0.1719,NDCG@5:0.1015) test=(HR@5:0.1219,NDCG@5:0.0727) [71.3 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [1.1530553  0.69230026]
+INFO:root:Epoch 36    loss=1.1531 [167.3 s]	 dev=(HR@5:0.1812,NDCG@5:0.1107) test=(HR@5:0.1327,NDCG@5:0.0813) [76.4 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [1.1488878 0.6921016]
+INFO:root:Epoch 37    loss=1.1489 [169.3 s]	 dev=(HR@5:0.1788,NDCG@5:0.1073) test=(HR@5:0.1284,NDCG@5:0.0773) [88.8 s] 
+INFO:root:all_losses: [1.1402664  0.69198054]
+INFO:root:Epoch 38    loss=1.1403 [171.1 s]	 dev=(HR@5:0.1802,NDCG@5:0.1083) test=(HR@5:0.1313,NDCG@5:0.0780) [79.3 s] 
+INFO:root:all_losses: [1.1386311  0.69179326]
+INFO:root:Epoch 39    loss=1.1386 [169.3 s]	 dev=(HR@5:0.1814,NDCG@5:0.1094) test=(HR@5:0.1319,NDCG@5:0.0789) [64.9 s] 
+INFO:root:all_losses: [1.1413879 0.6915679]
+INFO:root:Epoch 40    loss=1.1414 [168.1 s]	 dev=(HR@5:0.1751,NDCG@5:0.1077) test=(HR@5:0.1246,NDCG@5:0.0744) [55.8 s] 
+INFO:root:all_losses: [1.1297148  0.69144595]
+INFO:root:Epoch 41    loss=1.1297 [165.2 s]	 dev=(HR@5:0.1839,NDCG@5:0.1113) test=(HR@5:0.1278,NDCG@5:0.0764) [55.0 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [1.1256882  0.69114745]
+INFO:root:Epoch 42    loss=1.1257 [166.1 s]	 dev=(HR@5:0.1943,NDCG@5:0.1204) test=(HR@5:0.1384,NDCG@5:0.0851) [51.9 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [1.1251372  0.69084656]
+INFO:root:Epoch 43    loss=1.1251 [173.9 s]	 dev=(HR@5:0.1937,NDCG@5:0.1210) test=(HR@5:0.1413,NDCG@5:0.0863) [53.0 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [1.1184096  0.69073236]
+INFO:root:Epoch 44    loss=1.1184 [174.5 s]	 dev=(HR@5:0.1969,NDCG@5:0.1221) test=(HR@5:0.1456,NDCG@5:0.0880) [51.7 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [1.1205279 0.6904352]
+INFO:root:Epoch 45    loss=1.1205 [174.6 s]	 dev=(HR@5:0.1982,NDCG@5:0.1227) test=(HR@5:0.1456,NDCG@5:0.0870) [52.3 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [1.1125655 0.6900464]
+INFO:root:Epoch 46    loss=1.1126 [127.1 s]	 dev=(HR@5:0.2045,NDCG@5:0.1254) test=(HR@5:0.1511,NDCG@5:0.0896) [40.0 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [1.1128877 0.689733 ]
+INFO:root:Epoch 47    loss=1.1129 [56.0 s]	 dev=(HR@5:0.2088,NDCG@5:0.1283) test=(HR@5:0.1507,NDCG@5:0.0905) [40.3 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [1.1096208 0.6895422]
+INFO:root:Epoch 48    loss=1.1096 [56.4 s]	 dev=(HR@5:0.2047,NDCG@5:0.1248) test=(HR@5:0.1462,NDCG@5:0.0870) [40.3 s] 
+INFO:root:all_losses: [1.1071024  0.68902004]
+INFO:root:Epoch 49    loss=1.1071 [56.7 s]	 dev=(HR@5:0.2116,NDCG@5:0.1309) test=(HR@5:0.1523,NDCG@5:0.0931) [40.3 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [1.1014454  0.68879527]
+INFO:root:Epoch 50    loss=1.1014 [57.2 s]	 dev=(HR@5:0.2137,NDCG@5:0.1329) test=(HR@5:0.1556,NDCG@5:0.0946) [40.4 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [1.0981296  0.68829584]
+INFO:root:Epoch 51    loss=1.0981 [57.8 s]	 dev=(HR@5:0.2273,NDCG@5:0.1406) test=(HR@5:0.1655,NDCG@5:0.1013) [41.0 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [1.0940063 0.6877081]
+INFO:root:Epoch 52    loss=1.0940 [58.3 s]	 dev=(HR@5:0.2163,NDCG@5:0.1329) test=(HR@5:0.1600,NDCG@5:0.0966) [41.3 s] 
+INFO:root:all_losses: [1.0912427  0.68722034]
+INFO:root:Epoch 53    loss=1.0912 [58.7 s]	 dev=(HR@5:0.2385,NDCG@5:0.1486) test=(HR@5:0.1739,NDCG@5:0.1075) [41.7 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [1.0886573 0.686782 ]
+INFO:root:Epoch 54    loss=1.0887 [59.0 s]	 dev=(HR@5:0.2375,NDCG@5:0.1472) test=(HR@5:0.1735,NDCG@5:0.1067) [42.0 s] 
+INFO:root:all_losses: [1.0807854 0.6860519]
+INFO:root:Epoch 55    loss=1.0808 [59.3 s]	 dev=(HR@5:0.2310,NDCG@5:0.1420) test=(HR@5:0.1674,NDCG@5:0.1037) [43.3 s] 
+INFO:root:all_losses: [1.080238  0.6854878]
+INFO:root:Epoch 56    loss=1.0802 [59.3 s]	 dev=(HR@5:0.2567,NDCG@5:0.1580) test=(HR@5:0.1904,NDCG@5:0.1186) [43.0 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [1.0710176 0.6847496]
+INFO:root:Epoch 57    loss=1.0710 [59.5 s]	 dev=(HR@5:0.2771,NDCG@5:0.1707) test=(HR@5:0.2016,NDCG@5:0.1260) [43.7 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [1.0670341 0.6836599]
+INFO:root:Epoch 58    loss=1.0670 [59.6 s]	 dev=(HR@5:0.2544,NDCG@5:0.1573) test=(HR@5:0.1876,NDCG@5:0.1157) [44.3 s] 
+INFO:root:all_losses: [1.0659802 0.6830915]
+INFO:root:Epoch 59    loss=1.0660 [59.3 s]	 dev=(HR@5:0.2871,NDCG@5:0.1791) test=(HR@5:0.2118,NDCG@5:0.1322) [43.8 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [1.0564537 0.681589 ]
+INFO:root:Epoch 60    loss=1.0565 [59.1 s]	 dev=(HR@5:0.2734,NDCG@5:0.1715) test=(HR@5:0.2075,NDCG@5:0.1278) [43.9 s] 
+INFO:root:all_losses: [1.0553128 0.6801765]
+INFO:root:Epoch 61    loss=1.0553 [59.3 s]	 dev=(HR@5:0.2838,NDCG@5:0.1769) test=(HR@5:0.2077,NDCG@5:0.1303) [44.2 s] 
+INFO:root:all_losses: [1.0484614  0.67895937]
+INFO:root:Epoch 62    loss=1.0485 [59.3 s]	 dev=(HR@5:0.3105,NDCG@5:0.1933) test=(HR@5:0.2332,NDCG@5:0.1471) [44.1 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [1.0406462 0.6774218]
+INFO:root:Epoch 63    loss=1.0406 [59.6 s]	 dev=(HR@5:0.3170,NDCG@5:0.2001) test=(HR@5:0.2412,NDCG@5:0.1533) [44.3 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [1.0369453  0.67573243]
+INFO:root:Epoch 64    loss=1.0369 [59.8 s]	 dev=(HR@5:0.3164,NDCG@5:0.1988) test=(HR@5:0.2416,NDCG@5:0.1541) [44.2 s] 
+INFO:root:all_losses: [1.0316474 0.6741026]
+INFO:root:Epoch 65    loss=1.0316 [59.2 s]	 dev=(HR@5:0.3146,NDCG@5:0.1989) test=(HR@5:0.2377,NDCG@5:0.1525) [44.1 s] 
+INFO:root:all_losses: [1.0249084 0.6718487]
+INFO:root:Epoch 66    loss=1.0249 [59.7 s]	 dev=(HR@5:0.3211,NDCG@5:0.2023) test=(HR@5:0.2385,NDCG@5:0.1523) [44.2 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [1.0187116 0.670175 ]
+INFO:root:Epoch 67    loss=1.0187 [60.2 s]	 dev=(HR@5:0.3293,NDCG@5:0.2090) test=(HR@5:0.2485,NDCG@5:0.1610) [44.1 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [1.0150069 0.6680116]
+INFO:root:Epoch 68    loss=1.0150 [60.3 s]	 dev=(HR@5:0.3423,NDCG@5:0.2170) test=(HR@5:0.2577,NDCG@5:0.1661) [44.2 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [1.0064863  0.66538423]
+INFO:root:Epoch 69    loss=1.0065 [60.1 s]	 dev=(HR@5:0.3498,NDCG@5:0.2227) test=(HR@5:0.2701,NDCG@5:0.1738) [43.9 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [1.0020828  0.66228056]
+INFO:root:Epoch 70    loss=1.0021 [60.2 s]	 dev=(HR@5:0.3433,NDCG@5:0.2188) test=(HR@5:0.2571,NDCG@5:0.1672) [44.2 s] 
+INFO:root:all_losses: [0.99458295 0.65895987]
+INFO:root:Epoch 71    loss=0.9946 [60.3 s]	 dev=(HR@5:0.3607,NDCG@5:0.2296) test=(HR@5:0.2695,NDCG@5:0.1750) [43.9 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [0.98743486 0.6559652 ]
+INFO:root:Epoch 72    loss=0.9874 [60.4 s]	 dev=(HR@5:0.3541,NDCG@5:0.2265) test=(HR@5:0.2616,NDCG@5:0.1703) [44.1 s] 
+INFO:root:all_losses: [0.9820403  0.65275776]
+INFO:root:Epoch 73    loss=0.9820 [60.1 s]	 dev=(HR@5:0.3633,NDCG@5:0.2337) test=(HR@5:0.2683,NDCG@5:0.1759) [44.0 s] 
+INFO:root:Save model to ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-0...
+INFO:root:all_losses: [0.9728631  0.64938307]
+INFO:root:Epoch 74    loss=0.9729 [59.9 s]	 dev=(HR@5:0.3586,NDCG@5:0.2322) test=(HR@5:0.2728,NDCG@5:0.1778) [43.9 s] 
+INFO:root:all_losses: [0.96716946 0.64448065]
+INFO:root:Epoch 75    loss=0.9672 [60.3 s]	 dev=(HR@5:0.3598,NDCG@5:0.2319) test=(HR@5:0.2663,NDCG@5:0.1751) [44.2 s] 
+INFO:root:all_losses: [0.96417105 0.6405564 ]
+INFO:root:Epoch 76    loss=0.9642 [60.1 s]	 dev=(HR@5:0.3529,NDCG@5:0.2288) test=(HR@5:0.2591,NDCG@5:0.1684) [44.2 s] 
+INFO:root:all_losses: [0.9552768  0.63790184]
+INFO:root:Epoch 77    loss=0.9553 [60.1 s]	 dev=(HR@5:0.3503,NDCG@5:0.2254) test=(HR@5:0.2585,NDCG@5:0.1676) [44.1 s] 
+INFO:root:Early stop at 77 based on dev result.
+INFO:root:
+Best Iter(dev)=   73	 dev=(HR@5:0.3633,NDCG@5:0.2337) test=(HR@5:0.2683,NDCG@5:0.1759) [9924.5 s] 
+INFO:root:Load model from ../model/KUPSR/KUPSR_Office_2019_lr=0.0001_l2=1e-06_num_layers=5_num_heads=4_gamma=-1.0_freq_rand=0_include_val=1.pt
+INFO:root:
+Test After Training: (HR@10:0.4306,HR@5:0.2683,HR@50:0.8422,NDCG@10:0.2281,NDCG@5:0.1759,NDCG@50:0.3209)
+INFO:root:
+--------------------------------------------- END: 2025-08-28 11:34:06 ---------------------------------------------

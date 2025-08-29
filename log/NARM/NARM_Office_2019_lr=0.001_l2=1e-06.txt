@@ -1,0 +1,135 @@
+INFO:root:Namespace(model_name='NARM')
+INFO:root:--------------------------------------------- BEGIN: 2025-03-02 14:42:21 ---------------------------------------------
+INFO:root:
+=================================
+ Arguments       | Values        
+=================================
+ attention_size  | 50           
+ batch_size      | 256          
+ buffer          | 1            
+ dataset         | Office       
+ dropout         | 0            
+ early_stop      | 5            
+ emb_size        | 64           
+ epoch           | 200          
+ eval_batch_size | 256          
+ gpu             | 0            
+ hidden_size     | 100          
+ history_max     | 20           
+ l2              | 1e-06        
+ load            | 0            
+ lr              | 0.001        
+ metric          | ["NDCG","HR"]
+ num_neg         | 1            
+ num_workers     | 5            
+ only_predict    | 0            
+ optimizer       | Adam         
+ random_seed     | 2019         
+ topk            | [5,10,50]    
+=================================
+INFO:root:cuda available: False
+INFO:root:# cuda devices: 0
+INFO:root:Load corpus from ../data/Office\BaseReader.pkl
+INFO:root:#params: 277394
+INFO:root:NARM(
+  (i_embeddings): Embedding(2421, 64)
+  (encoder_g): GRU(64, 100, batch_first=True)
+  (encoder_l): GRU(64, 100, batch_first=True)
+  (A1): Linear(in_features=100, out_features=50, bias=False)
+  (A2): Linear(in_features=100, out_features=50, bias=False)
+  (attention_out): Linear(in_features=50, out_features=1, bias=False)
+  (out): Linear(in_features=200, out_features=64, bias=False)
+)
+INFO:root:Test Before Training: (HR@10:0.0911,HR@5:0.0506,HR@50:0.4889,NDCG@10:0.0445,NDCG@5:0.0317,NDCG@50:0.1279)
+INFO:root:Optimizer: Adam
+INFO:root:all_losses: [0.49809754]
+INFO:root:Epoch 1     loss=0.4981 [17.2 s]	 dev=(HR@5:0.1091,NDCG@5:0.0645) test=(HR@5:0.0803,NDCG@5:0.0467) [10.4 s] 
+INFO:root:Save model to ../model/NARM/NARM_Office_2019_lr=0.001_l2=1e-06.p...
+INFO:root:all_losses: [0.40086836]
+INFO:root:Epoch 2     loss=0.4009 [16.6 s]	 dev=(HR@5:0.1360,NDCG@5:0.0782) test=(HR@5:0.0972,NDCG@5:0.0562) [10.3 s] 
+INFO:root:Save model to ../model/NARM/NARM_Office_2019_lr=0.001_l2=1e-06.p...
+INFO:root:all_losses: [0.3635122]
+INFO:root:Epoch 3     loss=0.3635 [16.7 s]	 dev=(HR@5:0.2151,NDCG@5:0.1327) test=(HR@5:0.1774,NDCG@5:0.1069) [10.3 s] 
+INFO:root:Save model to ../model/NARM/NARM_Office_2019_lr=0.001_l2=1e-06.p...
+INFO:root:all_losses: [0.32269222]
+INFO:root:Epoch 4     loss=0.3227 [16.5 s]	 dev=(HR@5:0.2569,NDCG@5:0.1636) test=(HR@5:0.2059,NDCG@5:0.1279) [10.3 s] 
+INFO:root:Save model to ../model/NARM/NARM_Office_2019_lr=0.001_l2=1e-06.p...
+INFO:root:all_losses: [0.29743066]
+INFO:root:Epoch 5     loss=0.2974 [16.6 s]	 dev=(HR@5:0.2950,NDCG@5:0.1868) test=(HR@5:0.2243,NDCG@5:0.1433) [10.3 s] 
+INFO:root:Save model to ../model/NARM/NARM_Office_2019_lr=0.001_l2=1e-06.p...
+INFO:root:all_losses: [0.2664527]
+INFO:root:Epoch 6     loss=0.2665 [16.6 s]	 dev=(HR@5:0.3058,NDCG@5:0.1963) test=(HR@5:0.2336,NDCG@5:0.1519) [10.3 s] 
+INFO:root:Save model to ../model/NARM/NARM_Office_2019_lr=0.001_l2=1e-06.p...
+INFO:root:all_losses: [0.24933068]
+INFO:root:Epoch 7     loss=0.2493 [16.7 s]	 dev=(HR@5:0.3087,NDCG@5:0.1971) test=(HR@5:0.2461,NDCG@5:0.1577) [10.4 s] 
+INFO:root:Save model to ../model/NARM/NARM_Office_2019_lr=0.001_l2=1e-06.p...
+INFO:root:all_losses: [0.24145313]
+INFO:root:Epoch 8     loss=0.2415 [16.8 s]	 dev=(HR@5:0.3384,NDCG@5:0.2230) test=(HR@5:0.2732,NDCG@5:0.1786) [10.4 s] 
+INFO:root:Save model to ../model/NARM/NARM_Office_2019_lr=0.001_l2=1e-06.p...
+INFO:root:all_losses: [0.2276777]
+INFO:root:Epoch 9     loss=0.2277 [16.6 s]	 dev=(HR@5:0.3560,NDCG@5:0.2308) test=(HR@5:0.2818,NDCG@5:0.1864) [10.3 s] 
+INFO:root:Save model to ../model/NARM/NARM_Office_2019_lr=0.001_l2=1e-06.p...
+INFO:root:all_losses: [0.22430551]
+INFO:root:Epoch 10    loss=0.2243 [16.7 s]	 dev=(HR@5:0.3492,NDCG@5:0.2306) test=(HR@5:0.2807,NDCG@5:0.1833) [10.3 s] 
+INFO:root:all_losses: [0.22008035]
+INFO:root:Epoch 11    loss=0.2201 [16.5 s]	 dev=(HR@5:0.3549,NDCG@5:0.2316) test=(HR@5:0.2915,NDCG@5:0.1882) [10.2 s] 
+INFO:root:Save model to ../model/NARM/NARM_Office_2019_lr=0.001_l2=1e-06.p...
+INFO:root:all_losses: [0.21360849]
+INFO:root:Epoch 12    loss=0.2136 [16.7 s]	 dev=(HR@5:0.3570,NDCG@5:0.2313) test=(HR@5:0.2972,NDCG@5:0.1946) [10.3 s] 
+INFO:root:all_losses: [0.21063931]
+INFO:root:Epoch 13    loss=0.2106 [16.6 s]	 dev=(HR@5:0.3501,NDCG@5:0.2296) test=(HR@5:0.2893,NDCG@5:0.1895) [10.3 s] 
+INFO:root:all_losses: [0.20689538]
+INFO:root:Epoch 14    loss=0.2069 [16.6 s]	 dev=(HR@5:0.3655,NDCG@5:0.2441) test=(HR@5:0.3025,NDCG@5:0.1984) [10.3 s] 
+INFO:root:Save model to ../model/NARM/NARM_Office_2019_lr=0.001_l2=1e-06.p...
+INFO:root:all_losses: [0.20752148]
+INFO:root:Epoch 15    loss=0.2075 [16.8 s]	 dev=(HR@5:0.3621,NDCG@5:0.2394) test=(HR@5:0.2901,NDCG@5:0.1897) [10.4 s] 
+INFO:root:all_losses: [0.19542694]
+INFO:root:Epoch 16    loss=0.1954 [16.6 s]	 dev=(HR@5:0.3790,NDCG@5:0.2518) test=(HR@5:0.3138,NDCG@5:0.2034) [10.4 s] 
+INFO:root:Save model to ../model/NARM/NARM_Office_2019_lr=0.001_l2=1e-06.p...
+INFO:root:all_losses: [0.19303489]
+INFO:root:Epoch 17    loss=0.1930 [16.8 s]	 dev=(HR@5:0.3831,NDCG@5:0.2574) test=(HR@5:0.3235,NDCG@5:0.2139) [10.4 s] 
+INFO:root:Save model to ../model/NARM/NARM_Office_2019_lr=0.001_l2=1e-06.p...
+INFO:root:all_losses: [0.18965626]
+INFO:root:Epoch 18    loss=0.1897 [16.7 s]	 dev=(HR@5:0.3766,NDCG@5:0.2486) test=(HR@5:0.3081,NDCG@5:0.2055) [10.4 s] 
+INFO:root:all_losses: [0.18754636]
+INFO:root:Epoch 19    loss=0.1875 [16.8 s]	 dev=(HR@5:0.3745,NDCG@5:0.2484) test=(HR@5:0.3219,NDCG@5:0.2088) [10.4 s] 
+INFO:root:all_losses: [0.17806265]
+INFO:root:Epoch 20    loss=0.1781 [16.8 s]	 dev=(HR@5:0.3704,NDCG@5:0.2441) test=(HR@5:0.3091,NDCG@5:0.2008) [10.4 s] 
+INFO:root:all_losses: [0.17480522]
+INFO:root:Epoch 21    loss=0.1748 [16.7 s]	 dev=(HR@5:0.3725,NDCG@5:0.2456) test=(HR@5:0.3150,NDCG@5:0.2063) [10.4 s] 
+INFO:root:all_losses: [0.16811822]
+INFO:root:Epoch 22    loss=0.1681 [16.7 s]	 dev=(HR@5:0.3735,NDCG@5:0.2443) test=(HR@5:0.3083,NDCG@5:0.1981) [10.4 s] 
+INFO:root:all_losses: [0.1686077]
+INFO:root:Epoch 23    loss=0.1686 [16.7 s]	 dev=(HR@5:0.3829,NDCG@5:0.2542) test=(HR@5:0.3229,NDCG@5:0.2107) [10.3 s] 
+INFO:root:all_losses: [0.16138028]
+INFO:root:Epoch 24    loss=0.1614 [16.7 s]	 dev=(HR@5:0.3855,NDCG@5:0.2510) test=(HR@5:0.3152,NDCG@5:0.2049) [10.4 s] 
+INFO:root:all_losses: [0.15984492]
+INFO:root:Epoch 25    loss=0.1598 [16.5 s]	 dev=(HR@5:0.3798,NDCG@5:0.2514) test=(HR@5:0.3242,NDCG@5:0.2098) [10.4 s] 
+INFO:root:all_losses: [0.15508643]
+INFO:root:Epoch 26    loss=0.1551 [16.7 s]	 dev=(HR@5:0.3853,NDCG@5:0.2554) test=(HR@5:0.3264,NDCG@5:0.2110) [10.4 s] 
+INFO:root:all_losses: [0.14956667]
+INFO:root:Epoch 27    loss=0.1496 [16.7 s]	 dev=(HR@5:0.3874,NDCG@5:0.2567) test=(HR@5:0.3297,NDCG@5:0.2136) [10.3 s] 
+INFO:root:all_losses: [0.14879964]
+INFO:root:Epoch 28    loss=0.1488 [16.7 s]	 dev=(HR@5:0.3810,NDCG@5:0.2559) test=(HR@5:0.3250,NDCG@5:0.2112) [10.4 s] 
+INFO:root:all_losses: [0.1490118]
+INFO:root:Epoch 29    loss=0.1490 [16.8 s]	 dev=(HR@5:0.3910,NDCG@5:0.2602) test=(HR@5:0.3327,NDCG@5:0.2168) [10.2 s] 
+INFO:root:Save model to ../model/NARM/NARM_Office_2019_lr=0.001_l2=1e-06.p...
+INFO:root:all_losses: [0.14362425]
+INFO:root:Epoch 30    loss=0.1436 [16.7 s]	 dev=(HR@5:0.4014,NDCG@5:0.2637) test=(HR@5:0.3378,NDCG@5:0.2177) [10.5 s] 
+INFO:root:Save model to ../model/NARM/NARM_Office_2019_lr=0.001_l2=1e-06.p...
+INFO:root:all_losses: [0.14089763]
+INFO:root:Epoch 31    loss=0.1409 [16.8 s]	 dev=(HR@5:0.3941,NDCG@5:0.2615) test=(HR@5:0.3333,NDCG@5:0.2171) [10.3 s] 
+INFO:root:all_losses: [0.13562582]
+INFO:root:Epoch 32    loss=0.1356 [16.6 s]	 dev=(HR@5:0.3761,NDCG@5:0.2535) test=(HR@5:0.3103,NDCG@5:0.2000) [10.4 s] 
+INFO:root:all_losses: [0.1408615]
+INFO:root:Epoch 33    loss=0.1409 [16.8 s]	 dev=(HR@5:0.3831,NDCG@5:0.2529) test=(HR@5:0.3258,NDCG@5:0.2084) [10.4 s] 
+INFO:root:all_losses: [0.13563284]
+INFO:root:Epoch 34    loss=0.1356 [16.8 s]	 dev=(HR@5:0.3835,NDCG@5:0.2527) test=(HR@5:0.3176,NDCG@5:0.2055) [10.3 s] 
+INFO:root:Early stop at 34 based on dev result.
+INFO:root:
+Best Iter(dev)=   30	 dev=(HR@5:0.4014,NDCG@5:0.2637) test=(HR@5:0.3378,NDCG@5:0.2177) [919.9 s] 
+INFO:root:Load model from ../model/NARM/NARM_Office_2019_lr=0.001_l2=1e-06.pt
+INFO:root:
+Test After Training: (HR@10:0.4954,HR@5:0.3378,HR@50:0.8361,NDCG@10:0.2685,NDCG@5:0.2177,NDCG@50:0.3438)
+INFO:root:
+--------------------------------------------- END: 2025-03-02 14:57:52 ---------------------------------------------

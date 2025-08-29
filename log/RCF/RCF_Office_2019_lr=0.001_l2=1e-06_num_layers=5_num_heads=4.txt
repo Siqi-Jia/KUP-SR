@@ -1,0 +1,140 @@
+INFO:root:Namespace(model_name='RCF')
+INFO:root:--------------------------------------------- BEGIN: 2025-03-02 16:34:55 ---------------------------------------------
+INFO:root:
+=================================
+ Arguments       | Values        
+=================================
+ attention_size  | 10           
+ batch_size      | 256          
+ buffer          | 1            
+ dataset         | Office       
+ dropout         | 0            
+ early_stop      | 5            
+ emb_size        | 64           
+ epoch           | 200          
+ eval_batch_size | 256          
+ gamma           | -1.0         
+ gpu             | 0            
+ history_max     | 20           
+ include_attr    | 1            
+ include_kge     | 1            
+ include_val     | 1            
+ l2              | 1e-06        
+ load            | 0            
+ lr              | 0.001        
+ message         |              
+ metric          | ["NDCG","HR"]
+ neg_head_p      | 0.5          
+ num_heads       | 4            
+ num_layers      | 5            
+ num_neg         | 1            
+ num_workers     | 5            
+ only_predict    | 0            
+ optimizer       | Adam         
+ pooling         | average      
+ random_seed     | 2019         
+ topk            | [5,10,50]    
+=================================
+INFO:root:cuda available: False
+INFO:root:# cuda devices: 0
+INFO:root:Reading data from "../data/", dataset = "Office" 
+INFO:root:Counting dataset statistics...
+INFO:root:"# user": 4906, "# item": 2421, "# entry": 53258
+INFO:root:Appending history info...
+INFO:root:Constructing relation triplets...
+INFO:root:Item-item relations:['r_complement', 'r_substitute']
+INFO:root:Attribute-based relations:['i_category', 'i_brand']
+INFO:root:"# relation": 5, "# triplet": 60706
+INFO:root:Save corpus to ../data/Office\KGReader.pkl
+INFO:root:#params: 516854
+INFO:root:RCF(
+  (user_embeddings): Embedding(4906, 64)
+  (entity_embeddings): Embedding(2803, 64)
+  (relation_embeddings): Embedding(5, 64)
+  (relational_dynamic_aggregation): RelationalDynamicAggregation(
+    (relation_embeddings): Embedding(5, 64)
+  )
+  (attn_head): MultiHeadAttention(
+    (q_linear): Linear(in_features=64, out_features=64, bias=False)
+    (k_linear): Linear(in_features=64, out_features=64, bias=False)
+    (v_linear): Linear(in_features=64, out_features=64, bias=False)
+  )
+  (W1): Linear(in_features=64, out_features=64, bias=True)
+  (W2): Linear(in_features=64, out_features=64, bias=True)
+  (dropout_layer): Dropout(p=0, inplace=False)
+  (layer_norm): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+  (item_bias): Embedding(2422, 1)
+)
+INFO:root:Test Before Training: (HR@10:0.0930,HR@5:0.0487,HR@50:0.5105,NDCG@10:0.0436,NDCG@5:0.0295,NDCG@50:0.1314)
+INFO:root:Optimizer: Adam
+INFO:root:all_losses: [1.2813863 0.6930952]
+INFO:root:Epoch 1     loss=1.2814 [94.3 s]	 dev=(HR@5:0.1914,NDCG@5:0.1197) test=(HR@5:0.1366,NDCG@5:0.0885) [38.1 s] 
+INFO:root:Save model to ../model/RCF/RCF_Office_2019_lr=0.001_l2=1e-06_num...
+INFO:root:all_losses: [1.1245135  0.69215137]
+INFO:root:Epoch 2     loss=1.1245 [96.4 s]	 dev=(HR@5:0.2830,NDCG@5:0.1827) test=(HR@5:0.2192,NDCG@5:0.1410) [38.4 s] 
+INFO:root:Save model to ../model/RCF/RCF_Office_2019_lr=0.001_l2=1e-06_num...
+INFO:root:all_losses: [1.055128  0.6889239]
+INFO:root:Epoch 3     loss=1.0551 [100.1 s]	 dev=(HR@5:0.3166,NDCG@5:0.2094) test=(HR@5:0.2351,NDCG@5:0.1544) [38.2 s] 
+INFO:root:Save model to ../model/RCF/RCF_Office_2019_lr=0.001_l2=1e-06_num...
+INFO:root:all_losses: [1.0077515 0.6809293]
+INFO:root:Epoch 4     loss=1.0078 [103.5 s]	 dev=(HR@5:0.3501,NDCG@5:0.2361) test=(HR@5:0.2707,NDCG@5:0.1797) [38.0 s] 
+INFO:root:Save model to ../model/RCF/RCF_Office_2019_lr=0.001_l2=1e-06_num...
+INFO:root:all_losses: [0.9526886 0.6594857]
+INFO:root:Epoch 5     loss=0.9527 [101.1 s]	 dev=(HR@5:0.3435,NDCG@5:0.2323) test=(HR@5:0.2606,NDCG@5:0.1773) [38.4 s] 
+INFO:root:all_losses: [0.8719766 0.6097403]
+INFO:root:Epoch 6     loss=0.8720 [103.9 s]	 dev=(HR@5:0.3880,NDCG@5:0.2643) test=(HR@5:0.3032,NDCG@5:0.2050) [38.5 s] 
+INFO:root:Save model to ../model/RCF/RCF_Office_2019_lr=0.001_l2=1e-06_num...
+INFO:root:all_losses: [0.7733781 0.5403359]
+INFO:root:Epoch 7     loss=0.7734 [100.4 s]	 dev=(HR@5:0.3976,NDCG@5:0.2708) test=(HR@5:0.3115,NDCG@5:0.2099) [38.7 s] 
+INFO:root:Save model to ../model/RCF/RCF_Office_2019_lr=0.001_l2=1e-06_num...
+INFO:root:all_losses: [0.67671525 0.46805   ]
+INFO:root:Epoch 8     loss=0.6767 [102.4 s]	 dev=(HR@5:0.4167,NDCG@5:0.2857) test=(HR@5:0.3382,NDCG@5:0.2291) [38.6 s] 
+INFO:root:Save model to ../model/RCF/RCF_Office_2019_lr=0.001_l2=1e-06_num...
+INFO:root:all_losses: [0.58637244 0.40099427]
+INFO:root:Epoch 9     loss=0.5864 [44.6 s]	 dev=(HR@5:0.4353,NDCG@5:0.3002) test=(HR@5:0.3674,NDCG@5:0.2512) [29.1 s] 
+INFO:root:Save model to ../model/RCF/RCF_Office_2019_lr=0.001_l2=1e-06_num...
+INFO:root:all_losses: [0.5160462  0.34444383]
+INFO:root:Epoch 10    loss=0.5160 [14.2 s]	 dev=(HR@5:0.4275,NDCG@5:0.2986) test=(HR@5:0.3566,NDCG@5:0.2454) [31.3 s] 
+INFO:root:all_losses: [0.44758874 0.291016  ]
+INFO:root:Epoch 11    loss=0.4476 [14.5 s]	 dev=(HR@5:0.4422,NDCG@5:0.3069) test=(HR@5:0.3682,NDCG@5:0.2552) [31.6 s] 
+INFO:root:Save model to ../model/RCF/RCF_Office_2019_lr=0.001_l2=1e-06_num...
+INFO:root:all_losses: [0.3967758 0.2501916]
+INFO:root:Epoch 12    loss=0.3968 [14.4 s]	 dev=(HR@5:0.4402,NDCG@5:0.3086) test=(HR@5:0.3723,NDCG@5:0.2600) [31.4 s] 
+INFO:root:Save model to ../model/RCF/RCF_Office_2019_lr=0.001_l2=1e-06_num...
+INFO:root:all_losses: [0.35387698 0.21954814]
+INFO:root:Epoch 13    loss=0.3539 [14.5 s]	 dev=(HR@5:0.4516,NDCG@5:0.3156) test=(HR@5:0.3874,NDCG@5:0.2695) [31.4 s] 
+INFO:root:Save model to ../model/RCF/RCF_Office_2019_lr=0.001_l2=1e-06_num...
+INFO:root:all_losses: [0.3172357 0.1933034]
+INFO:root:Epoch 14    loss=0.3172 [14.6 s]	 dev=(HR@5:0.4616,NDCG@5:0.3226) test=(HR@5:0.4008,NDCG@5:0.2790) [31.4 s] 
+INFO:root:Save model to ../model/RCF/RCF_Office_2019_lr=0.001_l2=1e-06_num...
+INFO:root:all_losses: [0.28629592 0.17064579]
+INFO:root:Epoch 15    loss=0.2863 [14.5 s]	 dev=(HR@5:0.4404,NDCG@5:0.3114) test=(HR@5:0.3759,NDCG@5:0.2650) [31.5 s] 
+INFO:root:all_losses: [0.2727357  0.15963432]
+INFO:root:Epoch 16    loss=0.2727 [14.6 s]	 dev=(HR@5:0.4534,NDCG@5:0.3180) test=(HR@5:0.3888,NDCG@5:0.2743) [31.4 s] 
+INFO:root:all_losses: [0.25320467 0.1484651 ]
+INFO:root:Epoch 17    loss=0.2532 [14.5 s]	 dev=(HR@5:0.4618,NDCG@5:0.3272) test=(HR@5:0.4053,NDCG@5:0.2870) [31.3 s] 
+INFO:root:Save model to ../model/RCF/RCF_Office_2019_lr=0.001_l2=1e-06_num...
+INFO:root:all_losses: [0.2343464  0.13510731]
+INFO:root:Epoch 18    loss=0.2343 [14.4 s]	 dev=(HR@5:0.4508,NDCG@5:0.3208) test=(HR@5:0.4006,NDCG@5:0.2824) [31.5 s] 
+INFO:root:all_losses: [0.2263773  0.12900914]
+INFO:root:Epoch 19    loss=0.2264 [14.3 s]	 dev=(HR@5:0.4538,NDCG@5:0.3235) test=(HR@5:0.4155,NDCG@5:0.2950) [31.3 s] 
+INFO:root:all_losses: [0.21300726 0.12037858]
+INFO:root:Epoch 20    loss=0.2130 [14.5 s]	 dev=(HR@5:0.4465,NDCG@5:0.3172) test=(HR@5:0.4022,NDCG@5:0.2836) [31.2 s] 
+INFO:root:all_losses: [0.20483322 0.11375758]
+INFO:root:Epoch 21    loss=0.2048 [14.5 s]	 dev=(HR@5:0.4552,NDCG@5:0.3258) test=(HR@5:0.4088,NDCG@5:0.2922) [31.4 s] 
+INFO:root:all_losses: [0.19540207 0.10918851]
+INFO:root:Epoch 22    loss=0.1954 [14.5 s]	 dev=(HR@5:0.4567,NDCG@5:0.3248) test=(HR@5:0.4116,NDCG@5:0.2897) [31.2 s] 
+INFO:root:all_losses: [0.18887387 0.10398579]
+INFO:root:Epoch 23    loss=0.1889 [14.4 s]	 dev=(HR@5:0.4522,NDCG@5:0.3240) test=(HR@5:0.4069,NDCG@5:0.2871) [31.2 s] 
+INFO:root:all_losses: [0.17778134 0.09754454]
+INFO:root:Epoch 24    loss=0.1778 [14.5 s]	 dev=(HR@5:0.4497,NDCG@5:0.3205) test=(HR@5:0.3967,NDCG@5:0.2834) [31.2 s] 
+INFO:root:all_losses: [0.17430924 0.09296345]
+INFO:root:Epoch 25    loss=0.1743 [14.4 s]	 dev=(HR@5:0.4416,NDCG@5:0.3186) test=(HR@5:0.4061,NDCG@5:0.2882) [31.2 s] 
+INFO:root:Early stop at 25 based on dev result.
+INFO:root:
+Best Iter(dev)=   17	 dev=(HR@5:0.4618,NDCG@5:0.3272) test=(HR@5:0.4053,NDCG@5:0.2870) [1915.6 s] 
+INFO:root:Load model from ../model/RCF/RCF_Office_2019_lr=0.001_l2=1e-06_num_layers=5_num_heads=4.pt
+INFO:root:
+Test After Training: (HR@10:0.5513,HR@5:0.4053,HR@50:0.8783,NDCG@10:0.3342,NDCG@5:0.2870,NDCG@50:0.4080)
+INFO:root:
+--------------------------------------------- END: 2025-03-02 17:07:22 ---------------------------------------------

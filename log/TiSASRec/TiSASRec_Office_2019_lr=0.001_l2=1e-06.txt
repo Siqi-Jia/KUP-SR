@@ -1,0 +1,201 @@
+INFO:root:Namespace(model_name='TiSASRec')
+INFO:root:--------------------------------------------- BEGIN: 2025-03-02 11:31:10 ---------------------------------------------
+INFO:root:
+=================================
+ Arguments       | Values        
+=================================
+ batch_size      | 256          
+ buffer          | 1            
+ dataset         | Office       
+ dropout         | 0            
+ early_stop      | 5            
+ emb_size        | 64           
+ epoch           | 200          
+ eval_batch_size | 256          
+ gpu             | 0            
+ history_max     | 20           
+ l2              | 1e-06        
+ load            | 0            
+ lr              | 0.001        
+ metric          | ["NDCG","HR"]
+ num_heads       | 4            
+ num_layers      | 5            
+ num_neg         | 1            
+ num_workers     | 5            
+ only_predict    | 0            
+ optimizer       | Adam         
+ random_seed     | 2019         
+ time_max        | 512          
+ topk            | [5,10,50]    
+=================================
+INFO:root:cuda available: False
+INFO:root:# cuda devices: 0
+INFO:root:Load corpus from ../data/Office\BaseReader.pkl
+INFO:root:#params: 328576
+INFO:root:TiSASRec(
+  (i_embeddings): Embedding(2421, 64)
+  (p_k_embeddings): Embedding(21, 64)
+  (p_v_embeddings): Embedding(21, 64)
+  (t_k_embeddings): Embedding(513, 64)
+  (t_v_embeddings): Embedding(513, 64)
+  (transformer_block): ModuleList(
+    (0): TimeIntervalTransformerLayer(
+      (masked_attn_head): TimeIntervalMultiHeadAttention(
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+    (1): TimeIntervalTransformerLayer(
+      (masked_attn_head): TimeIntervalMultiHeadAttention(
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+    (2): TimeIntervalTransformerLayer(
+      (masked_attn_head): TimeIntervalMultiHeadAttention(
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+    (3): TimeIntervalTransformerLayer(
+      (masked_attn_head): TimeIntervalMultiHeadAttention(
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+    (4): TimeIntervalTransformerLayer(
+      (masked_attn_head): TimeIntervalMultiHeadAttention(
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Test Before Training: (HR@10:0.1056,HR@5:0.0544,HR@50:0.5138,NDCG@10:0.0487,NDCG@5:0.0324,NDCG@50:0.1337)
+INFO:root:Optimizer: Adam
+INFO:root:all_losses: [0.47734773]
+INFO:root:Epoch 1     loss=0.4773 [50.1 s]	 dev=(HR@5:0.2324,NDCG@5:0.1455) test=(HR@5:0.1682,NDCG@5:0.1040) [13.4 s] 
+INFO:root:Save model to ../model/TiSASRec/TiSASRec_Office_2019_lr=0.001_l2...
+INFO:root:all_losses: [0.32032552]
+INFO:root:Epoch 2     loss=0.3203 [46.3 s]	 dev=(HR@5:0.3256,NDCG@5:0.2084) test=(HR@5:0.2518,NDCG@5:0.1633) [13.0 s] 
+INFO:root:Save model to ../model/TiSASRec/TiSASRec_Office_2019_lr=0.001_l2...
+INFO:root:all_losses: [0.26172236]
+INFO:root:Epoch 3     loss=0.2617 [46.6 s]	 dev=(HR@5:0.3578,NDCG@5:0.2332) test=(HR@5:0.2820,NDCG@5:0.1844) [13.1 s] 
+INFO:root:Save model to ../model/TiSASRec/TiSASRec_Office_2019_lr=0.001_l2...
+INFO:root:all_losses: [0.22724722]
+INFO:root:Epoch 4     loss=0.2272 [46.4 s]	 dev=(HR@5:0.3753,NDCG@5:0.2494) test=(HR@5:0.2885,NDCG@5:0.1913) [13.1 s] 
+INFO:root:Save model to ../model/TiSASRec/TiSASRec_Office_2019_lr=0.001_l2...
+INFO:root:all_losses: [0.20106465]
+INFO:root:Epoch 5     loss=0.2011 [46.3 s]	 dev=(HR@5:0.3429,NDCG@5:0.2286) test=(HR@5:0.2791,NDCG@5:0.1806) [13.3 s] 
+INFO:root:all_losses: [0.17886421]
+INFO:root:Epoch 6     loss=0.1789 [46.4 s]	 dev=(HR@5:0.3890,NDCG@5:0.2582) test=(HR@5:0.3203,NDCG@5:0.2077) [13.0 s] 
+INFO:root:Save model to ../model/TiSASRec/TiSASRec_Office_2019_lr=0.001_l2...
+INFO:root:all_losses: [0.16053744]
+INFO:root:Epoch 7     loss=0.1605 [46.5 s]	 dev=(HR@5:0.3882,NDCG@5:0.2576) test=(HR@5:0.3129,NDCG@5:0.2055) [13.1 s] 
+INFO:root:all_losses: [0.14655206]
+INFO:root:Epoch 8     loss=0.1466 [46.6 s]	 dev=(HR@5:0.4214,NDCG@5:0.2841) test=(HR@5:0.3590,NDCG@5:0.2390) [13.1 s] 
+INFO:root:Save model to ../model/TiSASRec/TiSASRec_Office_2019_lr=0.001_l2...
+INFO:root:all_losses: [0.12782651]
+INFO:root:Epoch 9     loss=0.1278 [46.6 s]	 dev=(HR@5:0.4198,NDCG@5:0.2812) test=(HR@5:0.3535,NDCG@5:0.2359) [13.1 s] 
+INFO:root:all_losses: [0.1165503]
+INFO:root:Epoch 10    loss=0.1166 [46.8 s]	 dev=(HR@5:0.4245,NDCG@5:0.2860) test=(HR@5:0.3594,NDCG@5:0.2390) [13.0 s] 
+INFO:root:Save model to ../model/TiSASRec/TiSASRec_Office_2019_lr=0.001_l2...
+INFO:root:all_losses: [0.10490215]
+INFO:root:Epoch 11    loss=0.1049 [46.4 s]	 dev=(HR@5:0.4206,NDCG@5:0.2832) test=(HR@5:0.3662,NDCG@5:0.2437) [13.1 s] 
+INFO:root:all_losses: [0.09572253]
+INFO:root:Epoch 12    loss=0.0957 [46.6 s]	 dev=(HR@5:0.4336,NDCG@5:0.2931) test=(HR@5:0.3896,NDCG@5:0.2583) [13.1 s] 
+INFO:root:Save model to ../model/TiSASRec/TiSASRec_Office_2019_lr=0.001_l2...
+INFO:root:all_losses: [0.09038736]
+INFO:root:Epoch 13    loss=0.0904 [46.4 s]	 dev=(HR@5:0.4296,NDCG@5:0.2911) test=(HR@5:0.3810,NDCG@5:0.2510) [13.0 s] 
+INFO:root:all_losses: [0.08292173]
+INFO:root:Epoch 14    loss=0.0829 [46.6 s]	 dev=(HR@5:0.4159,NDCG@5:0.2848) test=(HR@5:0.3715,NDCG@5:0.2470) [13.0 s] 
+INFO:root:all_losses: [0.07858621]
+INFO:root:Epoch 15    loss=0.0786 [46.5 s]	 dev=(HR@5:0.4163,NDCG@5:0.2863) test=(HR@5:0.3454,NDCG@5:0.2367) [13.2 s] 
+INFO:root:all_losses: [0.07208659]
+INFO:root:Epoch 16    loss=0.0721 [46.6 s]	 dev=(HR@5:0.4273,NDCG@5:0.2906) test=(HR@5:0.3684,NDCG@5:0.2498) [13.1 s] 
+INFO:root:all_losses: [0.06946366]
+INFO:root:Epoch 17    loss=0.0695 [46.8 s]	 dev=(HR@5:0.4285,NDCG@5:0.2951) test=(HR@5:0.3678,NDCG@5:0.2484) [13.0 s] 
+INFO:root:Save model to ../model/TiSASRec/TiSASRec_Office_2019_lr=0.001_l2...
+INFO:root:all_losses: [0.06565519]
+INFO:root:Epoch 18    loss=0.0657 [46.6 s]	 dev=(HR@5:0.4192,NDCG@5:0.2859) test=(HR@5:0.3574,NDCG@5:0.2425) [13.1 s] 
+INFO:root:all_losses: [0.06776012]
+INFO:root:Epoch 19    loss=0.0678 [46.4 s]	 dev=(HR@5:0.4175,NDCG@5:0.2870) test=(HR@5:0.3623,NDCG@5:0.2409) [13.1 s] 
+INFO:root:all_losses: [0.06280851]
+INFO:root:Epoch 20    loss=0.0628 [46.6 s]	 dev=(HR@5:0.4247,NDCG@5:0.2905) test=(HR@5:0.3623,NDCG@5:0.2447) [13.1 s] 
+INFO:root:all_losses: [0.05962615]
+INFO:root:Epoch 21    loss=0.0596 [46.4 s]	 dev=(HR@5:0.4222,NDCG@5:0.2867) test=(HR@5:0.3682,NDCG@5:0.2469) [13.1 s] 
+INFO:root:all_losses: [0.05490391]
+INFO:root:Epoch 22    loss=0.0549 [46.3 s]	 dev=(HR@5:0.4112,NDCG@5:0.2842) test=(HR@5:0.3635,NDCG@5:0.2463) [13.1 s] 
+INFO:root:all_losses: [0.0558602]
+INFO:root:Epoch 23    loss=0.0559 [46.4 s]	 dev=(HR@5:0.4029,NDCG@5:0.2789) test=(HR@5:0.3560,NDCG@5:0.2457) [13.1 s] 
+INFO:root:all_losses: [0.05275659]
+INFO:root:Epoch 24    loss=0.0528 [46.4 s]	 dev=(HR@5:0.4114,NDCG@5:0.2824) test=(HR@5:0.3570,NDCG@5:0.2411) [13.1 s] 
+INFO:root:all_losses: [0.05208823]
+INFO:root:Epoch 25    loss=0.0521 [46.4 s]	 dev=(HR@5:0.4110,NDCG@5:0.2800) test=(HR@5:0.3635,NDCG@5:0.2423) [13.0 s] 
+INFO:root:all_losses: [0.05044572]
+INFO:root:Epoch 26    loss=0.0504 [46.4 s]	 dev=(HR@5:0.4082,NDCG@5:0.2814) test=(HR@5:0.3672,NDCG@5:0.2457) [13.2 s] 
+INFO:root:all_losses: [0.04851049]
+INFO:root:Epoch 27    loss=0.0485 [46.5 s]	 dev=(HR@5:0.3896,NDCG@5:0.2676) test=(HR@5:0.3445,NDCG@5:0.2327) [13.1 s] 
+INFO:root:all_losses: [0.04654053]
+INFO:root:Epoch 28    loss=0.0465 [46.6 s]	 dev=(HR@5:0.4128,NDCG@5:0.2859) test=(HR@5:0.3790,NDCG@5:0.2551) [13.1 s] 
+INFO:root:all_losses: [0.04699153]
+INFO:root:Epoch 29    loss=0.0470 [46.5 s]	 dev=(HR@5:0.4067,NDCG@5:0.2812) test=(HR@5:0.3651,NDCG@5:0.2473) [13.1 s] 
+INFO:root:all_losses: [0.04367699]
+INFO:root:Epoch 30    loss=0.0437 [46.6 s]	 dev=(HR@5:0.4086,NDCG@5:0.2824) test=(HR@5:0.3782,NDCG@5:0.2566) [13.1 s] 
+INFO:root:all_losses: [0.04401204]
+INFO:root:Epoch 31    loss=0.0440 [46.4 s]	 dev=(HR@5:0.4024,NDCG@5:0.2768) test=(HR@5:0.3511,NDCG@5:0.2390) [13.1 s] 
+INFO:root:all_losses: [0.0431078]
+INFO:root:Epoch 32    loss=0.0431 [46.6 s]	 dev=(HR@5:0.4069,NDCG@5:0.2829) test=(HR@5:0.3613,NDCG@5:0.2463) [13.1 s] 
+INFO:root:all_losses: [0.04305047]
+INFO:root:Epoch 33    loss=0.0431 [46.3 s]	 dev=(HR@5:0.4137,NDCG@5:0.2845) test=(HR@5:0.3684,NDCG@5:0.2517) [13.0 s] 
+INFO:root:all_losses: [0.04357253]
+INFO:root:Epoch 34    loss=0.0436 [46.3 s]	 dev=(HR@5:0.4104,NDCG@5:0.2860) test=(HR@5:0.3655,NDCG@5:0.2487) [13.1 s] 
+INFO:root:all_losses: [0.04018999]
+INFO:root:Epoch 35    loss=0.0402 [46.4 s]	 dev=(HR@5:0.4108,NDCG@5:0.2826) test=(HR@5:0.3604,NDCG@5:0.2443) [13.0 s] 
+INFO:root:all_losses: [0.04197931]
+INFO:root:Epoch 36    loss=0.0420 [46.3 s]	 dev=(HR@5:0.3994,NDCG@5:0.2787) test=(HR@5:0.3472,NDCG@5:0.2395) [13.1 s] 
+INFO:root:all_losses: [0.03930765]
+INFO:root:Epoch 37    loss=0.0393 [46.6 s]	 dev=(HR@5:0.4120,NDCG@5:0.2861) test=(HR@5:0.3688,NDCG@5:0.2467) [13.1 s] 
+INFO:root:Early stop at 37 based on dev result.
+INFO:root:
+Best Iter(dev)=   17	 dev=(HR@5:0.4285,NDCG@5:0.2951) test=(HR@5:0.3678,NDCG@5:0.2484) [2207.9 s] 
+INFO:root:Load model from ../model/TiSASRec/TiSASRec_Office_2019_lr=0.001_l2=1e-06.pt
+INFO:root:
+Test After Training: (HR@10:0.5252,HR@5:0.3678,HR@50:0.8324,NDCG@10:0.2994,NDCG@5:0.2484,NDCG@50:0.3676)
+INFO:root:
+--------------------------------------------- END: 2025-03-02 12:08:11 ---------------------------------------------

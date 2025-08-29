@@ -1,0 +1,191 @@
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2025-03-02 13:47:18 ---------------------------------------------
+INFO:root:
+=================================
+ Arguments       | Values        
+=================================
+ batch_size      | 256          
+ buffer          | 1            
+ dataset         | Office       
+ dropout         | 0            
+ early_stop      | 5            
+ emb_size        | 64           
+ epoch           | 200          
+ eval_batch_size | 256          
+ gpu             | 0            
+ hidden_size     | 100          
+ history_max     | 20           
+ l2              | 1e-06        
+ load            | 0            
+ lr              | 0.001        
+ metric          | ["NDCG","HR"]
+ num_neg         | 1            
+ num_workers     | 5            
+ only_predict    | 0            
+ optimizer       | Adam         
+ random_seed     | 2019         
+ topk            | [5,10,50]    
+=================================
+INFO:root:cuda available: False
+INFO:root:# cuda devices: 0
+INFO:root:Load corpus from ../data/Office\BaseReader.pkl
+INFO:root:#params: 211144
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(2421, 64)
+  (rnn): GRU(64, 100, batch_first=True)
+  (out): Linear(in_features=100, out_features=64, bias=False)
+)
+INFO:root:Test Before Training: (HR@10:0.0968,HR@5:0.0491,HR@50:0.4922,NDCG@10:0.0436,NDCG@5:0.0283,NDCG@50:0.1261)
+INFO:root:Optimizer: Adam
+INFO:root:all_losses: [0.5090039]
+INFO:root:Epoch 1     loss=0.5090 [10.2 s]	 dev=(HR@5:0.1054,NDCG@5:0.0619) test=(HR@5:0.0762,NDCG@5:0.0439) [10.6 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Office_2019_lr=0.001_l2=1...
+INFO:root:all_losses: [0.40417027]
+INFO:root:Epoch 2     loss=0.4042 [9.7 s]	 dev=(HR@5:0.1223,NDCG@5:0.0726) test=(HR@5:0.0840,NDCG@5:0.0475) [10.0 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Office_2019_lr=0.001_l2=1...
+INFO:root:all_losses: [0.3749508]
+INFO:root:Epoch 3     loss=0.3750 [9.6 s]	 dev=(HR@5:0.1918,NDCG@5:0.1166) test=(HR@5:0.1513,NDCG@5:0.0885) [10.0 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Office_2019_lr=0.001_l2=1...
+INFO:root:all_losses: [0.33685395]
+INFO:root:Epoch 4     loss=0.3369 [9.6 s]	 dev=(HR@5:0.2457,NDCG@5:0.1581) test=(HR@5:0.1961,NDCG@5:0.1241) [10.0 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Office_2019_lr=0.001_l2=1...
+INFO:root:all_losses: [0.31260258]
+INFO:root:Epoch 5     loss=0.3126 [9.7 s]	 dev=(HR@5:0.2571,NDCG@5:0.1603) test=(HR@5:0.1955,NDCG@5:0.1178) [10.0 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Office_2019_lr=0.001_l2=1...
+INFO:root:all_losses: [0.2952355]
+INFO:root:Epoch 6     loss=0.2952 [9.7 s]	 dev=(HR@5:0.2587,NDCG@5:0.1623) test=(HR@5:0.1918,NDCG@5:0.1197) [10.0 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Office_2019_lr=0.001_l2=1...
+INFO:root:all_losses: [0.28243557]
+INFO:root:Epoch 7     loss=0.2824 [9.8 s]	 dev=(HR@5:0.3011,NDCG@5:0.1913) test=(HR@5:0.2294,NDCG@5:0.1437) [9.9 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Office_2019_lr=0.001_l2=1...
+INFO:root:all_losses: [0.25824362]
+INFO:root:Epoch 8     loss=0.2582 [9.7 s]	 dev=(HR@5:0.3291,NDCG@5:0.2146) test=(HR@5:0.2497,NDCG@5:0.1640) [9.9 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Office_2019_lr=0.001_l2=1...
+INFO:root:all_losses: [0.23894152]
+INFO:root:Epoch 9     loss=0.2389 [9.7 s]	 dev=(HR@5:0.3417,NDCG@5:0.2238) test=(HR@5:0.2734,NDCG@5:0.1798) [10.0 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Office_2019_lr=0.001_l2=1...
+INFO:root:all_losses: [0.23329166]
+INFO:root:Epoch 10    loss=0.2333 [9.7 s]	 dev=(HR@5:0.3523,NDCG@5:0.2300) test=(HR@5:0.2738,NDCG@5:0.1803) [10.1 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Office_2019_lr=0.001_l2=1...
+INFO:root:all_losses: [0.22646244]
+INFO:root:Epoch 11    loss=0.2265 [9.7 s]	 dev=(HR@5:0.3350,NDCG@5:0.2179) test=(HR@5:0.2650,NDCG@5:0.1712) [10.2 s] 
+INFO:root:all_losses: [0.21902256]
+INFO:root:Epoch 12    loss=0.2190 [9.8 s]	 dev=(HR@5:0.3529,NDCG@5:0.2310) test=(HR@5:0.2919,NDCG@5:0.1912) [10.1 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Office_2019_lr=0.001_l2=1...
+INFO:root:all_losses: [0.21632168]
+INFO:root:Epoch 13    loss=0.2163 [9.6 s]	 dev=(HR@5:0.3664,NDCG@5:0.2372) test=(HR@5:0.2983,NDCG@5:0.1941) [10.0 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Office_2019_lr=0.001_l2=1...
+INFO:root:all_losses: [0.21147011]
+INFO:root:Epoch 14    loss=0.2115 [9.6 s]	 dev=(HR@5:0.3680,NDCG@5:0.2451) test=(HR@5:0.3081,NDCG@5:0.2019) [10.0 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Office_2019_lr=0.001_l2=1...
+INFO:root:all_losses: [0.2127608]
+INFO:root:Epoch 15    loss=0.2128 [9.7 s]	 dev=(HR@5:0.3747,NDCG@5:0.2468) test=(HR@5:0.3125,NDCG@5:0.2060) [10.0 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Office_2019_lr=0.001_l2=1...
+INFO:root:all_losses: [0.20207082]
+INFO:root:Epoch 16    loss=0.2021 [9.4 s]	 dev=(HR@5:0.3825,NDCG@5:0.2508) test=(HR@5:0.3099,NDCG@5:0.2030) [9.8 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Office_2019_lr=0.001_l2=1...
+INFO:root:all_losses: [0.20190935]
+INFO:root:Epoch 17    loss=0.2019 [9.6 s]	 dev=(HR@5:0.3770,NDCG@5:0.2492) test=(HR@5:0.3062,NDCG@5:0.2016) [9.9 s] 
+INFO:root:all_losses: [0.1978337]
+INFO:root:Epoch 18    loss=0.1978 [9.6 s]	 dev=(HR@5:0.3686,NDCG@5:0.2427) test=(HR@5:0.3021,NDCG@5:0.1995) [10.0 s] 
+INFO:root:all_losses: [0.19854043]
+INFO:root:Epoch 19    loss=0.1985 [9.5 s]	 dev=(HR@5:0.3731,NDCG@5:0.2459) test=(HR@5:0.3052,NDCG@5:0.1988) [9.9 s] 
+INFO:root:all_losses: [0.19378434]
+INFO:root:Epoch 20    loss=0.1938 [9.6 s]	 dev=(HR@5:0.3690,NDCG@5:0.2409) test=(HR@5:0.3044,NDCG@5:0.1974) [9.9 s] 
+INFO:root:all_losses: [0.18919916]
+INFO:root:Epoch 21    loss=0.1892 [9.6 s]	 dev=(HR@5:0.3713,NDCG@5:0.2419) test=(HR@5:0.3011,NDCG@5:0.1948) [9.9 s] 
+INFO:root:all_losses: [0.18270728]
+INFO:root:Epoch 22    loss=0.1827 [9.7 s]	 dev=(HR@5:0.3770,NDCG@5:0.2478) test=(HR@5:0.3091,NDCG@5:0.1985) [9.9 s] 
+INFO:root:all_losses: [0.18225035]
+INFO:root:Epoch 23    loss=0.1823 [9.8 s]	 dev=(HR@5:0.3851,NDCG@5:0.2519) test=(HR@5:0.3225,NDCG@5:0.2087) [9.9 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Office_2019_lr=0.001_l2=1...
+INFO:root:all_losses: [0.17917223]
+INFO:root:Epoch 24    loss=0.1792 [9.7 s]	 dev=(HR@5:0.3823,NDCG@5:0.2476) test=(HR@5:0.3036,NDCG@5:0.1972) [10.0 s] 
+INFO:root:all_losses: [0.17758773]
+INFO:root:Epoch 25    loss=0.1776 [9.6 s]	 dev=(HR@5:0.3757,NDCG@5:0.2461) test=(HR@5:0.3140,NDCG@5:0.1994) [9.9 s] 
+INFO:root:all_losses: [0.1725789]
+INFO:root:Epoch 26    loss=0.1726 [9.6 s]	 dev=(HR@5:0.3829,NDCG@5:0.2531) test=(HR@5:0.3148,NDCG@5:0.2051) [10.0 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Office_2019_lr=0.001_l2=1...
+INFO:root:all_losses: [0.16699116]
+INFO:root:Epoch 27    loss=0.1670 [9.7 s]	 dev=(HR@5:0.3823,NDCG@5:0.2504) test=(HR@5:0.3358,NDCG@5:0.2186) [10.0 s] 
+INFO:root:all_losses: [0.16684636]
+INFO:root:Epoch 28    loss=0.1668 [9.7 s]	 dev=(HR@5:0.3841,NDCG@5:0.2552) test=(HR@5:0.3262,NDCG@5:0.2147) [10.0 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Office_2019_lr=0.001_l2=1...
+INFO:root:all_losses: [0.16819148]
+INFO:root:Epoch 29    loss=0.1682 [9.7 s]	 dev=(HR@5:0.3916,NDCG@5:0.2591) test=(HR@5:0.3242,NDCG@5:0.2122) [9.9 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Office_2019_lr=0.001_l2=1...
+INFO:root:all_losses: [0.16227527]
+INFO:root:Epoch 30    loss=0.1623 [9.7 s]	 dev=(HR@5:0.3992,NDCG@5:0.2616) test=(HR@5:0.3386,NDCG@5:0.2190) [10.0 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Office_2019_lr=0.001_l2=1...
+INFO:root:all_losses: [0.16106765]
+INFO:root:Epoch 31    loss=0.1611 [9.7 s]	 dev=(HR@5:0.3898,NDCG@5:0.2574) test=(HR@5:0.3293,NDCG@5:0.2106) [9.9 s] 
+INFO:root:all_losses: [0.1545049]
+INFO:root:Epoch 32    loss=0.1545 [9.5 s]	 dev=(HR@5:0.3872,NDCG@5:0.2595) test=(HR@5:0.3256,NDCG@5:0.2091) [10.0 s] 
+INFO:root:all_losses: [0.15901871]
+INFO:root:Epoch 33    loss=0.1590 [9.7 s]	 dev=(HR@5:0.3719,NDCG@5:0.2484) test=(HR@5:0.3066,NDCG@5:0.1955) [10.0 s] 
+INFO:root:all_losses: [0.15369113]
+INFO:root:Epoch 34    loss=0.1537 [9.7 s]	 dev=(HR@5:0.3855,NDCG@5:0.2563) test=(HR@5:0.3327,NDCG@5:0.2131) [9.9 s] 
+INFO:root:all_losses: [0.15226866]
+INFO:root:Epoch 35    loss=0.1523 [9.7 s]	 dev=(HR@5:0.3853,NDCG@5:0.2560) test=(HR@5:0.3193,NDCG@5:0.2024) [10.0 s] 
+INFO:root:all_losses: [0.14684646]
+INFO:root:Epoch 36    loss=0.1468 [9.7 s]	 dev=(HR@5:0.3872,NDCG@5:0.2562) test=(HR@5:0.3170,NDCG@5:0.2059) [10.0 s] 
+INFO:root:all_losses: [0.14504775]
+INFO:root:Epoch 37    loss=0.1450 [9.6 s]	 dev=(HR@5:0.3872,NDCG@5:0.2593) test=(HR@5:0.3211,NDCG@5:0.2084) [10.0 s] 
+INFO:root:all_losses: [0.14262469]
+INFO:root:Epoch 38    loss=0.1426 [9.7 s]	 dev=(HR@5:0.3817,NDCG@5:0.2550) test=(HR@5:0.3162,NDCG@5:0.2017) [9.9 s] 
+INFO:root:all_losses: [0.1392986]
+INFO:root:Epoch 39    loss=0.1393 [9.7 s]	 dev=(HR@5:0.3812,NDCG@5:0.2577) test=(HR@5:0.3189,NDCG@5:0.2064) [9.9 s] 
+INFO:root:all_losses: [0.14076029]
+INFO:root:Epoch 40    loss=0.1408 [9.7 s]	 dev=(HR@5:0.3904,NDCG@5:0.2639) test=(HR@5:0.3270,NDCG@5:0.2129) [10.0 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Office_2019_lr=0.001_l2=1...
+INFO:root:all_losses: [0.14063212]
+INFO:root:Epoch 41    loss=0.1406 [9.8 s]	 dev=(HR@5:0.4037,NDCG@5:0.2755) test=(HR@5:0.3423,NDCG@5:0.2223) [10.0 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Office_2019_lr=0.001_l2=1...
+INFO:root:all_losses: [0.13708504]
+INFO:root:Epoch 42    loss=0.1371 [9.7 s]	 dev=(HR@5:0.3949,NDCG@5:0.2654) test=(HR@5:0.3278,NDCG@5:0.2117) [9.9 s] 
+INFO:root:all_losses: [0.13073859]
+INFO:root:Epoch 43    loss=0.1307 [9.7 s]	 dev=(HR@5:0.3927,NDCG@5:0.2644) test=(HR@5:0.3242,NDCG@5:0.2125) [10.0 s] 
+INFO:root:all_losses: [0.13168353]
+INFO:root:Epoch 44    loss=0.1317 [9.7 s]	 dev=(HR@5:0.4031,NDCG@5:0.2714) test=(HR@5:0.3321,NDCG@5:0.2179) [10.0 s] 
+INFO:root:all_losses: [0.12856859]
+INFO:root:Epoch 45    loss=0.1286 [9.8 s]	 dev=(HR@5:0.3976,NDCG@5:0.2670) test=(HR@5:0.3327,NDCG@5:0.2152) [9.9 s] 
+INFO:root:all_losses: [0.13095805]
+INFO:root:Epoch 46    loss=0.1310 [9.7 s]	 dev=(HR@5:0.3935,NDCG@5:0.2654) test=(HR@5:0.3264,NDCG@5:0.2104) [10.0 s] 
+INFO:root:all_losses: [0.12461437]
+INFO:root:Epoch 47    loss=0.1246 [9.7 s]	 dev=(HR@5:0.3973,NDCG@5:0.2708) test=(HR@5:0.3439,NDCG@5:0.2248) [9.9 s] 
+INFO:root:all_losses: [0.1270263]
+INFO:root:Epoch 48    loss=0.1270 [9.3 s]	 dev=(HR@5:0.3916,NDCG@5:0.2637) test=(HR@5:0.3280,NDCG@5:0.2155) [9.9 s] 
+INFO:root:all_losses: [0.12592208]
+INFO:root:Epoch 49    loss=0.1259 [9.7 s]	 dev=(HR@5:0.3929,NDCG@5:0.2648) test=(HR@5:0.3284,NDCG@5:0.2144) [10.0 s] 
+INFO:root:all_losses: [0.11882771]
+INFO:root:Epoch 50    loss=0.1188 [9.7 s]	 dev=(HR@5:0.3945,NDCG@5:0.2667) test=(HR@5:0.3323,NDCG@5:0.2179) [10.0 s] 
+INFO:root:all_losses: [0.12037018]
+INFO:root:Epoch 51    loss=0.1204 [9.8 s]	 dev=(HR@5:0.3945,NDCG@5:0.2645) test=(HR@5:0.3215,NDCG@5:0.2122) [10.1 s] 
+INFO:root:all_losses: [0.11795992]
+INFO:root:Epoch 52    loss=0.1180 [9.7 s]	 dev=(HR@5:0.3872,NDCG@5:0.2604) test=(HR@5:0.3256,NDCG@5:0.2126) [9.9 s] 
+INFO:root:all_losses: [0.11722621]
+INFO:root:Epoch 53    loss=0.1172 [9.7 s]	 dev=(HR@5:0.3847,NDCG@5:0.2602) test=(HR@5:0.3341,NDCG@5:0.2174) [9.9 s] 
+INFO:root:all_losses: [0.11659893]
+INFO:root:Epoch 54    loss=0.1166 [9.7 s]	 dev=(HR@5:0.3884,NDCG@5:0.2658) test=(HR@5:0.3233,NDCG@5:0.2126) [9.9 s] 
+INFO:root:all_losses: [0.11806464]
+INFO:root:Epoch 55    loss=0.1181 [9.8 s]	 dev=(HR@5:0.3890,NDCG@5:0.2619) test=(HR@5:0.3313,NDCG@5:0.2187) [10.0 s] 
+INFO:root:all_losses: [0.1107384]
+INFO:root:Epoch 56    loss=0.1107 [9.7 s]	 dev=(HR@5:0.3867,NDCG@5:0.2595) test=(HR@5:0.3272,NDCG@5:0.2148) [9.9 s] 
+INFO:root:all_losses: [0.11172003]
+INFO:root:Epoch 57    loss=0.1117 [9.7 s]	 dev=(HR@5:0.3910,NDCG@5:0.2628) test=(HR@5:0.3341,NDCG@5:0.2193) [9.8 s] 
+INFO:root:all_losses: [0.11087453]
+INFO:root:Epoch 58    loss=0.1109 [9.7 s]	 dev=(HR@5:0.3971,NDCG@5:0.2649) test=(HR@5:0.3278,NDCG@5:0.2130) [9.9 s] 
+INFO:root:all_losses: [0.10986711]
+INFO:root:Epoch 59    loss=0.1099 [9.7 s]	 dev=(HR@5:0.3986,NDCG@5:0.2667) test=(HR@5:0.3380,NDCG@5:0.2189) [9.9 s] 
+INFO:root:all_losses: [0.10710856]
+INFO:root:Epoch 60    loss=0.1071 [9.7 s]	 dev=(HR@5:0.3937,NDCG@5:0.2636) test=(HR@5:0.3348,NDCG@5:0.2192) [10.0 s] 
+INFO:root:all_losses: [0.1077507]
+INFO:root:Epoch 61    loss=0.1078 [9.6 s]	 dev=(HR@5:0.3900,NDCG@5:0.2626) test=(HR@5:0.3321,NDCG@5:0.2142) [10.0 s] 
+INFO:root:Early stop at 61 based on dev result.
+INFO:root:
+Best Iter(dev)=   41	 dev=(HR@5:0.4037,NDCG@5:0.2755) test=(HR@5:0.3423,NDCG@5:0.2223) [1199.0 s] 
+INFO:root:Load model from ../model/GRU4Rec/GRU4Rec_Office_2019_lr=0.001_l2=1e-06.pt
+INFO:root:
+Test After Training: (HR@10:0.4946,HR@5:0.3423,HR@50:0.8257,NDCG@10:0.2717,NDCG@5:0.2223,NDCG@50:0.3446)
+INFO:root:
+--------------------------------------------- END: 2025-03-02 14:07:27 ---------------------------------------------

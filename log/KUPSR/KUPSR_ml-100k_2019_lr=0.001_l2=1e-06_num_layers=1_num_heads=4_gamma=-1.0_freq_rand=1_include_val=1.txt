@@ -1,0 +1,196 @@
+INFO:root:Namespace(model_name='KDA')
+INFO:root:--------------------------------------------- BEGIN: 2025-04-23 18:47:40 ---------------------------------------------
+INFO:root:
+=================================
+ Arguments       | Values        
+=================================
+ attention_size  | 10           
+ batch_size      | 256          
+ buffer          | 1            
+ dataset         | ml-100k      
+ dropout         | 0            
+ early_stop      | 5            
+ emb_size        | 64           
+ epoch           | 200          
+ eval_batch_size | 256          
+ freq_rand       | 1            
+ gamma           | -1.0         
+ gpu             | 0            
+ history_max     | 20           
+ include_attr    | 1            
+ include_kge     | 1            
+ include_val     | 1            
+ l2              | 1e-06        
+ load            | 0            
+ lr              | 0.001        
+ metric          | ["NDCG","HR"]
+ n_dft           | 64           
+ neg_head_p      | 0.5          
+ num_heads       | 4            
+ num_layers      | 1            
+ num_neg         | 1            
+ num_workers     | 5            
+ only_predict    | 0            
+ optimizer       | Adam         
+ pooling         | average      
+ random_seed     | 2019         
+ t_scalar        | 60           
+ topk            | [5,10,50]    
+=================================
+INFO:root:cuda available: False
+INFO:root:# cuda devices: 0
+INFO:root:Load corpus from ../data/ml-100k\DFTReader.pkl
+INFO:root:#params: 282737
+INFO:root:KDA(
+  (user_embeddings): Embedding(944, 64)
+  (entity_embeddings): Embedding(1405, 64)
+  (relation_embeddings): Embedding(21, 64)
+  (relational_dynamic_aggregation): RelationalDynamicAggregation(
+    (relation_embeddings): Embedding(21, 64)
+    (freq_real): Embedding(21, 33)
+    (freq_imag): Embedding(21, 33)
+  )
+  (attn_head): MultiHeadAttention(
+    (q_linear): Linear(in_features=64, out_features=64, bias=False)
+    (k_linear): Linear(in_features=64, out_features=64, bias=False)
+    (v_linear): Linear(in_features=64, out_features=64, bias=False)
+  )
+  (W1): Linear(in_features=64, out_features=64, bias=True)
+  (W2): Linear(in_features=64, out_features=64, bias=True)
+  (dropout_layer): Dropout(p=0, inplace=False)
+  (layer_norm): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+  (item_bias): Embedding(1351, 1)
+  (blstm): LSTM(128, 64, batch_first=True, bidirectional=True)
+  (fusion_layer): Linear(in_features=128, out_features=64, bias=True)
+)
+INFO:root:Test Before Training: (HR@10:0.0954,HR@5:0.0498,HR@50:0.4836,NDCG@10:0.0445,NDCG@5:0.0302,NDCG@50:0.1261)
+INFO:root:Optimizer: Adam
+INFO:root:all_losses: [0.45149955 0.6930969 ]
+INFO:root:Epoch 1     loss=0.4515 [89.8 s]	 dev=(HR@5:0.2386,NDCG@5:0.1511) test=(HR@5:0.2248,NDCG@5:0.1493) [19.0 s] 
+INFO:root:Save model to ../model/KDA/KDA_ml-100k_2019_lr=0.001_l2=1e-06_nu...
+INFO:root:all_losses: [0.373627   0.69289714]
+INFO:root:Epoch 2     loss=0.3736 [100.9 s]	 dev=(HR@5:0.2895,NDCG@5:0.1826) test=(HR@5:0.2471,NDCG@5:0.1643) [21.2 s] 
+INFO:root:Save model to ../model/KDA/KDA_ml-100k_2019_lr=0.001_l2=1e-06_nu...
+INFO:root:all_losses: [0.32796723 0.69207543]
+INFO:root:Epoch 3     loss=0.3280 [103.4 s]	 dev=(HR@5:0.3234,NDCG@5:0.2145) test=(HR@5:0.2672,NDCG@5:0.1891) [19.0 s] 
+INFO:root:Save model to ../model/KDA/KDA_ml-100k_2019_lr=0.001_l2=1e-06_nu...
+INFO:root:all_losses: [0.30662012 0.68996507]
+INFO:root:Epoch 4     loss=0.3066 [132.2 s]	 dev=(HR@5:0.3934,NDCG@5:0.2700) test=(HR@5:0.3266,NDCG@5:0.2188) [33.3 s] 
+INFO:root:Save model to ../model/KDA/KDA_ml-100k_2019_lr=0.001_l2=1e-06_nu...
+INFO:root:all_losses: [0.28166795 0.68735087]
+INFO:root:Epoch 5     loss=0.2817 [120.9 s]	 dev=(HR@5:0.4093,NDCG@5:0.2767) test=(HR@5:0.3902,NDCG@5:0.2581) [33.2 s] 
+INFO:root:Save model to ../model/KDA/KDA_ml-100k_2019_lr=0.001_l2=1e-06_nu...
+INFO:root:all_losses: [0.2641131 0.6830704]
+INFO:root:Epoch 6     loss=0.2641 [116.8 s]	 dev=(HR@5:0.4411,NDCG@5:0.3011) test=(HR@5:0.4221,NDCG@5:0.2750) [32.7 s] 
+INFO:root:Save model to ../model/KDA/KDA_ml-100k_2019_lr=0.001_l2=1e-06_nu...
+INFO:root:all_losses: [0.24374363 0.6772861 ]
+INFO:root:Epoch 7     loss=0.2437 [117.4 s]	 dev=(HR@5:0.4549,NDCG@5:0.3094) test=(HR@5:0.4242,NDCG@5:0.2750) [33.0 s] 
+INFO:root:Save model to ../model/KDA/KDA_ml-100k_2019_lr=0.001_l2=1e-06_nu...
+INFO:root:all_losses: [0.22563426 0.6705913 ]
+INFO:root:Epoch 8     loss=0.2256 [117.1 s]	 dev=(HR@5:0.4708,NDCG@5:0.3273) test=(HR@5:0.4486,NDCG@5:0.2947) [32.9 s] 
+INFO:root:Save model to ../model/KDA/KDA_ml-100k_2019_lr=0.001_l2=1e-06_nu...
+INFO:root:all_losses: [0.21804363 0.66635936]
+INFO:root:Epoch 9     loss=0.2180 [117.2 s]	 dev=(HR@5:0.5048,NDCG@5:0.3440) test=(HR@5:0.4454,NDCG@5:0.3015) [32.7 s] 
+INFO:root:Save model to ../model/KDA/KDA_ml-100k_2019_lr=0.001_l2=1e-06_nu...
+INFO:root:all_losses: [0.21607272 0.6608007 ]
+INFO:root:Epoch 10    loss=0.2161 [117.7 s]	 dev=(HR@5:0.4804,NDCG@5:0.3346) test=(HR@5:0.4199,NDCG@5:0.2853) [32.8 s] 
+INFO:root:all_losses: [0.21047167 0.65597147]
+INFO:root:Epoch 11    loss=0.2105 [117.8 s]	 dev=(HR@5:0.5037,NDCG@5:0.3520) test=(HR@5:0.4666,NDCG@5:0.3133) [32.5 s] 
+INFO:root:Save model to ../model/KDA/KDA_ml-100k_2019_lr=0.001_l2=1e-06_nu...
+INFO:root:all_losses: [0.20364384 0.6527395 ]
+INFO:root:Epoch 12    loss=0.2036 [118.4 s]	 dev=(HR@5:0.4910,NDCG@5:0.3468) test=(HR@5:0.4613,NDCG@5:0.3068) [32.4 s] 
+INFO:root:all_losses: [0.20486332 0.6491505 ]
+INFO:root:Epoch 13    loss=0.2049 [118.4 s]	 dev=(HR@5:0.4942,NDCG@5:0.3482) test=(HR@5:0.4411,NDCG@5:0.3056) [32.4 s] 
+INFO:root:all_losses: [0.20146576 0.6453975 ]
+INFO:root:Epoch 14    loss=0.2015 [118.8 s]	 dev=(HR@5:0.5101,NDCG@5:0.3504) test=(HR@5:0.4549,NDCG@5:0.3078) [32.4 s] 
+INFO:root:all_losses: [0.20028493 0.64188486]
+INFO:root:Epoch 15    loss=0.2003 [119.5 s]	 dev=(HR@5:0.5058,NDCG@5:0.3496) test=(HR@5:0.4581,NDCG@5:0.3128) [32.2 s] 
+INFO:root:all_losses: [0.19621654 0.6382799 ]
+INFO:root:Epoch 16    loss=0.1962 [119.5 s]	 dev=(HR@5:0.5133,NDCG@5:0.3549) test=(HR@5:0.4571,NDCG@5:0.3147) [32.4 s] 
+INFO:root:Save model to ../model/KDA/KDA_ml-100k_2019_lr=0.001_l2=1e-06_nu...
+INFO:root:all_losses: [0.19453356 0.6345972 ]
+INFO:root:Epoch 17    loss=0.1945 [119.8 s]	 dev=(HR@5:0.5154,NDCG@5:0.3666) test=(HR@5:0.4655,NDCG@5:0.3203) [32.6 s] 
+INFO:root:Save model to ../model/KDA/KDA_ml-100k_2019_lr=0.001_l2=1e-06_nu...
+INFO:root:all_losses: [0.19245175 0.63205004]
+INFO:root:Epoch 18    loss=0.1925 [120.9 s]	 dev=(HR@5:0.5249,NDCG@5:0.3648) test=(HR@5:0.4751,NDCG@5:0.3278) [32.4 s] 
+INFO:root:all_losses: [0.19122936 0.629114  ]
+INFO:root:Epoch 19    loss=0.1912 [120.9 s]	 dev=(HR@5:0.5345,NDCG@5:0.3659) test=(HR@5:0.4666,NDCG@5:0.3210) [32.3 s] 
+INFO:root:all_losses: [0.19013593 0.6238438 ]
+INFO:root:Epoch 20    loss=0.1901 [121.5 s]	 dev=(HR@5:0.5334,NDCG@5:0.3739) test=(HR@5:0.4825,NDCG@5:0.3413) [32.3 s] 
+INFO:root:Save model to ../model/KDA/KDA_ml-100k_2019_lr=0.001_l2=1e-06_nu...
+INFO:root:all_losses: [0.18861108 0.62112916]
+INFO:root:Epoch 21    loss=0.1886 [121.9 s]	 dev=(HR@5:0.5186,NDCG@5:0.3608) test=(HR@5:0.4687,NDCG@5:0.3229) [32.4 s] 
+INFO:root:all_losses: [0.18312944 0.6172156 ]
+INFO:root:Epoch 22    loss=0.1831 [122.8 s]	 dev=(HR@5:0.5207,NDCG@5:0.3686) test=(HR@5:0.4740,NDCG@5:0.3336) [32.4 s] 
+INFO:root:all_losses: [0.185437   0.61371225]
+INFO:root:Epoch 23    loss=0.1854 [123.0 s]	 dev=(HR@5:0.5313,NDCG@5:0.3792) test=(HR@5:0.4814,NDCG@5:0.3279) [32.5 s] 
+INFO:root:Save model to ../model/KDA/KDA_ml-100k_2019_lr=0.001_l2=1e-06_nu...
+INFO:root:all_losses: [0.18114144 0.60998166]
+INFO:root:Epoch 24    loss=0.1811 [123.2 s]	 dev=(HR@5:0.5313,NDCG@5:0.3751) test=(HR@5:0.4719,NDCG@5:0.3284) [32.1 s] 
+INFO:root:all_losses: [0.18062845 0.6055224 ]
+INFO:root:Epoch 25    loss=0.1806 [124.1 s]	 dev=(HR@5:0.5429,NDCG@5:0.3766) test=(HR@5:0.4867,NDCG@5:0.3369) [32.2 s] 
+INFO:root:all_losses: [0.17862934 0.60199904]
+INFO:root:Epoch 26    loss=0.1786 [124.0 s]	 dev=(HR@5:0.5483,NDCG@5:0.3834) test=(HR@5:0.4889,NDCG@5:0.3351) [32.2 s] 
+INFO:root:Save model to ../model/KDA/KDA_ml-100k_2019_lr=0.001_l2=1e-06_nu...
+INFO:root:all_losses: [0.17595094 0.5970174 ]
+INFO:root:Epoch 27    loss=0.1760 [124.7 s]	 dev=(HR@5:0.5451,NDCG@5:0.3818) test=(HR@5:0.4761,NDCG@5:0.3309) [32.5 s] 
+INFO:root:all_losses: [0.17648667 0.5941402 ]
+INFO:root:Epoch 28    loss=0.1765 [125.3 s]	 dev=(HR@5:0.5387,NDCG@5:0.3803) test=(HR@5:0.4910,NDCG@5:0.3383) [32.1 s] 
+INFO:root:all_losses: [0.17418322 0.5879456 ]
+INFO:root:Epoch 29    loss=0.1742 [125.6 s]	 dev=(HR@5:0.5313,NDCG@5:0.3826) test=(HR@5:0.4920,NDCG@5:0.3398) [32.0 s] 
+INFO:root:all_losses: [0.1755242  0.58127576]
+INFO:root:Epoch 30    loss=0.1755 [126.7 s]	 dev=(HR@5:0.5483,NDCG@5:0.3831) test=(HR@5:0.4973,NDCG@5:0.3489) [32.1 s] 
+INFO:root:all_losses: [0.17455071 0.57678455]
+INFO:root:Epoch 31    loss=0.1746 [127.3 s]	 dev=(HR@5:0.5589,NDCG@5:0.3941) test=(HR@5:0.4931,NDCG@5:0.3467) [32.0 s] 
+INFO:root:Save model to ../model/KDA/KDA_ml-100k_2019_lr=0.001_l2=1e-06_nu...
+INFO:root:all_losses: [0.17067786 0.5695858 ]
+INFO:root:Epoch 32    loss=0.1707 [127.1 s]	 dev=(HR@5:0.5652,NDCG@5:0.4032) test=(HR@5:0.4920,NDCG@5:0.3451) [31.8 s] 
+INFO:root:Save model to ../model/KDA/KDA_ml-100k_2019_lr=0.001_l2=1e-06_nu...
+INFO:root:all_losses: [0.16982383 0.5635572 ]
+INFO:root:Epoch 33    loss=0.1698 [127.4 s]	 dev=(HR@5:0.5376,NDCG@5:0.3826) test=(HR@5:0.5080,NDCG@5:0.3474) [32.2 s] 
+INFO:root:all_losses: [0.17144509 0.55564356]
+INFO:root:Epoch 34    loss=0.1714 [127.4 s]	 dev=(HR@5:0.5387,NDCG@5:0.3848) test=(HR@5:0.5069,NDCG@5:0.3505) [31.8 s] 
+INFO:root:all_losses: [0.16890986 0.5485921 ]
+INFO:root:Epoch 35    loss=0.1689 [129.2 s]	 dev=(HR@5:0.5493,NDCG@5:0.3886) test=(HR@5:0.5133,NDCG@5:0.3523) [31.9 s] 
+INFO:root:all_losses: [0.16655998 0.5396267 ]
+INFO:root:Epoch 36    loss=0.1666 [129.2 s]	 dev=(HR@5:0.5366,NDCG@5:0.3811) test=(HR@5:0.4931,NDCG@5:0.3372) [31.9 s] 
+INFO:root:all_losses: [0.16538551 0.5327271 ]
+INFO:root:Epoch 37    loss=0.1654 [129.4 s]	 dev=(HR@5:0.5567,NDCG@5:0.3922) test=(HR@5:0.5090,NDCG@5:0.3525) [32.1 s] 
+INFO:root:all_losses: [0.1664611 0.5248326]
+INFO:root:Epoch 38    loss=0.1665 [130.2 s]	 dev=(HR@5:0.5536,NDCG@5:0.3865) test=(HR@5:0.5164,NDCG@5:0.3625) [31.9 s] 
+INFO:root:all_losses: [0.16340156 0.5166593 ]
+INFO:root:Epoch 39    loss=0.1634 [130.5 s]	 dev=(HR@5:0.5557,NDCG@5:0.3902) test=(HR@5:0.5260,NDCG@5:0.3604) [31.8 s] 
+INFO:root:all_losses: [0.1610335 0.5072675]
+INFO:root:Epoch 40    loss=0.1610 [130.5 s]	 dev=(HR@5:0.5652,NDCG@5:0.3989) test=(HR@5:0.5027,NDCG@5:0.3481) [32.1 s] 
+INFO:root:all_losses: [0.16273637 0.4983314 ]
+INFO:root:Epoch 41    loss=0.1627 [131.3 s]	 dev=(HR@5:0.5451,NDCG@5:0.3870) test=(HR@5:0.4963,NDCG@5:0.3468) [31.8 s] 
+INFO:root:all_losses: [0.1610578  0.49278137]
+INFO:root:Epoch 42    loss=0.1611 [131.1 s]	 dev=(HR@5:0.5472,NDCG@5:0.3909) test=(HR@5:0.5111,NDCG@5:0.3602) [32.1 s] 
+INFO:root:all_losses: [0.15902081 0.48260942]
+INFO:root:Epoch 43    loss=0.1590 [131.3 s]	 dev=(HR@5:0.5695,NDCG@5:0.3993) test=(HR@5:0.5048,NDCG@5:0.3571) [31.7 s] 
+INFO:root:all_losses: [0.15846597 0.47523785]
+INFO:root:Epoch 44    loss=0.1585 [131.7 s]	 dev=(HR@5:0.5631,NDCG@5:0.3993) test=(HR@5:0.5313,NDCG@5:0.3682) [31.7 s] 
+INFO:root:all_losses: [0.15631698 0.46961036]
+INFO:root:Epoch 45    loss=0.1563 [131.6 s]	 dev=(HR@5:0.5684,NDCG@5:0.4010) test=(HR@5:0.5281,NDCG@5:0.3683) [31.9 s] 
+INFO:root:all_losses: [0.15396558 0.45966187]
+INFO:root:Epoch 46    loss=0.1540 [132.2 s]	 dev=(HR@5:0.5599,NDCG@5:0.3933) test=(HR@5:0.5069,NDCG@5:0.3507) [32.0 s] 
+INFO:root:all_losses: [0.15489511 0.4498459 ]
+INFO:root:Epoch 47    loss=0.1549 [133.0 s]	 dev=(HR@5:0.5546,NDCG@5:0.3971) test=(HR@5:0.5217,NDCG@5:0.3621) [31.9 s] 
+INFO:root:all_losses: [0.1510757  0.44264063]
+INFO:root:Epoch 48    loss=0.1511 [131.8 s]	 dev=(HR@5:0.5631,NDCG@5:0.3936) test=(HR@5:0.5164,NDCG@5:0.3540) [31.6 s] 
+INFO:root:all_losses: [0.15323633 0.4330518 ]
+INFO:root:Epoch 49    loss=0.1532 [133.8 s]	 dev=(HR@5:0.5557,NDCG@5:0.3961) test=(HR@5:0.5101,NDCG@5:0.3508) [31.9 s] 
+INFO:root:all_losses: [0.14881057 0.42345876]
+INFO:root:Epoch 50    loss=0.1488 [133.0 s]	 dev=(HR@5:0.5567,NDCG@5:0.3902) test=(HR@5:0.5069,NDCG@5:0.3519) [31.9 s] 
+INFO:root:all_losses: [0.14958467 0.41230795]
+INFO:root:Epoch 51    loss=0.1496 [133.3 s]	 dev=(HR@5:0.5536,NDCG@5:0.3929) test=(HR@5:0.5217,NDCG@5:0.3618) [31.8 s] 
+INFO:root:all_losses: [0.14807133 0.40318388]
+INFO:root:Epoch 52    loss=0.1481 [134.2 s]	 dev=(HR@5:0.5599,NDCG@5:0.3954) test=(HR@5:0.5133,NDCG@5:0.3629) [31.8 s] 
+INFO:root:Early stop at 52 based on dev result.
+INFO:root:
+Best Iter(dev)=   32	 dev=(HR@5:0.5652,NDCG@5:0.4032) test=(HR@5:0.4920,NDCG@5:0.3451) [8084.9 s] 
+INFO:root:Load model from ../model/KDA/KDA_ml-100k_2019_lr=0.001_l2=1e-06_num_layers=1_num_heads=4_gamma=-1.0_freq_rand=1_include_val=1.pt
+INFO:root:
+Test After Training: (HR@10:0.6872,HR@5:0.4920,HR@50:0.9555,NDCG@10:0.4079,NDCG@5:0.3451,NDCG@50:0.4692)
+INFO:root:
+--------------------------------------------- END: 2025-04-23 21:02:51 ---------------------------------------------

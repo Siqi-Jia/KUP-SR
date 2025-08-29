@@ -1,0 +1,77 @@
+INFO:root:Namespace(model_name='RCFPlus')
+INFO:root:--------------------------------------------- BEGIN: 2025-03-16 13:15:16 ---------------------------------------------
+INFO:root:
+=====================================
+ Arguments           | Values        
+=====================================
+ alpha               | 0.1          
+ attention_size      | 10           
+ batch_size          | 256          
+ buffer              | 1            
+ dataset             | Office       
+ dropout             | 0            
+ early_stop          | 5            
+ emb_size            | 64           
+ epoch               | 200          
+ eval_batch_size     | 256          
+ gamma               | -1.0         
+ gpu                 | 0            
+ history_max         | 20           
+ include_attr        | 1            
+ include_kge         | 1            
+ include_lrd         | 1            
+ include_val         | 1            
+ l2                  | 1e-06        
+ lamda               | 10           
+ latent_relation_num | 5            
+ leave_one_latent    | 0            
+ load                | 0            
+ lr                  | 0.0001       
+ message             |              
+ metric              | ["NDCG","HR"]
+ neg_head_p          | 0.5          
+ num_heads           | 4            
+ num_layers          | 5            
+ num_neg             | 1            
+ num_workers         | 5            
+ only_predict        | 0            
+ optimizer           | Adam         
+ plm_name            | feat.GPT     
+ plm_size            | 1536         
+ pooling             | average      
+ random_seed         | 2019         
+ topk                | [5,10,50]    
+=====================================
+INFO:root:cuda available: True
+INFO:root:# cuda devices: 1
+INFO:root:Reading data from "../data/", dataset = "Office" 
+INFO:root:Counting dataset statistics...
+INFO:root:"# user": 4906, "# item": 2421, "# entry": 53258
+INFO:root:Appending history info...
+INFO:root:Constructing relation triplets...
+INFO:root:Item-item relations:['r_complement', 'r_substitute']
+INFO:root:Attribute-based relations:['i_category', 'i_brand']
+INFO:root:"# relation": 10, "# triplet": 60706
+INFO:root:Save corpus to ../data/Office\KGReader_5.pkl
+INFO:root:#params: 4335488
+INFO:root:RCFPlus(
+  (user_embeddings): Embedding(4906, 64)
+  (item_embeddings): Embedding(2421, 1536, padding_idx=0)
+  (project_layer_1): Linear(in_features=1536, out_features=64, bias=True)
+  (project_layer_2): Linear(in_features=128, out_features=10, bias=True)
+  (entity_embeddings): Embedding(2803, 64)
+  (relation_embeddings): Embedding(10, 64)
+  (relational_dynamic_aggregation): RelationalDynamicAggregation(
+    (relation_embeddings): Embedding(10, 64)
+  )
+  (attn_head): MultiHeadAttention(
+    (q_linear): Linear(in_features=64, out_features=64, bias=False)
+    (k_linear): Linear(in_features=64, out_features=64, bias=False)
+    (v_linear): Linear(in_features=64, out_features=64, bias=False)
+  )
+  (W1): Linear(in_features=64, out_features=64, bias=True)
+  (W2): Linear(in_features=64, out_features=64, bias=True)
+  (dropout_layer): Dropout(p=0, inplace=False)
+  (layer_norm): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+  (item_bias): Embedding(2422, 1)
+)

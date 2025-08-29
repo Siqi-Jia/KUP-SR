@@ -1,0 +1,1431 @@
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2025-03-02 09:54:38 ---------------------------------------------
+INFO:root:
+=================================
+ Arguments       | Values        
+=================================
+ batch_size      | 256          
+ buffer          | 1            
+ dataset         | Office       
+ dropout         | 0            
+ early_stop      | 5            
+ emb_size        | 64           
+ epoch           | 200          
+ eval_batch_size | 256          
+ gpu             | 0            
+ history_max     | 20           
+ l2              | 1e-06        
+ load            | 0            
+ lr              | 0.001        
+ metric          | ["NDCG","HR"]
+ num_heads       | 4            
+ num_layers      | 5            
+ num_neg         | 1            
+ num_workers     | 5            
+ only_predict    | 0            
+ optimizer       | Adam         
+ random_seed     | 2019         
+ topk            | [5,10,50]    
+=================================
+INFO:root:cuda available: False
+INFO:root:# cuda devices: 0
+INFO:root:Reading data from "../data/", dataset = "Office" 
+INFO:root:Counting dataset statistics...
+INFO:root:"# user": 4906, "# item": 2421, "# entry": 53258
+INFO:root:Appending history info...
+INFO:root:Save corpus to ../data/Office\BaseReader.pkl
+INFO:root:#params: 261568
+INFO:root:SASRec(
+  (i_embeddings): Embedding(2421, 64)
+  (p_embeddings): Embedding(21, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+    (1): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+    (2): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+    (3): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+    (4): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Test Before Training: (HR@10:0.0970,HR@5:0.0481,HR@50:0.4991,NDCG@10:0.0439,NDCG@5:0.0283,NDCG@50:0.1279)
+INFO:root:Optimizer: Adam
+INFO:root:all_losses: [0.48543403]
+INFO:root:Epoch 1     loss=0.4854 [20.9 s]	 dev=(HR@5:0.2012,NDCG@5:0.1196) test=(HR@5:0.1394,NDCG@5:0.0839) [12.0 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.32985]
+INFO:root:Epoch 2     loss=0.3298 [21.4 s]	 dev=(HR@5:0.3144,NDCG@5:0.2004) test=(HR@5:0.2491,NDCG@5:0.1601) [11.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.27049065]
+INFO:root:Epoch 3     loss=0.2705 [139.8 s]	 dev=(HR@5:0.3409,NDCG@5:0.2255) test=(HR@5:0.2699,NDCG@5:0.1803) [12.6 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.23256439]
+INFO:root:Epoch 4     loss=0.2326 [139.4 s]	 dev=(HR@5:0.3798,NDCG@5:0.2516) test=(HR@5:0.3019,NDCG@5:0.2010) [12.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.20287047]
+INFO:root:Epoch 5     loss=0.2029 [139.2 s]	 dev=(HR@5:0.3955,NDCG@5:0.2594) test=(HR@5:0.3252,NDCG@5:0.2113) [12.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.17951553]
+INFO:root:Epoch 6     loss=0.1795 [139.5 s]	 dev=(HR@5:0.4135,NDCG@5:0.2777) test=(HR@5:0.3445,NDCG@5:0.2278) [12.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.15788615]
+INFO:root:Epoch 7     loss=0.1579 [139.1 s]	 dev=(HR@5:0.4061,NDCG@5:0.2754) test=(HR@5:0.3433,NDCG@5:0.2247) [12.5 s] 
+INFO:root:all_losses: [0.14376312]
+INFO:root:Epoch 8     loss=0.1438 [140.1 s]	 dev=(HR@5:0.4084,NDCG@5:0.2814) test=(HR@5:0.3423,NDCG@5:0.2300) [12.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.12457239]
+INFO:root:Epoch 9     loss=0.1246 [139.6 s]	 dev=(HR@5:0.4340,NDCG@5:0.2986) test=(HR@5:0.3727,NDCG@5:0.2523) [12.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.1146243]
+INFO:root:Epoch 10    loss=0.1146 [139.8 s]	 dev=(HR@5:0.4269,NDCG@5:0.2945) test=(HR@5:0.3696,NDCG@5:0.2489) [12.5 s] 
+INFO:root:all_losses: [0.10520166]
+INFO:root:Epoch 11    loss=0.1052 [139.7 s]	 dev=(HR@5:0.4318,NDCG@5:0.2980) test=(HR@5:0.3855,NDCG@5:0.2541) [12.5 s] 
+INFO:root:all_losses: [0.09720336]
+INFO:root:Epoch 12    loss=0.0972 [139.5 s]	 dev=(HR@5:0.4340,NDCG@5:0.2996) test=(HR@5:0.3796,NDCG@5:0.2532) [12.6 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.08976615]
+INFO:root:Epoch 13    loss=0.0898 [139.5 s]	 dev=(HR@5:0.4349,NDCG@5:0.2978) test=(HR@5:0.3747,NDCG@5:0.2538) [12.5 s] 
+INFO:root:all_losses: [0.08336356]
+INFO:root:Epoch 14    loss=0.0834 [140.1 s]	 dev=(HR@5:0.4353,NDCG@5:0.3005) test=(HR@5:0.3708,NDCG@5:0.2496) [12.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.07886703]
+INFO:root:Epoch 15    loss=0.0789 [139.5 s]	 dev=(HR@5:0.4287,NDCG@5:0.2988) test=(HR@5:0.3666,NDCG@5:0.2483) [12.6 s] 
+INFO:root:all_losses: [0.07381185]
+INFO:root:Epoch 16    loss=0.0738 [140.1 s]	 dev=(HR@5:0.4324,NDCG@5:0.3011) test=(HR@5:0.3698,NDCG@5:0.2511) [12.6 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.07202516]
+INFO:root:Epoch 17    loss=0.0720 [139.9 s]	 dev=(HR@5:0.4391,NDCG@5:0.3064) test=(HR@5:0.3786,NDCG@5:0.2621) [12.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.06766799]
+INFO:root:Epoch 18    loss=0.0677 [139.9 s]	 dev=(HR@5:0.4290,NDCG@5:0.3010) test=(HR@5:0.3733,NDCG@5:0.2556) [12.5 s] 
+INFO:root:all_losses: [0.06934637]
+INFO:root:Epoch 19    loss=0.0693 [139.6 s]	 dev=(HR@5:0.4265,NDCG@5:0.2969) test=(HR@5:0.3668,NDCG@5:0.2499) [12.5 s] 
+INFO:root:all_losses: [0.06527381]
+INFO:root:Epoch 20    loss=0.0653 [140.0 s]	 dev=(HR@5:0.4232,NDCG@5:0.2931) test=(HR@5:0.3529,NDCG@5:0.2432) [12.7 s] 
+INFO:root:all_losses: [0.06218991]
+INFO:root:Epoch 21    loss=0.0622 [139.5 s]	 dev=(HR@5:0.4239,NDCG@5:0.2941) test=(HR@5:0.3580,NDCG@5:0.2481) [12.5 s] 
+INFO:root:all_losses: [0.05661514]
+INFO:root:Epoch 22    loss=0.0566 [96.8 s]	 dev=(HR@5:0.4216,NDCG@5:0.2939) test=(HR@5:0.3631,NDCG@5:0.2467) [11.5 s] 
+INFO:root:all_losses: [0.06040106]
+INFO:root:Epoch 23    loss=0.0604 [20.3 s]	 dev=(HR@5:0.4275,NDCG@5:0.2962) test=(HR@5:0.3727,NDCG@5:0.2562) [11.5 s] 
+INFO:root:all_losses: [0.05622164]
+INFO:root:Epoch 24    loss=0.0562 [19.8 s]	 dev=(HR@5:0.4188,NDCG@5:0.2870) test=(HR@5:0.3503,NDCG@5:0.2393) [11.4 s] 
+INFO:root:all_losses: [0.0560858]
+INFO:root:Epoch 25    loss=0.0561 [19.2 s]	 dev=(HR@5:0.4208,NDCG@5:0.2887) test=(HR@5:0.3660,NDCG@5:0.2493) [11.4 s] 
+INFO:root:all_losses: [0.05310399]
+INFO:root:Epoch 26    loss=0.0531 [19.1 s]	 dev=(HR@5:0.4296,NDCG@5:0.2971) test=(HR@5:0.3637,NDCG@5:0.2507) [11.4 s] 
+INFO:root:all_losses: [0.05170319]
+INFO:root:Epoch 27    loss=0.0517 [19.2 s]	 dev=(HR@5:0.4073,NDCG@5:0.2856) test=(HR@5:0.3484,NDCG@5:0.2383) [11.4 s] 
+INFO:root:all_losses: [0.05039914]
+INFO:root:Epoch 28    loss=0.0504 [19.2 s]	 dev=(HR@5:0.4167,NDCG@5:0.2921) test=(HR@5:0.3680,NDCG@5:0.2528) [11.3 s] 
+INFO:root:all_losses: [0.05295449]
+INFO:root:Epoch 29    loss=0.0530 [19.2 s]	 dev=(HR@5:0.4304,NDCG@5:0.2950) test=(HR@5:0.3708,NDCG@5:0.2534) [11.4 s] 
+INFO:root:all_losses: [0.05050761]
+INFO:root:Epoch 30    loss=0.0505 [19.2 s]	 dev=(HR@5:0.4118,NDCG@5:0.2855) test=(HR@5:0.3574,NDCG@5:0.2471) [11.4 s] 
+INFO:root:all_losses: [0.04654346]
+INFO:root:Epoch 31    loss=0.0465 [19.2 s]	 dev=(HR@5:0.4149,NDCG@5:0.2898) test=(HR@5:0.3678,NDCG@5:0.2523) [11.3 s] 
+INFO:root:all_losses: [0.04638178]
+INFO:root:Epoch 32    loss=0.0464 [19.2 s]	 dev=(HR@5:0.4198,NDCG@5:0.2928) test=(HR@5:0.3676,NDCG@5:0.2546) [11.4 s] 
+INFO:root:all_losses: [0.04919416]
+INFO:root:Epoch 33    loss=0.0492 [19.2 s]	 dev=(HR@5:0.4077,NDCG@5:0.2853) test=(HR@5:0.3627,NDCG@5:0.2501) [11.3 s] 
+INFO:root:all_losses: [0.04753426]
+INFO:root:Epoch 34    loss=0.0475 [19.2 s]	 dev=(HR@5:0.4100,NDCG@5:0.2855) test=(HR@5:0.3637,NDCG@5:0.2489) [11.4 s] 
+INFO:root:all_losses: [0.04549323]
+INFO:root:Epoch 35    loss=0.0455 [19.1 s]	 dev=(HR@5:0.4175,NDCG@5:0.2890) test=(HR@5:0.3670,NDCG@5:0.2505) [11.4 s] 
+INFO:root:all_losses: [0.0466946]
+INFO:root:Epoch 36    loss=0.0467 [19.1 s]	 dev=(HR@5:0.4049,NDCG@5:0.2862) test=(HR@5:0.3519,NDCG@5:0.2451) [11.4 s] 
+INFO:root:all_losses: [0.04279502]
+INFO:root:Epoch 37    loss=0.0428 [19.1 s]	 dev=(HR@5:0.4122,NDCG@5:0.2865) test=(HR@5:0.3564,NDCG@5:0.2448) [11.3 s] 
+INFO:root:Early stop at 37 based on dev result.
+INFO:root:
+Best Iter(dev)=   17	 dev=(HR@5:0.4391,NDCG@5:0.3064) test=(HR@5:0.3786,NDCG@5:0.2621) [3525.9 s] 
+INFO:root:Load model from ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-06.pt
+INFO:root:
+Test After Training: (HR@10:0.5225,HR@5:0.3786,HR@50:0.8312,NDCG@10:0.3086,NDCG@5:0.2621,NDCG@50:0.3768)
+INFO:root:
+--------------------------------------------- END: 2025-03-02 10:53:36 ---------------------------------------------
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2025-06-10 23:07:03 ---------------------------------------------
+INFO:root:
+=================================
+ Arguments       | Values        
+=================================
+ batch_size      | 256          
+ buffer          | 1            
+ dataset         | Office       
+ dropout         | 0            
+ early_stop      | 5            
+ emb_size        | 64           
+ epoch           | 200          
+ eval_batch_size | 256          
+ gpu             | 0            
+ history_max     | 20           
+ l2              | 1e-06        
+ load            | 0            
+ lr              | 0.001        
+ metric          | ["NDCG","HR"]
+ num_heads       | 4            
+ num_layers      | 0            
+ num_neg         | 1            
+ num_workers     | 5            
+ only_predict    | 0            
+ optimizer       | Adam         
+ random_seed     | 2019         
+ topk            | [5,10,50]    
+=================================
+INFO:root:cuda available: False
+INFO:root:# cuda devices: 0
+INFO:root:Load corpus from ../data/Office\BaseReader.pkl
+INFO:root:#params: 156288
+INFO:root:SASRec(
+  (i_embeddings): Embedding(2421, 64)
+  (p_embeddings): Embedding(21, 64)
+  (transformer_block): ModuleList()
+)
+INFO:root:Test Before Training: (HR@10:0.1009,HR@5:0.0495,HR@50:0.5025,NDCG@10:0.0449,NDCG@5:0.0286,NDCG@50:0.1286)
+INFO:root:Optimizer: Adam
+INFO:root:all_losses: [0.5949374]
+INFO:root:Epoch 1     loss=0.5949 [5.2 s]	 dev=(HR@5:0.0966,NDCG@5:0.0571) test=(HR@5:0.0610,NDCG@5:0.0344) [10.3 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.4364321]
+INFO:root:Epoch 2     loss=0.4364 [5.6 s]	 dev=(HR@5:0.1036,NDCG@5:0.0597) test=(HR@5:0.0636,NDCG@5:0.0356) [10.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.41621694]
+INFO:root:Epoch 3     loss=0.4162 [5.6 s]	 dev=(HR@5:0.1056,NDCG@5:0.0604) test=(HR@5:0.0673,NDCG@5:0.0380) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.42044023]
+INFO:root:Epoch 4     loss=0.4204 [5.5 s]	 dev=(HR@5:0.1081,NDCG@5:0.0632) test=(HR@5:0.0675,NDCG@5:0.0382) [10.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.41539392]
+INFO:root:Epoch 5     loss=0.4154 [5.5 s]	 dev=(HR@5:0.1093,NDCG@5:0.0627) test=(HR@5:0.0603,NDCG@5:0.0349) [10.3 s] 
+INFO:root:all_losses: [0.40917033]
+INFO:root:Epoch 6     loss=0.4092 [5.5 s]	 dev=(HR@5:0.1050,NDCG@5:0.0609) test=(HR@5:0.0638,NDCG@5:0.0376) [10.4 s] 
+INFO:root:all_losses: [0.40823755]
+INFO:root:Epoch 7     loss=0.4082 [5.6 s]	 dev=(HR@5:0.1089,NDCG@5:0.0661) test=(HR@5:0.0667,NDCG@5:0.0405) [10.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.4051713]
+INFO:root:Epoch 8     loss=0.4052 [5.6 s]	 dev=(HR@5:0.1072,NDCG@5:0.0644) test=(HR@5:0.0693,NDCG@5:0.0403) [10.4 s] 
+INFO:root:all_losses: [0.39722803]
+INFO:root:Epoch 9     loss=0.3972 [5.6 s]	 dev=(HR@5:0.1156,NDCG@5:0.0692) test=(HR@5:0.0767,NDCG@5:0.0456) [10.3 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.39589435]
+INFO:root:Epoch 10    loss=0.3959 [5.6 s]	 dev=(HR@5:0.1160,NDCG@5:0.0707) test=(HR@5:0.0805,NDCG@5:0.0486) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.39016712]
+INFO:root:Epoch 11    loss=0.3902 [5.6 s]	 dev=(HR@5:0.1266,NDCG@5:0.0762) test=(HR@5:0.0862,NDCG@5:0.0515) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.38835952]
+INFO:root:Epoch 12    loss=0.3884 [5.6 s]	 dev=(HR@5:0.1384,NDCG@5:0.0865) test=(HR@5:0.0958,NDCG@5:0.0584) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.37858507]
+INFO:root:Epoch 13    loss=0.3786 [5.6 s]	 dev=(HR@5:0.1556,NDCG@5:0.0987) test=(HR@5:0.1123,NDCG@5:0.0697) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.36952293]
+INFO:root:Epoch 14    loss=0.3695 [5.6 s]	 dev=(HR@5:0.1796,NDCG@5:0.1121) test=(HR@5:0.1270,NDCG@5:0.0806) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.3617136]
+INFO:root:Epoch 15    loss=0.3617 [5.7 s]	 dev=(HR@5:0.1971,NDCG@5:0.1289) test=(HR@5:0.1462,NDCG@5:0.0955) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.34353492]
+INFO:root:Epoch 16    loss=0.3435 [5.6 s]	 dev=(HR@5:0.2220,NDCG@5:0.1428) test=(HR@5:0.1653,NDCG@5:0.1082) [10.8 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.3365593]
+INFO:root:Epoch 17    loss=0.3366 [5.6 s]	 dev=(HR@5:0.2453,NDCG@5:0.1586) test=(HR@5:0.1810,NDCG@5:0.1200) [10.3 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.32508963]
+INFO:root:Epoch 18    loss=0.3251 [5.6 s]	 dev=(HR@5:0.2571,NDCG@5:0.1655) test=(HR@5:0.1943,NDCG@5:0.1287) [10.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.3137619]
+INFO:root:Epoch 19    loss=0.3138 [5.6 s]	 dev=(HR@5:0.2838,NDCG@5:0.1826) test=(HR@5:0.2122,NDCG@5:0.1408) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.29777685]
+INFO:root:Epoch 20    loss=0.2978 [5.6 s]	 dev=(HR@5:0.2987,NDCG@5:0.1916) test=(HR@5:0.2222,NDCG@5:0.1492) [10.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.2902652]
+INFO:root:Epoch 21    loss=0.2903 [5.6 s]	 dev=(HR@5:0.3113,NDCG@5:0.2005) test=(HR@5:0.2324,NDCG@5:0.1544) [10.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.27940908]
+INFO:root:Epoch 22    loss=0.2794 [5.6 s]	 dev=(HR@5:0.3295,NDCG@5:0.2136) test=(HR@5:0.2432,NDCG@5:0.1624) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.27072752]
+INFO:root:Epoch 23    loss=0.2707 [5.6 s]	 dev=(HR@5:0.3360,NDCG@5:0.2210) test=(HR@5:0.2555,NDCG@5:0.1719) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.2615484]
+INFO:root:Epoch 24    loss=0.2615 [5.6 s]	 dev=(HR@5:0.3448,NDCG@5:0.2258) test=(HR@5:0.2599,NDCG@5:0.1730) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.25240466]
+INFO:root:Epoch 25    loss=0.2524 [5.7 s]	 dev=(HR@5:0.3496,NDCG@5:0.2310) test=(HR@5:0.2640,NDCG@5:0.1748) [10.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.2441022]
+INFO:root:Epoch 26    loss=0.2441 [5.6 s]	 dev=(HR@5:0.3586,NDCG@5:0.2377) test=(HR@5:0.2746,NDCG@5:0.1823) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.23435077]
+INFO:root:Epoch 27    loss=0.2344 [5.6 s]	 dev=(HR@5:0.3551,NDCG@5:0.2363) test=(HR@5:0.2771,NDCG@5:0.1822) [10.5 s] 
+INFO:root:all_losses: [0.23223989]
+INFO:root:Epoch 28    loss=0.2322 [5.6 s]	 dev=(HR@5:0.3641,NDCG@5:0.2426) test=(HR@5:0.2844,NDCG@5:0.1874) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.22841275]
+INFO:root:Epoch 29    loss=0.2284 [5.6 s]	 dev=(HR@5:0.3655,NDCG@5:0.2439) test=(HR@5:0.2895,NDCG@5:0.1923) [10.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.21994549]
+INFO:root:Epoch 30    loss=0.2199 [5.6 s]	 dev=(HR@5:0.3737,NDCG@5:0.2483) test=(HR@5:0.2940,NDCG@5:0.1941) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.21336651]
+INFO:root:Epoch 31    loss=0.2134 [5.5 s]	 dev=(HR@5:0.3757,NDCG@5:0.2503) test=(HR@5:0.2972,NDCG@5:0.1969) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.20707785]
+INFO:root:Epoch 32    loss=0.2071 [5.6 s]	 dev=(HR@5:0.3745,NDCG@5:0.2509) test=(HR@5:0.2993,NDCG@5:0.1956) [10.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.2092673]
+INFO:root:Epoch 33    loss=0.2093 [5.6 s]	 dev=(HR@5:0.3794,NDCG@5:0.2539) test=(HR@5:0.3040,NDCG@5:0.1996) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.20102489]
+INFO:root:Epoch 34    loss=0.2010 [5.6 s]	 dev=(HR@5:0.3817,NDCG@5:0.2534) test=(HR@5:0.3064,NDCG@5:0.2031) [10.4 s] 
+INFO:root:all_losses: [0.19767699]
+INFO:root:Epoch 35    loss=0.1977 [5.6 s]	 dev=(HR@5:0.3755,NDCG@5:0.2522) test=(HR@5:0.3042,NDCG@5:0.2010) [10.5 s] 
+INFO:root:all_losses: [0.19162114]
+INFO:root:Epoch 36    loss=0.1916 [5.6 s]	 dev=(HR@5:0.3798,NDCG@5:0.2544) test=(HR@5:0.3087,NDCG@5:0.2027) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.18883522]
+INFO:root:Epoch 37    loss=0.1888 [5.6 s]	 dev=(HR@5:0.3829,NDCG@5:0.2568) test=(HR@5:0.3119,NDCG@5:0.2050) [10.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.18226285]
+INFO:root:Epoch 38    loss=0.1823 [5.6 s]	 dev=(HR@5:0.3829,NDCG@5:0.2572) test=(HR@5:0.3117,NDCG@5:0.2050) [10.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.18030225]
+INFO:root:Epoch 39    loss=0.1803 [5.6 s]	 dev=(HR@5:0.3837,NDCG@5:0.2594) test=(HR@5:0.3160,NDCG@5:0.2087) [10.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.17623465]
+INFO:root:Epoch 40    loss=0.1762 [5.6 s]	 dev=(HR@5:0.3878,NDCG@5:0.2631) test=(HR@5:0.3185,NDCG@5:0.2112) [10.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.17474031]
+INFO:root:Epoch 41    loss=0.1747 [5.6 s]	 dev=(HR@5:0.3880,NDCG@5:0.2637) test=(HR@5:0.3215,NDCG@5:0.2134) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.16769074]
+INFO:root:Epoch 42    loss=0.1677 [5.6 s]	 dev=(HR@5:0.3886,NDCG@5:0.2640) test=(HR@5:0.3213,NDCG@5:0.2118) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.16516785]
+INFO:root:Epoch 43    loss=0.1652 [5.7 s]	 dev=(HR@5:0.3914,NDCG@5:0.2669) test=(HR@5:0.3197,NDCG@5:0.2120) [10.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.15876882]
+INFO:root:Epoch 44    loss=0.1588 [5.7 s]	 dev=(HR@5:0.3882,NDCG@5:0.2662) test=(HR@5:0.3213,NDCG@5:0.2130) [10.4 s] 
+INFO:root:all_losses: [0.15771034]
+INFO:root:Epoch 45    loss=0.1577 [5.6 s]	 dev=(HR@5:0.3929,NDCG@5:0.2672) test=(HR@5:0.3199,NDCG@5:0.2128) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.15664636]
+INFO:root:Epoch 46    loss=0.1566 [5.6 s]	 dev=(HR@5:0.3933,NDCG@5:0.2674) test=(HR@5:0.3205,NDCG@5:0.2139) [10.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.14934511]
+INFO:root:Epoch 47    loss=0.1493 [5.6 s]	 dev=(HR@5:0.3941,NDCG@5:0.2697) test=(HR@5:0.3274,NDCG@5:0.2179) [10.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.14780624]
+INFO:root:Epoch 48    loss=0.1478 [5.6 s]	 dev=(HR@5:0.3945,NDCG@5:0.2702) test=(HR@5:0.3327,NDCG@5:0.2189) [10.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.14576311]
+INFO:root:Epoch 49    loss=0.1458 [5.6 s]	 dev=(HR@5:0.3980,NDCG@5:0.2730) test=(HR@5:0.3327,NDCG@5:0.2206) [10.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.14163268]
+INFO:root:Epoch 50    loss=0.1416 [5.5 s]	 dev=(HR@5:0.3976,NDCG@5:0.2707) test=(HR@5:0.3307,NDCG@5:0.2197) [10.5 s] 
+INFO:root:all_losses: [0.13912992]
+INFO:root:Epoch 51    loss=0.1391 [5.5 s]	 dev=(HR@5:0.3994,NDCG@5:0.2723) test=(HR@5:0.3321,NDCG@5:0.2201) [10.6 s] 
+INFO:root:all_losses: [0.13585874]
+INFO:root:Epoch 52    loss=0.1359 [5.6 s]	 dev=(HR@5:0.3988,NDCG@5:0.2739) test=(HR@5:0.3348,NDCG@5:0.2234) [10.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.13221458]
+INFO:root:Epoch 53    loss=0.1322 [5.6 s]	 dev=(HR@5:0.4016,NDCG@5:0.2753) test=(HR@5:0.3384,NDCG@5:0.2262) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.13100699]
+INFO:root:Epoch 54    loss=0.1310 [5.6 s]	 dev=(HR@5:0.4027,NDCG@5:0.2762) test=(HR@5:0.3350,NDCG@5:0.2252) [10.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.1295596]
+INFO:root:Epoch 55    loss=0.1296 [5.6 s]	 dev=(HR@5:0.4027,NDCG@5:0.2755) test=(HR@5:0.3341,NDCG@5:0.2239) [10.4 s] 
+INFO:root:all_losses: [0.12642555]
+INFO:root:Epoch 56    loss=0.1264 [5.5 s]	 dev=(HR@5:0.4045,NDCG@5:0.2792) test=(HR@5:0.3397,NDCG@5:0.2263) [10.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.12313186]
+INFO:root:Epoch 57    loss=0.1231 [5.5 s]	 dev=(HR@5:0.4035,NDCG@5:0.2786) test=(HR@5:0.3378,NDCG@5:0.2255) [10.4 s] 
+INFO:root:all_losses: [0.12185007]
+INFO:root:Epoch 58    loss=0.1219 [5.6 s]	 dev=(HR@5:0.4027,NDCG@5:0.2789) test=(HR@5:0.3362,NDCG@5:0.2259) [10.4 s] 
+INFO:root:all_losses: [0.1173787]
+INFO:root:Epoch 59    loss=0.1174 [5.6 s]	 dev=(HR@5:0.4035,NDCG@5:0.2800) test=(HR@5:0.3380,NDCG@5:0.2271) [10.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.11558298]
+INFO:root:Epoch 60    loss=0.1156 [5.6 s]	 dev=(HR@5:0.4041,NDCG@5:0.2815) test=(HR@5:0.3354,NDCG@5:0.2251) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.11446196]
+INFO:root:Epoch 61    loss=0.1145 [5.6 s]	 dev=(HR@5:0.4049,NDCG@5:0.2806) test=(HR@5:0.3362,NDCG@5:0.2279) [10.5 s] 
+INFO:root:all_losses: [0.11107071]
+INFO:root:Epoch 62    loss=0.1111 [5.6 s]	 dev=(HR@5:0.4014,NDCG@5:0.2789) test=(HR@5:0.3378,NDCG@5:0.2267) [10.5 s] 
+INFO:root:all_losses: [0.10834254]
+INFO:root:Epoch 63    loss=0.1083 [5.6 s]	 dev=(HR@5:0.4033,NDCG@5:0.2777) test=(HR@5:0.3339,NDCG@5:0.2255) [10.4 s] 
+INFO:root:all_losses: [0.10365683]
+INFO:root:Epoch 64    loss=0.1037 [5.6 s]	 dev=(HR@5:0.4014,NDCG@5:0.2783) test=(HR@5:0.3374,NDCG@5:0.2265) [10.4 s] 
+INFO:root:all_losses: [0.1064745]
+INFO:root:Epoch 65    loss=0.1065 [5.5 s]	 dev=(HR@5:0.4024,NDCG@5:0.2798) test=(HR@5:0.3384,NDCG@5:0.2283) [10.4 s] 
+INFO:root:all_losses: [0.10265381]
+INFO:root:Epoch 66    loss=0.1027 [5.6 s]	 dev=(HR@5:0.3994,NDCG@5:0.2778) test=(HR@5:0.3380,NDCG@5:0.2284) [10.4 s] 
+INFO:root:all_losses: [0.09985916]
+INFO:root:Epoch 67    loss=0.0999 [5.6 s]	 dev=(HR@5:0.4033,NDCG@5:0.2796) test=(HR@5:0.3372,NDCG@5:0.2274) [10.4 s] 
+INFO:root:all_losses: [0.09758583]
+INFO:root:Epoch 68    loss=0.0976 [5.6 s]	 dev=(HR@5:0.4053,NDCG@5:0.2816) test=(HR@5:0.3405,NDCG@5:0.2285) [10.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.09756427]
+INFO:root:Epoch 69    loss=0.0976 [5.6 s]	 dev=(HR@5:0.4049,NDCG@5:0.2820) test=(HR@5:0.3466,NDCG@5:0.2322) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.09716942]
+INFO:root:Epoch 70    loss=0.0972 [5.6 s]	 dev=(HR@5:0.4029,NDCG@5:0.2809) test=(HR@5:0.3409,NDCG@5:0.2295) [10.5 s] 
+INFO:root:all_losses: [0.09514404]
+INFO:root:Epoch 71    loss=0.0951 [5.6 s]	 dev=(HR@5:0.4037,NDCG@5:0.2826) test=(HR@5:0.3415,NDCG@5:0.2311) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.09380303]
+INFO:root:Epoch 72    loss=0.0938 [5.6 s]	 dev=(HR@5:0.4037,NDCG@5:0.2815) test=(HR@5:0.3452,NDCG@5:0.2329) [10.4 s] 
+INFO:root:all_losses: [0.08937068]
+INFO:root:Epoch 73    loss=0.0894 [5.5 s]	 dev=(HR@5:0.4020,NDCG@5:0.2808) test=(HR@5:0.3454,NDCG@5:0.2317) [10.5 s] 
+INFO:root:all_losses: [0.08944479]
+INFO:root:Epoch 74    loss=0.0894 [5.6 s]	 dev=(HR@5:0.4037,NDCG@5:0.2802) test=(HR@5:0.3454,NDCG@5:0.2323) [10.5 s] 
+INFO:root:all_losses: [0.08664059]
+INFO:root:Epoch 75    loss=0.0866 [5.6 s]	 dev=(HR@5:0.4014,NDCG@5:0.2778) test=(HR@5:0.3431,NDCG@5:0.2302) [10.5 s] 
+INFO:root:Early stop at 75 based on dev result.
+INFO:root:
+Best Iter(dev)=   71	 dev=(HR@5:0.4037,NDCG@5:0.2826) test=(HR@5:0.3415,NDCG@5:0.2311) [1202.1 s] 
+INFO:root:Load model from ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-06.pt
+INFO:root:
+Test After Training: (HR@10:0.4909,HR@5:0.3415,HR@50:0.8112,NDCG@10:0.2795,NDCG@5:0.2311,NDCG@50:0.3504)
+INFO:root:
+--------------------------------------------- END: 2025-06-10 23:27:15 ---------------------------------------------
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2025-06-11 11:09:16 ---------------------------------------------
+INFO:root:
+=================================
+ Arguments       | Values        
+=================================
+ batch_size      | 256          
+ buffer          | 1            
+ dataset         | Office       
+ dropout         | 0            
+ early_stop      | 5            
+ emb_size        | 64           
+ epoch           | 200          
+ eval_batch_size | 256          
+ gpu             | 0            
+ history_max     | 20           
+ l2              | 1e-06        
+ load            | 0            
+ lr              | 0.001        
+ metric          | ["NDCG","HR"]
+ num_heads       | 4            
+ num_layers      | 1            
+ num_neg         | 1            
+ num_workers     | 5            
+ only_predict    | 0            
+ optimizer       | Adam         
+ random_seed     | 2019         
+ topk            | [5,10,50]    
+=================================
+INFO:root:cuda available: False
+INFO:root:# cuda devices: 0
+INFO:root:Load corpus from ../data/Office\BaseReader.pkl
+INFO:root:#params: 177344
+INFO:root:SASRec(
+  (i_embeddings): Embedding(2421, 64)
+  (p_embeddings): Embedding(21, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Test Before Training: (HR@10:0.1109,HR@5:0.0591,HR@50:0.5244,NDCG@10:0.0512,NDCG@5:0.0348,NDCG@50:0.1374)
+INFO:root:Optimizer: Adam
+INFO:root:all_losses: [0.4961078]
+INFO:root:Epoch 1     loss=0.4961 [8.5 s]	 dev=(HR@5:0.1900,NDCG@5:0.1196) test=(HR@5:0.1354,NDCG@5:0.0859) [10.2 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.33466557]
+INFO:root:Epoch 2     loss=0.3347 [8.3 s]	 dev=(HR@5:0.3152,NDCG@5:0.2050) test=(HR@5:0.2436,NDCG@5:0.1590) [10.3 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.25821635]
+INFO:root:Epoch 3     loss=0.2582 [8.3 s]	 dev=(HR@5:0.3655,NDCG@5:0.2434) test=(HR@5:0.2850,NDCG@5:0.1914) [10.3 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.21551526]
+INFO:root:Epoch 4     loss=0.2155 [8.4 s]	 dev=(HR@5:0.3872,NDCG@5:0.2606) test=(HR@5:0.3107,NDCG@5:0.2075) [10.3 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.18375856]
+INFO:root:Epoch 5     loss=0.1838 [8.5 s]	 dev=(HR@5:0.4108,NDCG@5:0.2819) test=(HR@5:0.3488,NDCG@5:0.2317) [10.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.15668371]
+INFO:root:Epoch 6     loss=0.1567 [8.6 s]	 dev=(HR@5:0.4108,NDCG@5:0.2786) test=(HR@5:0.3427,NDCG@5:0.2273) [10.3 s] 
+INFO:root:all_losses: [0.13758819]
+INFO:root:Epoch 7     loss=0.1376 [8.4 s]	 dev=(HR@5:0.4232,NDCG@5:0.2894) test=(HR@5:0.3476,NDCG@5:0.2315) [10.2 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.12335714]
+INFO:root:Epoch 8     loss=0.1234 [8.3 s]	 dev=(HR@5:0.4177,NDCG@5:0.2908) test=(HR@5:0.3594,NDCG@5:0.2408) [10.3 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.10630867]
+INFO:root:Epoch 9     loss=0.1063 [8.2 s]	 dev=(HR@5:0.4257,NDCG@5:0.2948) test=(HR@5:0.3537,NDCG@5:0.2419) [10.2 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.09908269]
+INFO:root:Epoch 10    loss=0.0991 [8.7 s]	 dev=(HR@5:0.4281,NDCG@5:0.3005) test=(HR@5:0.3684,NDCG@5:0.2495) [11.1 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.08942521]
+INFO:root:Epoch 11    loss=0.0894 [9.8 s]	 dev=(HR@5:0.4263,NDCG@5:0.2987) test=(HR@5:0.3702,NDCG@5:0.2524) [10.5 s] 
+INFO:root:all_losses: [0.08277651]
+INFO:root:Epoch 12    loss=0.0828 [9.9 s]	 dev=(HR@5:0.4228,NDCG@5:0.2963) test=(HR@5:0.3639,NDCG@5:0.2502) [10.5 s] 
+INFO:root:all_losses: [0.07715216]
+INFO:root:Epoch 13    loss=0.0772 [9.9 s]	 dev=(HR@5:0.4239,NDCG@5:0.2960) test=(HR@5:0.3613,NDCG@5:0.2471) [10.6 s] 
+INFO:root:all_losses: [0.07245549]
+INFO:root:Epoch 14    loss=0.0725 [10.1 s]	 dev=(HR@5:0.4253,NDCG@5:0.2992) test=(HR@5:0.3657,NDCG@5:0.2526) [10.5 s] 
+INFO:root:all_losses: [0.06838079]
+INFO:root:Epoch 15    loss=0.0684 [10.1 s]	 dev=(HR@5:0.4228,NDCG@5:0.2955) test=(HR@5:0.3454,NDCG@5:0.2404) [10.5 s] 
+INFO:root:all_losses: [0.06374474]
+INFO:root:Epoch 16    loss=0.0637 [10.0 s]	 dev=(HR@5:0.4318,NDCG@5:0.3054) test=(HR@5:0.3727,NDCG@5:0.2536) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.06210282]
+INFO:root:Epoch 17    loss=0.0621 [10.1 s]	 dev=(HR@5:0.4338,NDCG@5:0.3054) test=(HR@5:0.3784,NDCG@5:0.2615) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.05880474]
+INFO:root:Epoch 18    loss=0.0588 [10.1 s]	 dev=(HR@5:0.4294,NDCG@5:0.3020) test=(HR@5:0.3733,NDCG@5:0.2561) [10.4 s] 
+INFO:root:all_losses: [0.06015098]
+INFO:root:Epoch 19    loss=0.0602 [10.2 s]	 dev=(HR@5:0.4232,NDCG@5:0.2987) test=(HR@5:0.3747,NDCG@5:0.2567) [10.5 s] 
+INFO:root:all_losses: [0.05682527]
+INFO:root:Epoch 20    loss=0.0568 [10.0 s]	 dev=(HR@5:0.4183,NDCG@5:0.2938) test=(HR@5:0.3637,NDCG@5:0.2511) [10.5 s] 
+INFO:root:all_losses: [0.05452198]
+INFO:root:Epoch 21    loss=0.0545 [10.2 s]	 dev=(HR@5:0.4149,NDCG@5:0.2922) test=(HR@5:0.3651,NDCG@5:0.2534) [10.6 s] 
+INFO:root:Early stop at 21 based on dev result.
+INFO:root:
+Best Iter(dev)=   17	 dev=(HR@5:0.4338,NDCG@5:0.3054) test=(HR@5:0.3784,NDCG@5:0.2615) [413.9 s] 
+INFO:root:Load model from ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-06.pt
+INFO:root:
+Test After Training: (HR@10:0.5160,HR@5:0.3784,HR@50:0.8173,NDCG@10:0.3060,NDCG@5:0.2615,NDCG@50:0.3725)
+INFO:root:
+--------------------------------------------- END: 2025-06-11 11:16:21 ---------------------------------------------
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2025-06-11 12:51:37 ---------------------------------------------
+INFO:root:
+=================================
+ Arguments       | Values        
+=================================
+ batch_size      | 256          
+ buffer          | 1            
+ dataset         | Office       
+ dropout         | 0            
+ early_stop      | 5            
+ emb_size        | 64           
+ epoch           | 200          
+ eval_batch_size | 256          
+ gpu             | 0            
+ history_max     | 20           
+ l2              | 1e-06        
+ load            | 0            
+ lr              | 0.001        
+ metric          | ["NDCG","HR"]
+ num_heads       | 4            
+ num_layers      | 2            
+ num_neg         | 1            
+ num_workers     | 5            
+ only_predict    | 0            
+ optimizer       | Adam         
+ random_seed     | 2019         
+ topk            | [5,10,50]    
+=================================
+INFO:root:cuda available: False
+INFO:root:# cuda devices: 0
+INFO:root:Load corpus from ../data/Office\BaseReader.pkl
+INFO:root:#params: 198400
+INFO:root:SASRec(
+  (i_embeddings): Embedding(2421, 64)
+  (p_embeddings): Embedding(21, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+    (1): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Test Before Training: (HR@10:0.1091,HR@5:0.0569,HR@50:0.5140,NDCG@10:0.0496,NDCG@5:0.0329,NDCG@50:0.1348)
+INFO:root:Optimizer: Adam
+INFO:root:all_losses: [0.49470207]
+INFO:root:Epoch 1     loss=0.4947 [11.6 s]	 dev=(HR@5:0.1904,NDCG@5:0.1184) test=(HR@5:0.1409,NDCG@5:0.0886) [10.6 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.331635]
+INFO:root:Epoch 2     loss=0.3316 [11.2 s]	 dev=(HR@5:0.3166,NDCG@5:0.2125) test=(HR@5:0.2557,NDCG@5:0.1650) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.25601092]
+INFO:root:Epoch 3     loss=0.2560 [11.2 s]	 dev=(HR@5:0.3655,NDCG@5:0.2461) test=(HR@5:0.2932,NDCG@5:0.1948) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.21464023]
+INFO:root:Epoch 4     loss=0.2146 [11.1 s]	 dev=(HR@5:0.3821,NDCG@5:0.2595) test=(HR@5:0.3101,NDCG@5:0.2052) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.18641649]
+INFO:root:Epoch 5     loss=0.1864 [11.2 s]	 dev=(HR@5:0.4108,NDCG@5:0.2789) test=(HR@5:0.3390,NDCG@5:0.2253) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.16080216]
+INFO:root:Epoch 6     loss=0.1608 [11.2 s]	 dev=(HR@5:0.4069,NDCG@5:0.2777) test=(HR@5:0.3329,NDCG@5:0.2221) [10.6 s] 
+INFO:root:all_losses: [0.14150426]
+INFO:root:Epoch 7     loss=0.1415 [11.2 s]	 dev=(HR@5:0.4253,NDCG@5:0.2913) test=(HR@5:0.3521,NDCG@5:0.2343) [10.6 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.12774587]
+INFO:root:Epoch 8     loss=0.1277 [11.3 s]	 dev=(HR@5:0.4236,NDCG@5:0.2941) test=(HR@5:0.3496,NDCG@5:0.2352) [10.6 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.11076593]
+INFO:root:Epoch 9     loss=0.1108 [11.3 s]	 dev=(HR@5:0.4234,NDCG@5:0.2966) test=(HR@5:0.3525,NDCG@5:0.2396) [10.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.10081073]
+INFO:root:Epoch 10    loss=0.1008 [11.4 s]	 dev=(HR@5:0.4353,NDCG@5:0.3027) test=(HR@5:0.3635,NDCG@5:0.2475) [10.6 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.09202]
+INFO:root:Epoch 11    loss=0.0920 [11.4 s]	 dev=(HR@5:0.4308,NDCG@5:0.3007) test=(HR@5:0.3619,NDCG@5:0.2466) [10.5 s] 
+INFO:root:all_losses: [0.08575714]
+INFO:root:Epoch 12    loss=0.0858 [11.4 s]	 dev=(HR@5:0.4320,NDCG@5:0.3010) test=(HR@5:0.3627,NDCG@5:0.2454) [10.6 s] 
+INFO:root:all_losses: [0.07985599]
+INFO:root:Epoch 13    loss=0.0799 [11.4 s]	 dev=(HR@5:0.4385,NDCG@5:0.3059) test=(HR@5:0.3821,NDCG@5:0.2605) [10.6 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.07376856]
+INFO:root:Epoch 14    loss=0.0738 [11.5 s]	 dev=(HR@5:0.4265,NDCG@5:0.3007) test=(HR@5:0.3688,NDCG@5:0.2545) [10.6 s] 
+INFO:root:all_losses: [0.07066488]
+INFO:root:Epoch 15    loss=0.0707 [11.4 s]	 dev=(HR@5:0.4275,NDCG@5:0.3001) test=(HR@5:0.3594,NDCG@5:0.2450) [10.6 s] 
+INFO:root:all_losses: [0.06490094]
+INFO:root:Epoch 16    loss=0.0649 [11.4 s]	 dev=(HR@5:0.4338,NDCG@5:0.3041) test=(HR@5:0.3602,NDCG@5:0.2479) [10.5 s] 
+INFO:root:all_losses: [0.06300648]
+INFO:root:Epoch 17    loss=0.0630 [11.5 s]	 dev=(HR@5:0.4398,NDCG@5:0.3112) test=(HR@5:0.3715,NDCG@5:0.2584) [10.6 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.05888722]
+INFO:root:Epoch 18    loss=0.0589 [11.4 s]	 dev=(HR@5:0.4312,NDCG@5:0.3047) test=(HR@5:0.3735,NDCG@5:0.2555) [10.5 s] 
+INFO:root:all_losses: [0.06101273]
+INFO:root:Epoch 19    loss=0.0610 [11.3 s]	 dev=(HR@5:0.4290,NDCG@5:0.3022) test=(HR@5:0.3733,NDCG@5:0.2557) [10.6 s] 
+INFO:root:all_losses: [0.05854499]
+INFO:root:Epoch 20    loss=0.0585 [11.4 s]	 dev=(HR@5:0.4218,NDCG@5:0.2970) test=(HR@5:0.3645,NDCG@5:0.2497) [10.5 s] 
+INFO:root:all_losses: [0.05661621]
+INFO:root:Epoch 21    loss=0.0566 [11.4 s]	 dev=(HR@5:0.4304,NDCG@5:0.3024) test=(HR@5:0.3708,NDCG@5:0.2547) [10.6 s] 
+INFO:root:all_losses: [0.0531514]
+INFO:root:Epoch 22    loss=0.0532 [11.5 s]	 dev=(HR@5:0.4241,NDCG@5:0.2985) test=(HR@5:0.3686,NDCG@5:0.2519) [10.7 s] 
+INFO:root:all_losses: [0.05328108]
+INFO:root:Epoch 23    loss=0.0533 [11.3 s]	 dev=(HR@5:0.4296,NDCG@5:0.3002) test=(HR@5:0.3653,NDCG@5:0.2532) [10.6 s] 
+INFO:root:all_losses: [0.05156713]
+INFO:root:Epoch 24    loss=0.0516 [11.3 s]	 dev=(HR@5:0.4245,NDCG@5:0.2979) test=(HR@5:0.3588,NDCG@5:0.2445) [10.6 s] 
+INFO:root:all_losses: [0.05153549]
+INFO:root:Epoch 25    loss=0.0515 [11.6 s]	 dev=(HR@5:0.4336,NDCG@5:0.2997) test=(HR@5:0.3639,NDCG@5:0.2499) [10.6 s] 
+INFO:root:all_losses: [0.04771331]
+INFO:root:Epoch 26    loss=0.0477 [11.4 s]	 dev=(HR@5:0.4302,NDCG@5:0.3000) test=(HR@5:0.3625,NDCG@5:0.2482) [10.7 s] 
+INFO:root:all_losses: [0.04690953]
+INFO:root:Epoch 27    loss=0.0469 [11.5 s]	 dev=(HR@5:0.4155,NDCG@5:0.2901) test=(HR@5:0.3551,NDCG@5:0.2468) [10.7 s] 
+INFO:root:all_losses: [0.04552551]
+INFO:root:Epoch 28    loss=0.0455 [11.4 s]	 dev=(HR@5:0.4122,NDCG@5:0.2906) test=(HR@5:0.3584,NDCG@5:0.2468) [10.6 s] 
+INFO:root:all_losses: [0.0460815]
+INFO:root:Epoch 29    loss=0.0461 [11.4 s]	 dev=(HR@5:0.4145,NDCG@5:0.2910) test=(HR@5:0.3568,NDCG@5:0.2485) [10.7 s] 
+INFO:root:all_losses: [0.0435211]
+INFO:root:Epoch 30    loss=0.0435 [11.5 s]	 dev=(HR@5:0.4183,NDCG@5:0.2937) test=(HR@5:0.3698,NDCG@5:0.2561) [10.7 s] 
+INFO:root:all_losses: [0.04207132]
+INFO:root:Epoch 31    loss=0.0421 [11.4 s]	 dev=(HR@5:0.4198,NDCG@5:0.2931) test=(HR@5:0.3674,NDCG@5:0.2563) [10.6 s] 
+INFO:root:all_losses: [0.04309454]
+INFO:root:Epoch 32    loss=0.0431 [11.4 s]	 dev=(HR@5:0.4206,NDCG@5:0.2945) test=(HR@5:0.3753,NDCG@5:0.2613) [10.6 s] 
+INFO:root:all_losses: [0.0446098]
+INFO:root:Epoch 33    loss=0.0446 [11.4 s]	 dev=(HR@5:0.4112,NDCG@5:0.2878) test=(HR@5:0.3629,NDCG@5:0.2510) [10.5 s] 
+INFO:root:all_losses: [0.04278685]
+INFO:root:Epoch 34    loss=0.0428 [11.4 s]	 dev=(HR@5:0.4183,NDCG@5:0.2951) test=(HR@5:0.3686,NDCG@5:0.2573) [10.6 s] 
+INFO:root:all_losses: [0.03930469]
+INFO:root:Epoch 35    loss=0.0393 [11.5 s]	 dev=(HR@5:0.4100,NDCG@5:0.2862) test=(HR@5:0.3562,NDCG@5:0.2496) [10.7 s] 
+INFO:root:all_losses: [0.04386517]
+INFO:root:Epoch 36    loss=0.0439 [11.4 s]	 dev=(HR@5:0.4232,NDCG@5:0.2933) test=(HR@5:0.3653,NDCG@5:0.2561) [10.7 s] 
+INFO:root:all_losses: [0.03900482]
+INFO:root:Epoch 37    loss=0.0390 [11.4 s]	 dev=(HR@5:0.4065,NDCG@5:0.2856) test=(HR@5:0.3564,NDCG@5:0.2494) [10.7 s] 
+INFO:root:Early stop at 37 based on dev result.
+INFO:root:
+Best Iter(dev)=   17	 dev=(HR@5:0.4398,NDCG@5:0.3112) test=(HR@5:0.3715,NDCG@5:0.2584) [812.8 s] 
+INFO:root:Load model from ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-06.pt
+INFO:root:
+Test After Training: (HR@10:0.5176,HR@5:0.3715,HR@50:0.8204,NDCG@10:0.3057,NDCG@5:0.2584,NDCG@50:0.3722)
+INFO:root:
+--------------------------------------------- END: 2025-06-11 13:05:20 ---------------------------------------------
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2025-06-11 15:19:48 ---------------------------------------------
+INFO:root:
+=================================
+ Arguments       | Values        
+=================================
+ batch_size      | 256          
+ buffer          | 1            
+ dataset         | Office       
+ dropout         | 0            
+ early_stop      | 5            
+ emb_size        | 64           
+ epoch           | 200          
+ eval_batch_size | 256          
+ gpu             | 0            
+ history_max     | 20           
+ l2              | 1e-06        
+ load            | 0            
+ lr              | 0.001        
+ metric          | ["NDCG","HR"]
+ num_heads       | 4            
+ num_layers      | 3            
+ num_neg         | 1            
+ num_workers     | 5            
+ only_predict    | 0            
+ optimizer       | Adam         
+ random_seed     | 2019         
+ topk            | [5,10,50]    
+=================================
+INFO:root:cuda available: False
+INFO:root:# cuda devices: 0
+INFO:root:Load corpus from ../data/Office\BaseReader.pkl
+INFO:root:#params: 219456
+INFO:root:SASRec(
+  (i_embeddings): Embedding(2421, 64)
+  (p_embeddings): Embedding(21, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+    (1): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+    (2): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Test Before Training: (HR@10:0.0866,HR@5:0.0420,HR@50:0.4917,NDCG@10:0.0400,NDCG@5:0.0257,NDCG@50:0.1249)
+INFO:root:Optimizer: Adam
+INFO:root:all_losses: [0.49349228]
+INFO:root:Epoch 1     loss=0.4935 [14.5 s]	 dev=(HR@5:0.2024,NDCG@5:0.1261) test=(HR@5:0.1482,NDCG@5:0.0926) [10.9 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.3279002]
+INFO:root:Epoch 2     loss=0.3279 [14.5 s]	 dev=(HR@5:0.3197,NDCG@5:0.2053) test=(HR@5:0.2457,NDCG@5:0.1604) [11.0 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.25647563]
+INFO:root:Epoch 3     loss=0.2565 [13.9 s]	 dev=(HR@5:0.3474,NDCG@5:0.2278) test=(HR@5:0.2760,NDCG@5:0.1794) [10.9 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.2203679]
+INFO:root:Epoch 4     loss=0.2204 [13.9 s]	 dev=(HR@5:0.3825,NDCG@5:0.2554) test=(HR@5:0.3009,NDCG@5:0.1996) [10.8 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.19198255]
+INFO:root:Epoch 5     loss=0.1920 [13.8 s]	 dev=(HR@5:0.4167,NDCG@5:0.2802) test=(HR@5:0.3425,NDCG@5:0.2250) [10.9 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.16758189]
+INFO:root:Epoch 6     loss=0.1676 [14.0 s]	 dev=(HR@5:0.4212,NDCG@5:0.2868) test=(HR@5:0.3564,NDCG@5:0.2366) [10.8 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.14810713]
+INFO:root:Epoch 7     loss=0.1481 [13.9 s]	 dev=(HR@5:0.4204,NDCG@5:0.2848) test=(HR@5:0.3450,NDCG@5:0.2271) [10.9 s] 
+INFO:root:all_losses: [0.13352054]
+INFO:root:Epoch 8     loss=0.1335 [14.1 s]	 dev=(HR@5:0.4275,NDCG@5:0.2977) test=(HR@5:0.3607,NDCG@5:0.2421) [10.8 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.11457169]
+INFO:root:Epoch 9     loss=0.1146 [14.0 s]	 dev=(HR@5:0.4326,NDCG@5:0.2977) test=(HR@5:0.3551,NDCG@5:0.2397) [10.8 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.1037683]
+INFO:root:Epoch 10    loss=0.1038 [14.1 s]	 dev=(HR@5:0.4369,NDCG@5:0.3026) test=(HR@5:0.3749,NDCG@5:0.2509) [10.9 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.0956272]
+INFO:root:Epoch 11    loss=0.0956 [14.0 s]	 dev=(HR@5:0.4259,NDCG@5:0.2979) test=(HR@5:0.3672,NDCG@5:0.2497) [10.9 s] 
+INFO:root:all_losses: [0.08843017]
+INFO:root:Epoch 12    loss=0.0884 [14.0 s]	 dev=(HR@5:0.4383,NDCG@5:0.3042) test=(HR@5:0.3792,NDCG@5:0.2532) [10.9 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.08014935]
+INFO:root:Epoch 13    loss=0.0801 [14.0 s]	 dev=(HR@5:0.4404,NDCG@5:0.3094) test=(HR@5:0.3833,NDCG@5:0.2599) [10.8 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.07555895]
+INFO:root:Epoch 14    loss=0.0756 [13.8 s]	 dev=(HR@5:0.4434,NDCG@5:0.3073) test=(HR@5:0.3770,NDCG@5:0.2573) [10.8 s] 
+INFO:root:all_losses: [0.07214526]
+INFO:root:Epoch 15    loss=0.0721 [13.8 s]	 dev=(HR@5:0.4347,NDCG@5:0.3045) test=(HR@5:0.3696,NDCG@5:0.2527) [10.8 s] 
+INFO:root:all_losses: [0.06594637]
+INFO:root:Epoch 16    loss=0.0659 [13.8 s]	 dev=(HR@5:0.4357,NDCG@5:0.3060) test=(HR@5:0.3810,NDCG@5:0.2618) [10.8 s] 
+INFO:root:all_losses: [0.06753644]
+INFO:root:Epoch 17    loss=0.0675 [13.8 s]	 dev=(HR@5:0.4402,NDCG@5:0.3097) test=(HR@5:0.3737,NDCG@5:0.2591) [10.9 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.06375846]
+INFO:root:Epoch 18    loss=0.0638 [13.8 s]	 dev=(HR@5:0.4318,NDCG@5:0.3035) test=(HR@5:0.3745,NDCG@5:0.2595) [10.9 s] 
+INFO:root:all_losses: [0.06431311]
+INFO:root:Epoch 19    loss=0.0643 [13.8 s]	 dev=(HR@5:0.4302,NDCG@5:0.3019) test=(HR@5:0.3619,NDCG@5:0.2478) [10.9 s] 
+INFO:root:all_losses: [0.06036095]
+INFO:root:Epoch 20    loss=0.0604 [13.8 s]	 dev=(HR@5:0.4336,NDCG@5:0.3030) test=(HR@5:0.3713,NDCG@5:0.2552) [10.8 s] 
+INFO:root:all_losses: [0.05723002]
+INFO:root:Epoch 21    loss=0.0572 [13.8 s]	 dev=(HR@5:0.4322,NDCG@5:0.3042) test=(HR@5:0.3837,NDCG@5:0.2614) [10.9 s] 
+INFO:root:all_losses: [0.05375587]
+INFO:root:Epoch 22    loss=0.0538 [13.8 s]	 dev=(HR@5:0.4279,NDCG@5:0.3009) test=(HR@5:0.3723,NDCG@5:0.2551) [10.8 s] 
+INFO:root:all_losses: [0.05425851]
+INFO:root:Epoch 23    loss=0.0543 [13.7 s]	 dev=(HR@5:0.4308,NDCG@5:0.3027) test=(HR@5:0.3778,NDCG@5:0.2630) [10.7 s] 
+INFO:root:all_losses: [0.05156251]
+INFO:root:Epoch 24    loss=0.0516 [13.8 s]	 dev=(HR@5:0.4332,NDCG@5:0.3027) test=(HR@5:0.3835,NDCG@5:0.2625) [10.8 s] 
+INFO:root:all_losses: [0.05255396]
+INFO:root:Epoch 25    loss=0.0526 [13.7 s]	 dev=(HR@5:0.4351,NDCG@5:0.3025) test=(HR@5:0.3849,NDCG@5:0.2614) [10.8 s] 
+INFO:root:all_losses: [0.04934032]
+INFO:root:Epoch 26    loss=0.0493 [14.0 s]	 dev=(HR@5:0.4294,NDCG@5:0.2996) test=(HR@5:0.3894,NDCG@5:0.2669) [10.9 s] 
+INFO:root:all_losses: [0.04908207]
+INFO:root:Epoch 27    loss=0.0491 [13.9 s]	 dev=(HR@5:0.4141,NDCG@5:0.2930) test=(HR@5:0.3786,NDCG@5:0.2601) [11.0 s] 
+INFO:root:Early stop at 27 based on dev result.
+INFO:root:
+Best Iter(dev)=   17	 dev=(HR@5:0.4402,NDCG@5:0.3097) test=(HR@5:0.3737,NDCG@5:0.2591) [669.6 s] 
+INFO:root:Load model from ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-06.pt
+INFO:root:
+Test After Training: (HR@10:0.5189,HR@5:0.3737,HR@50:0.8371,NDCG@10:0.3060,NDCG@5:0.2591,NDCG@50:0.3767)
+INFO:root:
+--------------------------------------------- END: 2025-06-11 15:31:08 ---------------------------------------------
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2025-06-11 17:24:55 ---------------------------------------------
+INFO:root:
+=================================
+ Arguments       | Values        
+=================================
+ batch_size      | 256          
+ buffer          | 1            
+ dataset         | Office       
+ dropout         | 0            
+ early_stop      | 5            
+ emb_size        | 64           
+ epoch           | 200          
+ eval_batch_size | 256          
+ gpu             | 0            
+ history_max     | 20           
+ l2              | 1e-06        
+ load            | 0            
+ lr              | 0.001        
+ metric          | ["NDCG","HR"]
+ num_heads       | 4            
+ num_layers      | 4            
+ num_neg         | 1            
+ num_workers     | 5            
+ only_predict    | 0            
+ optimizer       | Adam         
+ random_seed     | 2019         
+ topk            | [5,10,50]    
+=================================
+INFO:root:cuda available: False
+INFO:root:# cuda devices: 0
+INFO:root:Load corpus from ../data/Office\BaseReader.pkl
+INFO:root:#params: 240512
+INFO:root:SASRec(
+  (i_embeddings): Embedding(2421, 64)
+  (p_embeddings): Embedding(21, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+    (1): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+    (2): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+    (3): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Test Before Training: (HR@10:0.1164,HR@5:0.0585,HR@50:0.5205,NDCG@10:0.0536,NDCG@5:0.0352,NDCG@50:0.1388)
+INFO:root:Optimizer: Adam
+INFO:root:all_losses: [0.48999757]
+INFO:root:Epoch 1     loss=0.4900 [17.7 s]	 dev=(HR@5:0.2218,NDCG@5:0.1436) test=(HR@5:0.1653,NDCG@5:0.1072) [11.3 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.32370648]
+INFO:root:Epoch 2     loss=0.3237 [17.6 s]	 dev=(HR@5:0.3134,NDCG@5:0.2039) test=(HR@5:0.2502,NDCG@5:0.1633) [11.2 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.25946948]
+INFO:root:Epoch 3     loss=0.2595 [17.5 s]	 dev=(HR@5:0.3696,NDCG@5:0.2439) test=(HR@5:0.2991,NDCG@5:0.1973) [11.3 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.22352462]
+INFO:root:Epoch 4     loss=0.2235 [17.5 s]	 dev=(HR@5:0.3969,NDCG@5:0.2648) test=(HR@5:0.3209,NDCG@5:0.2149) [11.3 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.19276121]
+INFO:root:Epoch 5     loss=0.1928 [17.5 s]	 dev=(HR@5:0.4088,NDCG@5:0.2742) test=(HR@5:0.3362,NDCG@5:0.2224) [11.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.16864853]
+INFO:root:Epoch 6     loss=0.1686 [17.7 s]	 dev=(HR@5:0.4100,NDCG@5:0.2808) test=(HR@5:0.3388,NDCG@5:0.2264) [11.2 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.1492989]
+INFO:root:Epoch 7     loss=0.1493 [17.7 s]	 dev=(HR@5:0.4098,NDCG@5:0.2782) test=(HR@5:0.3356,NDCG@5:0.2224) [11.3 s] 
+INFO:root:all_losses: [0.13665031]
+INFO:root:Epoch 8     loss=0.1367 [16.6 s]	 dev=(HR@5:0.4263,NDCG@5:0.2926) test=(HR@5:0.3613,NDCG@5:0.2457) [11.3 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.11694624]
+INFO:root:Epoch 9     loss=0.1169 [16.8 s]	 dev=(HR@5:0.4312,NDCG@5:0.2937) test=(HR@5:0.3674,NDCG@5:0.2471) [11.3 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.1085062]
+INFO:root:Epoch 10    loss=0.1085 [16.8 s]	 dev=(HR@5:0.4449,NDCG@5:0.3060) test=(HR@5:0.3845,NDCG@5:0.2614) [11.1 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.09970062]
+INFO:root:Epoch 11    loss=0.0997 [17.0 s]	 dev=(HR@5:0.4383,NDCG@5:0.3028) test=(HR@5:0.3920,NDCG@5:0.2646) [11.2 s] 
+INFO:root:all_losses: [0.0910598]
+INFO:root:Epoch 12    loss=0.0911 [16.7 s]	 dev=(HR@5:0.4310,NDCG@5:0.2986) test=(HR@5:0.3733,NDCG@5:0.2535) [11.1 s] 
+INFO:root:all_losses: [0.08572535]
+INFO:root:Epoch 13    loss=0.0857 [16.8 s]	 dev=(HR@5:0.4292,NDCG@5:0.2996) test=(HR@5:0.3761,NDCG@5:0.2569) [11.2 s] 
+INFO:root:all_losses: [0.0792359]
+INFO:root:Epoch 14    loss=0.0792 [16.7 s]	 dev=(HR@5:0.4359,NDCG@5:0.3023) test=(HR@5:0.3739,NDCG@5:0.2573) [11.2 s] 
+INFO:root:all_losses: [0.07591712]
+INFO:root:Epoch 15    loss=0.0759 [17.7 s]	 dev=(HR@5:0.4367,NDCG@5:0.3047) test=(HR@5:0.3827,NDCG@5:0.2609) [11.3 s] 
+INFO:root:all_losses: [0.06960934]
+INFO:root:Epoch 16    loss=0.0696 [17.7 s]	 dev=(HR@5:0.4338,NDCG@5:0.3005) test=(HR@5:0.3847,NDCG@5:0.2644) [11.2 s] 
+INFO:root:all_losses: [0.06834829]
+INFO:root:Epoch 17    loss=0.0683 [17.7 s]	 dev=(HR@5:0.4396,NDCG@5:0.3058) test=(HR@5:0.3833,NDCG@5:0.2674) [11.4 s] 
+INFO:root:all_losses: [0.06537361]
+INFO:root:Epoch 18    loss=0.0654 [17.7 s]	 dev=(HR@5:0.4336,NDCG@5:0.3015) test=(HR@5:0.3739,NDCG@5:0.2584) [11.3 s] 
+INFO:root:all_losses: [0.06589666]
+INFO:root:Epoch 19    loss=0.0659 [17.5 s]	 dev=(HR@5:0.4332,NDCG@5:0.3000) test=(HR@5:0.3841,NDCG@5:0.2609) [11.4 s] 
+INFO:root:all_losses: [0.06134876]
+INFO:root:Epoch 20    loss=0.0613 [17.6 s]	 dev=(HR@5:0.4157,NDCG@5:0.2898) test=(HR@5:0.3588,NDCG@5:0.2475) [11.4 s] 
+INFO:root:all_losses: [0.05932166]
+INFO:root:Epoch 21    loss=0.0593 [17.5 s]	 dev=(HR@5:0.4300,NDCG@5:0.2993) test=(HR@5:0.3786,NDCG@5:0.2587) [11.3 s] 
+INFO:root:all_losses: [0.05311264]
+INFO:root:Epoch 22    loss=0.0531 [17.6 s]	 dev=(HR@5:0.4259,NDCG@5:0.2969) test=(HR@5:0.3768,NDCG@5:0.2569) [11.3 s] 
+INFO:root:all_losses: [0.05546822]
+INFO:root:Epoch 23    loss=0.0555 [17.4 s]	 dev=(HR@5:0.4253,NDCG@5:0.2988) test=(HR@5:0.3778,NDCG@5:0.2621) [11.3 s] 
+INFO:root:all_losses: [0.05429008]
+INFO:root:Epoch 24    loss=0.0543 [17.6 s]	 dev=(HR@5:0.4294,NDCG@5:0.2989) test=(HR@5:0.3678,NDCG@5:0.2509) [11.2 s] 
+INFO:root:all_losses: [0.05287514]
+INFO:root:Epoch 25    loss=0.0529 [17.8 s]	 dev=(HR@5:0.4179,NDCG@5:0.2901) test=(HR@5:0.3611,NDCG@5:0.2481) [11.3 s] 
+INFO:root:all_losses: [0.05097716]
+INFO:root:Epoch 26    loss=0.0510 [17.7 s]	 dev=(HR@5:0.4261,NDCG@5:0.2964) test=(HR@5:0.3717,NDCG@5:0.2521) [11.2 s] 
+INFO:root:all_losses: [0.04973832]
+INFO:root:Epoch 27    loss=0.0497 [17.7 s]	 dev=(HR@5:0.4147,NDCG@5:0.2906) test=(HR@5:0.3680,NDCG@5:0.2518) [11.4 s] 
+INFO:root:all_losses: [0.04760807]
+INFO:root:Epoch 28    loss=0.0476 [17.7 s]	 dev=(HR@5:0.4218,NDCG@5:0.2930) test=(HR@5:0.3757,NDCG@5:0.2604) [11.2 s] 
+INFO:root:all_losses: [0.04915294]
+INFO:root:Epoch 29    loss=0.0492 [17.6 s]	 dev=(HR@5:0.4157,NDCG@5:0.2866) test=(HR@5:0.3639,NDCG@5:0.2534) [11.4 s] 
+INFO:root:all_losses: [0.04767309]
+INFO:root:Epoch 30    loss=0.0477 [17.7 s]	 dev=(HR@5:0.4214,NDCG@5:0.2911) test=(HR@5:0.3680,NDCG@5:0.2558) [11.3 s] 
+INFO:root:Early stop at 30 based on dev result.
+INFO:root:
+Best Iter(dev)=   10	 dev=(HR@5:0.4449,NDCG@5:0.3060) test=(HR@5:0.3845,NDCG@5:0.2614) [861.3 s] 
+INFO:root:Load model from ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-06.pt
+INFO:root:
+Test After Training: (HR@10:0.5303,HR@5:0.3845,HR@50:0.8351,NDCG@10:0.3087,NDCG@5:0.2614,NDCG@50:0.3759)
+INFO:root:
+--------------------------------------------- END: 2025-06-11 17:39:28 ---------------------------------------------
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2025-06-11 20:43:28 ---------------------------------------------
+INFO:root:
+=================================
+ Arguments       | Values        
+=================================
+ batch_size      | 256          
+ buffer          | 1            
+ dataset         | Office       
+ dropout         | 0            
+ early_stop      | 5            
+ emb_size        | 64           
+ epoch           | 200          
+ eval_batch_size | 256          
+ gpu             | 0            
+ history_max     | 20           
+ l2              | 1e-06        
+ load            | 0            
+ lr              | 0.001        
+ metric          | ["NDCG","HR"]
+ num_heads       | 4            
+ num_layers      | 5            
+ num_neg         | 1            
+ num_workers     | 5            
+ only_predict    | 0            
+ optimizer       | Adam         
+ random_seed     | 2019         
+ topk            | [5,10,50]    
+=================================
+INFO:root:cuda available: False
+INFO:root:# cuda devices: 0
+INFO:root:Load corpus from ../data/Office\BaseReader.pkl
+INFO:root:#params: 261568
+INFO:root:SASRec(
+  (i_embeddings): Embedding(2421, 64)
+  (p_embeddings): Embedding(21, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+    (1): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+    (2): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+    (3): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+    (4): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Test Before Training: (HR@10:0.0970,HR@5:0.0481,HR@50:0.4991,NDCG@10:0.0439,NDCG@5:0.0283,NDCG@50:0.1279)
+INFO:root:Optimizer: Adam
+INFO:root:all_losses: [0.48543403]
+INFO:root:Epoch 1     loss=0.4854 [19.9 s]	 dev=(HR@5:0.2012,NDCG@5:0.1196) test=(HR@5:0.1394,NDCG@5:0.0839) [11.6 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.32985]
+INFO:root:Epoch 2     loss=0.3298 [19.5 s]	 dev=(HR@5:0.3144,NDCG@5:0.2004) test=(HR@5:0.2491,NDCG@5:0.1601) [11.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.27049065]
+INFO:root:Epoch 3     loss=0.2705 [19.6 s]	 dev=(HR@5:0.3409,NDCG@5:0.2255) test=(HR@5:0.2699,NDCG@5:0.1803) [11.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.23256439]
+INFO:root:Epoch 4     loss=0.2326 [19.5 s]	 dev=(HR@5:0.3798,NDCG@5:0.2516) test=(HR@5:0.3019,NDCG@5:0.2010) [11.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.20287047]
+INFO:root:Epoch 5     loss=0.2029 [19.6 s]	 dev=(HR@5:0.3955,NDCG@5:0.2594) test=(HR@5:0.3252,NDCG@5:0.2113) [11.6 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.17951553]
+INFO:root:Epoch 6     loss=0.1795 [19.6 s]	 dev=(HR@5:0.4135,NDCG@5:0.2777) test=(HR@5:0.3445,NDCG@5:0.2278) [11.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.15788615]
+INFO:root:Epoch 7     loss=0.1579 [19.7 s]	 dev=(HR@5:0.4061,NDCG@5:0.2754) test=(HR@5:0.3433,NDCG@5:0.2247) [11.5 s] 
+INFO:root:all_losses: [0.14376312]
+INFO:root:Epoch 8     loss=0.1438 [19.5 s]	 dev=(HR@5:0.4084,NDCG@5:0.2814) test=(HR@5:0.3423,NDCG@5:0.2300) [12.0 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.12457239]
+INFO:root:Epoch 9     loss=0.1246 [19.9 s]	 dev=(HR@5:0.4340,NDCG@5:0.2986) test=(HR@5:0.3727,NDCG@5:0.2523) [11.6 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.1146243]
+INFO:root:Epoch 10    loss=0.1146 [19.5 s]	 dev=(HR@5:0.4269,NDCG@5:0.2945) test=(HR@5:0.3696,NDCG@5:0.2489) [11.5 s] 
+INFO:root:all_losses: [0.10520166]
+INFO:root:Epoch 11    loss=0.1052 [19.6 s]	 dev=(HR@5:0.4318,NDCG@5:0.2980) test=(HR@5:0.3855,NDCG@5:0.2541) [11.5 s] 
+INFO:root:all_losses: [0.09720336]
+INFO:root:Epoch 12    loss=0.0972 [19.6 s]	 dev=(HR@5:0.4340,NDCG@5:0.2996) test=(HR@5:0.3796,NDCG@5:0.2532) [11.6 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.08976615]
+INFO:root:Epoch 13    loss=0.0898 [19.6 s]	 dev=(HR@5:0.4349,NDCG@5:0.2978) test=(HR@5:0.3747,NDCG@5:0.2538) [11.5 s] 
+INFO:root:all_losses: [0.08336356]
+INFO:root:Epoch 14    loss=0.0834 [19.6 s]	 dev=(HR@5:0.4353,NDCG@5:0.3005) test=(HR@5:0.3708,NDCG@5:0.2496) [11.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.07886703]
+INFO:root:Epoch 15    loss=0.0789 [19.7 s]	 dev=(HR@5:0.4287,NDCG@5:0.2988) test=(HR@5:0.3666,NDCG@5:0.2483) [11.5 s] 
+INFO:root:all_losses: [0.07381185]
+INFO:root:Epoch 16    loss=0.0738 [19.5 s]	 dev=(HR@5:0.4324,NDCG@5:0.3011) test=(HR@5:0.3698,NDCG@5:0.2511) [11.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.07202516]
+INFO:root:Epoch 17    loss=0.0720 [19.6 s]	 dev=(HR@5:0.4391,NDCG@5:0.3064) test=(HR@5:0.3786,NDCG@5:0.2621) [11.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.06766799]
+INFO:root:Epoch 18    loss=0.0677 [19.6 s]	 dev=(HR@5:0.4290,NDCG@5:0.3010) test=(HR@5:0.3733,NDCG@5:0.2556) [11.5 s] 
+INFO:root:all_losses: [0.06934637]
+INFO:root:Epoch 19    loss=0.0693 [19.6 s]	 dev=(HR@5:0.4265,NDCG@5:0.2969) test=(HR@5:0.3668,NDCG@5:0.2499) [11.5 s] 
+INFO:root:all_losses: [0.06527381]
+INFO:root:Epoch 20    loss=0.0653 [19.6 s]	 dev=(HR@5:0.4232,NDCG@5:0.2931) test=(HR@5:0.3529,NDCG@5:0.2432) [11.5 s] 
+INFO:root:all_losses: [0.06218991]
+INFO:root:Epoch 21    loss=0.0622 [19.6 s]	 dev=(HR@5:0.4239,NDCG@5:0.2941) test=(HR@5:0.3580,NDCG@5:0.2481) [11.5 s] 
+INFO:root:all_losses: [0.05661514]
+INFO:root:Epoch 22    loss=0.0566 [19.6 s]	 dev=(HR@5:0.4216,NDCG@5:0.2939) test=(HR@5:0.3631,NDCG@5:0.2467) [11.5 s] 
+INFO:root:all_losses: [0.06040106]
+INFO:root:Epoch 23    loss=0.0604 [19.5 s]	 dev=(HR@5:0.4275,NDCG@5:0.2962) test=(HR@5:0.3727,NDCG@5:0.2562) [11.5 s] 
+INFO:root:all_losses: [0.05622164]
+INFO:root:Epoch 24    loss=0.0562 [19.5 s]	 dev=(HR@5:0.4188,NDCG@5:0.2870) test=(HR@5:0.3503,NDCG@5:0.2393) [11.5 s] 
+INFO:root:all_losses: [0.0560858]
+INFO:root:Epoch 25    loss=0.0561 [20.0 s]	 dev=(HR@5:0.4208,NDCG@5:0.2887) test=(HR@5:0.3660,NDCG@5:0.2493) [11.8 s] 
+INFO:root:all_losses: [0.05310399]
+INFO:root:Epoch 26    loss=0.0531 [20.5 s]	 dev=(HR@5:0.4296,NDCG@5:0.2971) test=(HR@5:0.3637,NDCG@5:0.2507) [12.1 s] 
+INFO:root:all_losses: [0.05170319]
+INFO:root:Epoch 27    loss=0.0517 [20.6 s]	 dev=(HR@5:0.4073,NDCG@5:0.2856) test=(HR@5:0.3484,NDCG@5:0.2383) [12.4 s] 
+INFO:root:all_losses: [0.05039914]
+INFO:root:Epoch 28    loss=0.0504 [20.7 s]	 dev=(HR@5:0.4167,NDCG@5:0.2921) test=(HR@5:0.3680,NDCG@5:0.2528) [12.3 s] 
+INFO:root:all_losses: [0.05295449]
+INFO:root:Epoch 29    loss=0.0530 [20.6 s]	 dev=(HR@5:0.4304,NDCG@5:0.2950) test=(HR@5:0.3708,NDCG@5:0.2534) [12.1 s] 
+INFO:root:all_losses: [0.05050761]
+INFO:root:Epoch 30    loss=0.0505 [21.8 s]	 dev=(HR@5:0.4118,NDCG@5:0.2855) test=(HR@5:0.3574,NDCG@5:0.2471) [12.7 s] 
+INFO:root:all_losses: [0.04654346]
+INFO:root:Epoch 31    loss=0.0465 [22.0 s]	 dev=(HR@5:0.4149,NDCG@5:0.2898) test=(HR@5:0.3678,NDCG@5:0.2523) [12.9 s] 
+INFO:root:all_losses: [0.04638178]
+INFO:root:Epoch 32    loss=0.0464 [22.3 s]	 dev=(HR@5:0.4198,NDCG@5:0.2928) test=(HR@5:0.3676,NDCG@5:0.2546) [12.8 s] 
+INFO:root:all_losses: [0.04919416]
+INFO:root:Epoch 33    loss=0.0492 [22.4 s]	 dev=(HR@5:0.4077,NDCG@5:0.2853) test=(HR@5:0.3627,NDCG@5:0.2501) [12.8 s] 
+INFO:root:all_losses: [0.04753426]
+INFO:root:Epoch 34    loss=0.0475 [21.9 s]	 dev=(HR@5:0.4100,NDCG@5:0.2855) test=(HR@5:0.3637,NDCG@5:0.2489) [12.8 s] 
+INFO:root:all_losses: [0.04549323]
+INFO:root:Epoch 35    loss=0.0455 [21.8 s]	 dev=(HR@5:0.4175,NDCG@5:0.2890) test=(HR@5:0.3670,NDCG@5:0.2505) [12.8 s] 
+INFO:root:all_losses: [0.0466946]
+INFO:root:Epoch 36    loss=0.0467 [21.8 s]	 dev=(HR@5:0.4049,NDCG@5:0.2862) test=(HR@5:0.3519,NDCG@5:0.2451) [13.0 s] 
+INFO:root:all_losses: [0.04279502]
+INFO:root:Epoch 37    loss=0.0428 [21.9 s]	 dev=(HR@5:0.4122,NDCG@5:0.2865) test=(HR@5:0.3564,NDCG@5:0.2448) [12.8 s] 
+INFO:root:Early stop at 37 based on dev result.
+INFO:root:
+Best Iter(dev)=   17	 dev=(HR@5:0.4391,NDCG@5:0.3064) test=(HR@5:0.3786,NDCG@5:0.2621) [1189.0 s] 
+INFO:root:Load model from ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-06.pt
+INFO:root:
+Test After Training: (HR@10:0.5225,HR@5:0.3786,HR@50:0.8312,NDCG@10:0.3086,NDCG@5:0.2621,NDCG@50:0.3768)
+INFO:root:
+--------------------------------------------- END: 2025-06-11 21:03:30 ---------------------------------------------
+INFO:root:Namespace(model_name='SASRec')
+INFO:root:--------------------------------------------- BEGIN: 2025-06-11 22:13:15 ---------------------------------------------
+INFO:root:
+=================================
+ Arguments       | Values        
+=================================
+ batch_size      | 256          
+ buffer          | 1            
+ dataset         | Office       
+ dropout         | 0            
+ early_stop      | 5            
+ emb_size        | 64           
+ epoch           | 200          
+ eval_batch_size | 256          
+ gpu             | 0            
+ history_max     | 20           
+ l2              | 1e-06        
+ load            | 0            
+ lr              | 0.001        
+ metric          | ["NDCG","HR"]
+ num_heads       | 4            
+ num_layers      | 6            
+ num_neg         | 1            
+ num_workers     | 5            
+ only_predict    | 0            
+ optimizer       | Adam         
+ random_seed     | 2019         
+ topk            | [5,10,50]    
+=================================
+INFO:root:cuda available: False
+INFO:root:# cuda devices: 0
+INFO:root:Load corpus from ../data/Office\BaseReader.pkl
+INFO:root:#params: 282624
+INFO:root:SASRec(
+  (i_embeddings): Embedding(2421, 64)
+  (p_embeddings): Embedding(21, 64)
+  (transformer_block): ModuleList(
+    (0): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+    (1): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+    (2): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+    (3): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+    (4): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+    (5): TransformerLayer(
+      (masked_attn_head): MultiHeadAttention(
+        (q_linear): Linear(in_features=64, out_features=64, bias=True)
+        (k_linear): Linear(in_features=64, out_features=64, bias=True)
+        (v_linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (layer_norm1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout1): Dropout(p=0, inplace=False)
+      (linear1): Linear(in_features=64, out_features=64, bias=True)
+      (linear2): Linear(in_features=64, out_features=64, bias=True)
+      (layer_norm2): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+      (dropout2): Dropout(p=0, inplace=False)
+    )
+  )
+)
+INFO:root:Test Before Training: (HR@10:0.1046,HR@5:0.0532,HR@50:0.4909,NDCG@10:0.0483,NDCG@5:0.0319,NDCG@50:0.1290)
+INFO:root:Optimizer: Adam
+INFO:root:all_losses: [0.486773]
+INFO:root:Epoch 1     loss=0.4868 [27.2 s]	 dev=(HR@5:0.1839,NDCG@5:0.1132) test=(HR@5:0.1301,NDCG@5:0.0803) [13.5 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.33372688]
+INFO:root:Epoch 2     loss=0.3337 [27.5 s]	 dev=(HR@5:0.3015,NDCG@5:0.1940) test=(HR@5:0.2320,NDCG@5:0.1489) [13.4 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.268205]
+INFO:root:Epoch 3     loss=0.2682 [26.6 s]	 dev=(HR@5:0.3417,NDCG@5:0.2249) test=(HR@5:0.2683,NDCG@5:0.1767) [13.7 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.23004277]
+INFO:root:Epoch 4     loss=0.2300 [27.8 s]	 dev=(HR@5:0.3837,NDCG@5:0.2567) test=(HR@5:0.3005,NDCG@5:0.1990) [13.6 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.20151219]
+INFO:root:Epoch 5     loss=0.2015 [26.8 s]	 dev=(HR@5:0.4006,NDCG@5:0.2658) test=(HR@5:0.3352,NDCG@5:0.2188) [13.3 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.1773329]
+INFO:root:Epoch 6     loss=0.1773 [26.1 s]	 dev=(HR@5:0.3959,NDCG@5:0.2651) test=(HR@5:0.3131,NDCG@5:0.2082) [13.4 s] 
+INFO:root:all_losses: [0.15837601]
+INFO:root:Epoch 7     loss=0.1584 [25.8 s]	 dev=(HR@5:0.4088,NDCG@5:0.2729) test=(HR@5:0.3313,NDCG@5:0.2198) [13.6 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.14550294]
+INFO:root:Epoch 8     loss=0.1455 [26.3 s]	 dev=(HR@5:0.4204,NDCG@5:0.2870) test=(HR@5:0.3551,NDCG@5:0.2369) [13.6 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.125723]
+INFO:root:Epoch 9     loss=0.1257 [26.3 s]	 dev=(HR@5:0.4251,NDCG@5:0.2891) test=(HR@5:0.3570,NDCG@5:0.2361) [13.7 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.11526442]
+INFO:root:Epoch 10    loss=0.1153 [26.2 s]	 dev=(HR@5:0.4336,NDCG@5:0.2993) test=(HR@5:0.3755,NDCG@5:0.2498) [13.6 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.10608902]
+INFO:root:Epoch 11    loss=0.1061 [26.3 s]	 dev=(HR@5:0.4312,NDCG@5:0.2989) test=(HR@5:0.3731,NDCG@5:0.2477) [13.3 s] 
+INFO:root:all_losses: [0.09674055]
+INFO:root:Epoch 12    loss=0.0967 [26.1 s]	 dev=(HR@5:0.4275,NDCG@5:0.2952) test=(HR@5:0.3715,NDCG@5:0.2501) [13.3 s] 
+INFO:root:all_losses: [0.09187293]
+INFO:root:Epoch 13    loss=0.0919 [26.5 s]	 dev=(HR@5:0.4314,NDCG@5:0.2977) test=(HR@5:0.3743,NDCG@5:0.2493) [13.4 s] 
+INFO:root:all_losses: [0.08603605]
+INFO:root:Epoch 14    loss=0.0860 [26.5 s]	 dev=(HR@5:0.4228,NDCG@5:0.2935) test=(HR@5:0.3609,NDCG@5:0.2427) [13.5 s] 
+INFO:root:all_losses: [0.08159964]
+INFO:root:Epoch 15    loss=0.0816 [29.1 s]	 dev=(HR@5:0.4263,NDCG@5:0.2991) test=(HR@5:0.3715,NDCG@5:0.2496) [13.5 s] 
+INFO:root:all_losses: [0.07363782]
+INFO:root:Epoch 16    loss=0.0736 [27.7 s]	 dev=(HR@5:0.4277,NDCG@5:0.2954) test=(HR@5:0.3602,NDCG@5:0.2404) [13.5 s] 
+INFO:root:all_losses: [0.07386325]
+INFO:root:Epoch 17    loss=0.0739 [27.9 s]	 dev=(HR@5:0.4393,NDCG@5:0.3042) test=(HR@5:0.3757,NDCG@5:0.2533) [13.6 s] 
+INFO:root:Save model to ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-...
+INFO:root:all_losses: [0.06917231]
+INFO:root:Epoch 18    loss=0.0692 [28.0 s]	 dev=(HR@5:0.4247,NDCG@5:0.2956) test=(HR@5:0.3835,NDCG@5:0.2592) [13.5 s] 
+INFO:root:all_losses: [0.0714369]
+INFO:root:Epoch 19    loss=0.0714 [27.6 s]	 dev=(HR@5:0.4226,NDCG@5:0.2941) test=(HR@5:0.3655,NDCG@5:0.2468) [13.6 s] 
+INFO:root:all_losses: [0.06620355]
+INFO:root:Epoch 20    loss=0.0662 [27.8 s]	 dev=(HR@5:0.4210,NDCG@5:0.2908) test=(HR@5:0.3688,NDCG@5:0.2495) [13.4 s] 
+INFO:root:all_losses: [0.06259999]
+INFO:root:Epoch 21    loss=0.0626 [29.0 s]	 dev=(HR@5:0.4130,NDCG@5:0.2881) test=(HR@5:0.3580,NDCG@5:0.2438) [13.5 s] 
+INFO:root:Early stop at 21 based on dev result.
+INFO:root:
+Best Iter(dev)=   17	 dev=(HR@5:0.4393,NDCG@5:0.3042) test=(HR@5:0.3757,NDCG@5:0.2533) [852.8 s] 
+INFO:root:Load model from ../model/SASRec/SASRec_Office_2019_lr=0.001_l2=1e-06.pt
+INFO:root:
+Test After Training: (HR@10:0.5256,HR@5:0.3757,HR@50:0.8192,NDCG@10:0.3019,NDCG@5:0.2533,NDCG@50:0.3670)
+INFO:root:
+--------------------------------------------- END: 2025-06-11 22:27:41 ---------------------------------------------

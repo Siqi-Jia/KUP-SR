@@ -1,0 +1,171 @@
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2025-03-18 16:36:49 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ buffer          | 1                   
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 5                   
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ hidden_size     | 100                 
+ history_max     | 20                  
+ l2              | 1e-06               
+ load            | 0                   
+ lr              | 0.001               
+ metric          | ["NDCG","HR"]       
+ num_neg         | 1                   
+ num_workers     | 5                   
+ only_predict    | 0                   
+ optimizer       | Adam                
+ random_seed     | 2019                
+ topk            | [5,10,50]           
+========================================
+INFO:root:cuda available: False
+INFO:root:# cuda devices: 0
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food\BaseReader.pkl
+INFO:root:#params: 597448
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(8457, 64)
+  (rnn): GRU(64, 100, batch_first=True)
+  (out): Linear(in_features=100, out_features=64, bias=False)
+)
+INFO:root:Test Before Training: (HR@10:0.1021,HR@5:0.0493,HR@50:0.4959,NDCG@10:0.0449,NDCG@5:0.0281,NDCG@50:0.1274)
+INFO:root:Optimizer: Adam
+INFO:root:all_losses: [0.49731678]
+INFO:root:Epoch 1     loss=0.4973 [20.6 s]	 dev=(HR@5:0.2681,NDCG@5:0.1778) test=(HR@5:0.2352,NDCG@5:0.1536) [14.5 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Grocery_and_Gourmet_Food_...
+INFO:root:all_losses: [0.42546374]
+INFO:root:Epoch 2     loss=0.4255 [20.1 s]	 dev=(HR@5:0.3119,NDCG@5:0.2077) test=(HR@5:0.2702,NDCG@5:0.1763) [14.4 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Grocery_and_Gourmet_Food_...
+INFO:root:all_losses: [0.3974295]
+INFO:root:Epoch 3     loss=0.3974 [20.0 s]	 dev=(HR@5:0.3236,NDCG@5:0.2148) test=(HR@5:0.2825,NDCG@5:0.1835) [14.4 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Grocery_and_Gourmet_Food_...
+INFO:root:all_losses: [0.38118017]
+INFO:root:Epoch 4     loss=0.3812 [20.2 s]	 dev=(HR@5:0.3434,NDCG@5:0.2303) test=(HR@5:0.2989,NDCG@5:0.1956) [14.4 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Grocery_and_Gourmet_Food_...
+INFO:root:all_losses: [0.36154565]
+INFO:root:Epoch 5     loss=0.3615 [20.2 s]	 dev=(HR@5:0.3469,NDCG@5:0.2352) test=(HR@5:0.3132,NDCG@5:0.2052) [14.4 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Grocery_and_Gourmet_Food_...
+INFO:root:all_losses: [0.34494737]
+INFO:root:Epoch 6     loss=0.3449 [20.2 s]	 dev=(HR@5:0.3499,NDCG@5:0.2385) test=(HR@5:0.3102,NDCG@5:0.2061) [14.5 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Grocery_and_Gourmet_Food_...
+INFO:root:all_losses: [0.3278352]
+INFO:root:Epoch 7     loss=0.3278 [20.2 s]	 dev=(HR@5:0.3633,NDCG@5:0.2494) test=(HR@5:0.3247,NDCG@5:0.2155) [14.5 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Grocery_and_Gourmet_Food_...
+INFO:root:all_losses: [0.31483468]
+INFO:root:Epoch 8     loss=0.3148 [20.2 s]	 dev=(HR@5:0.3689,NDCG@5:0.2557) test=(HR@5:0.3273,NDCG@5:0.2208) [14.4 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Grocery_and_Gourmet_Food_...
+INFO:root:all_losses: [0.29777247]
+INFO:root:Epoch 9     loss=0.2978 [20.1 s]	 dev=(HR@5:0.3657,NDCG@5:0.2505) test=(HR@5:0.3300,NDCG@5:0.2202) [14.5 s] 
+INFO:root:all_losses: [0.2822914]
+INFO:root:Epoch 10    loss=0.2823 [20.0 s]	 dev=(HR@5:0.3706,NDCG@5:0.2540) test=(HR@5:0.3205,NDCG@5:0.2146) [14.5 s] 
+INFO:root:all_losses: [0.26884308]
+INFO:root:Epoch 11    loss=0.2688 [20.0 s]	 dev=(HR@5:0.3695,NDCG@5:0.2571) test=(HR@5:0.3203,NDCG@5:0.2161) [14.4 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Grocery_and_Gourmet_Food_...
+INFO:root:all_losses: [0.25724784]
+INFO:root:Epoch 12    loss=0.2572 [20.0 s]	 dev=(HR@5:0.3695,NDCG@5:0.2565) test=(HR@5:0.3204,NDCG@5:0.2160) [14.5 s] 
+INFO:root:all_losses: [0.24525553]
+INFO:root:Epoch 13    loss=0.2453 [20.2 s]	 dev=(HR@5:0.3708,NDCG@5:0.2578) test=(HR@5:0.3223,NDCG@5:0.2176) [14.5 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Grocery_and_Gourmet_Food_...
+INFO:root:all_losses: [0.23448072]
+INFO:root:Epoch 14    loss=0.2345 [20.0 s]	 dev=(HR@5:0.3716,NDCG@5:0.2605) test=(HR@5:0.3294,NDCG@5:0.2230) [14.4 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Grocery_and_Gourmet_Food_...
+INFO:root:all_losses: [0.22609304]
+INFO:root:Epoch 15    loss=0.2261 [20.0 s]	 dev=(HR@5:0.3763,NDCG@5:0.2644) test=(HR@5:0.3230,NDCG@5:0.2205) [14.4 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Grocery_and_Gourmet_Food_...
+INFO:root:all_losses: [0.21709618]
+INFO:root:Epoch 16    loss=0.2171 [20.0 s]	 dev=(HR@5:0.3761,NDCG@5:0.2678) test=(HR@5:0.3266,NDCG@5:0.2247) [14.5 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Grocery_and_Gourmet_Food_...
+INFO:root:all_losses: [0.20743188]
+INFO:root:Epoch 17    loss=0.2074 [20.0 s]	 dev=(HR@5:0.3798,NDCG@5:0.2696) test=(HR@5:0.3336,NDCG@5:0.2293) [14.4 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Grocery_and_Gourmet_Food_...
+INFO:root:all_losses: [0.19790667]
+INFO:root:Epoch 18    loss=0.1979 [20.2 s]	 dev=(HR@5:0.3828,NDCG@5:0.2714) test=(HR@5:0.3355,NDCG@5:0.2315) [14.5 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Grocery_and_Gourmet_Food_...
+INFO:root:all_losses: [0.19181739]
+INFO:root:Epoch 19    loss=0.1918 [20.1 s]	 dev=(HR@5:0.3783,NDCG@5:0.2729) test=(HR@5:0.3342,NDCG@5:0.2323) [14.5 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Grocery_and_Gourmet_Food_...
+INFO:root:all_losses: [0.1818266]
+INFO:root:Epoch 20    loss=0.1818 [20.3 s]	 dev=(HR@5:0.3854,NDCG@5:0.2764) test=(HR@5:0.3359,NDCG@5:0.2343) [14.4 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Grocery_and_Gourmet_Food_...
+INFO:root:all_losses: [0.17505032]
+INFO:root:Epoch 21    loss=0.1751 [20.2 s]	 dev=(HR@5:0.3905,NDCG@5:0.2827) test=(HR@5:0.3459,NDCG@5:0.2421) [14.6 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Grocery_and_Gourmet_Food_...
+INFO:root:all_losses: [0.1686659]
+INFO:root:Epoch 22    loss=0.1687 [20.2 s]	 dev=(HR@5:0.3873,NDCG@5:0.2793) test=(HR@5:0.3403,NDCG@5:0.2378) [14.5 s] 
+INFO:root:all_losses: [0.16258949]
+INFO:root:Epoch 23    loss=0.1626 [20.2 s]	 dev=(HR@5:0.3872,NDCG@5:0.2798) test=(HR@5:0.3457,NDCG@5:0.2403) [14.6 s] 
+INFO:root:all_losses: [0.15932989]
+INFO:root:Epoch 24    loss=0.1593 [20.3 s]	 dev=(HR@5:0.3909,NDCG@5:0.2793) test=(HR@5:0.3481,NDCG@5:0.2419) [14.6 s] 
+INFO:root:all_losses: [0.15165952]
+INFO:root:Epoch 25    loss=0.1517 [20.3 s]	 dev=(HR@5:0.3940,NDCG@5:0.2843) test=(HR@5:0.3517,NDCG@5:0.2469) [14.6 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Grocery_and_Gourmet_Food_...
+INFO:root:all_losses: [0.14533426]
+INFO:root:Epoch 26    loss=0.1453 [20.2 s]	 dev=(HR@5:0.3917,NDCG@5:0.2839) test=(HR@5:0.3483,NDCG@5:0.2452) [14.6 s] 
+INFO:root:all_losses: [0.14262652]
+INFO:root:Epoch 27    loss=0.1426 [20.2 s]	 dev=(HR@5:0.3877,NDCG@5:0.2821) test=(HR@5:0.3458,NDCG@5:0.2436) [14.6 s] 
+INFO:root:all_losses: [0.13760178]
+INFO:root:Epoch 28    loss=0.1376 [20.1 s]	 dev=(HR@5:0.3843,NDCG@5:0.2780) test=(HR@5:0.3447,NDCG@5:0.2423) [14.6 s] 
+INFO:root:all_losses: [0.13389343]
+INFO:root:Epoch 29    loss=0.1339 [20.2 s]	 dev=(HR@5:0.3852,NDCG@5:0.2790) test=(HR@5:0.3472,NDCG@5:0.2441) [14.6 s] 
+INFO:root:all_losses: [0.12929599]
+INFO:root:Epoch 30    loss=0.1293 [20.1 s]	 dev=(HR@5:0.3839,NDCG@5:0.2801) test=(HR@5:0.3463,NDCG@5:0.2438) [14.5 s] 
+INFO:root:all_losses: [0.12560833]
+INFO:root:Epoch 31    loss=0.1256 [20.1 s]	 dev=(HR@5:0.3827,NDCG@5:0.2769) test=(HR@5:0.3395,NDCG@5:0.2403) [14.5 s] 
+INFO:root:all_losses: [0.12289807]
+INFO:root:Epoch 32    loss=0.1229 [20.1 s]	 dev=(HR@5:0.3935,NDCG@5:0.2866) test=(HR@5:0.3510,NDCG@5:0.2492) [14.6 s] 
+INFO:root:Save model to ../model/GRU4Rec/GRU4Rec_Grocery_and_Gourmet_Food_...
+INFO:root:all_losses: [0.12035142]
+INFO:root:Epoch 33    loss=0.1204 [20.2 s]	 dev=(HR@5:0.3821,NDCG@5:0.2789) test=(HR@5:0.3436,NDCG@5:0.2426) [14.6 s] 
+INFO:root:all_losses: [0.11942763]
+INFO:root:Epoch 34    loss=0.1194 [20.1 s]	 dev=(HR@5:0.3772,NDCG@5:0.2763) test=(HR@5:0.3367,NDCG@5:0.2405) [14.6 s] 
+INFO:root:all_losses: [0.11486204]
+INFO:root:Epoch 35    loss=0.1149 [20.2 s]	 dev=(HR@5:0.3881,NDCG@5:0.2836) test=(HR@5:0.3452,NDCG@5:0.2452) [14.6 s] 
+INFO:root:all_losses: [0.1101841]
+INFO:root:Epoch 36    loss=0.1102 [20.2 s]	 dev=(HR@5:0.3823,NDCG@5:0.2761) test=(HR@5:0.3367,NDCG@5:0.2388) [14.6 s] 
+INFO:root:all_losses: [0.10691359]
+INFO:root:Epoch 37    loss=0.1069 [20.2 s]	 dev=(HR@5:0.3847,NDCG@5:0.2799) test=(HR@5:0.3432,NDCG@5:0.2435) [14.6 s] 
+INFO:root:all_losses: [0.10310173]
+INFO:root:Epoch 38    loss=0.1031 [20.2 s]	 dev=(HR@5:0.3853,NDCG@5:0.2818) test=(HR@5:0.3408,NDCG@5:0.2424) [14.5 s] 
+INFO:root:all_losses: [0.10154837]
+INFO:root:Epoch 39    loss=0.1015 [20.1 s]	 dev=(HR@5:0.3828,NDCG@5:0.2789) test=(HR@5:0.3413,NDCG@5:0.2414) [14.4 s] 
+INFO:root:all_losses: [0.10070633]
+INFO:root:Epoch 40    loss=0.1007 [20.1 s]	 dev=(HR@5:0.3807,NDCG@5:0.2790) test=(HR@5:0.3423,NDCG@5:0.2443) [14.4 s] 
+INFO:root:all_losses: [0.09733631]
+INFO:root:Epoch 41    loss=0.0973 [20.1 s]	 dev=(HR@5:0.3844,NDCG@5:0.2821) test=(HR@5:0.3429,NDCG@5:0.2441) [14.4 s] 
+INFO:root:all_losses: [0.09638318]
+INFO:root:Epoch 42    loss=0.0964 [20.2 s]	 dev=(HR@5:0.3823,NDCG@5:0.2809) test=(HR@5:0.3380,NDCG@5:0.2393) [14.4 s] 
+INFO:root:all_losses: [0.09232443]
+INFO:root:Epoch 43    loss=0.0923 [20.1 s]	 dev=(HR@5:0.3882,NDCG@5:0.2855) test=(HR@5:0.3448,NDCG@5:0.2467) [14.2 s] 
+INFO:root:all_losses: [0.09256169]
+INFO:root:Epoch 44    loss=0.0926 [20.1 s]	 dev=(HR@5:0.3841,NDCG@5:0.2820) test=(HR@5:0.3403,NDCG@5:0.2428) [14.5 s] 
+INFO:root:all_losses: [0.08972947]
+INFO:root:Epoch 45    loss=0.0897 [20.1 s]	 dev=(HR@5:0.3882,NDCG@5:0.2864) test=(HR@5:0.3444,NDCG@5:0.2454) [14.4 s] 
+INFO:root:all_losses: [0.08655368]
+INFO:root:Epoch 46    loss=0.0866 [20.1 s]	 dev=(HR@5:0.3850,NDCG@5:0.2828) test=(HR@5:0.3393,NDCG@5:0.2417) [14.4 s] 
+INFO:root:all_losses: [0.0862472]
+INFO:root:Epoch 47    loss=0.0862 [20.2 s]	 dev=(HR@5:0.3857,NDCG@5:0.2839) test=(HR@5:0.3378,NDCG@5:0.2414) [14.4 s] 
+INFO:root:all_losses: [0.08437113]
+INFO:root:Epoch 48    loss=0.0844 [20.1 s]	 dev=(HR@5:0.3854,NDCG@5:0.2818) test=(HR@5:0.3354,NDCG@5:0.2385) [14.4 s] 
+INFO:root:all_losses: [0.08154956]
+INFO:root:Epoch 49    loss=0.0815 [20.2 s]	 dev=(HR@5:0.3864,NDCG@5:0.2851) test=(HR@5:0.3408,NDCG@5:0.2433) [14.3 s] 
+INFO:root:all_losses: [0.0820633]
+INFO:root:Epoch 50    loss=0.0821 [20.2 s]	 dev=(HR@5:0.3849,NDCG@5:0.2834) test=(HR@5:0.3371,NDCG@5:0.2430) [14.4 s] 
+INFO:root:all_losses: [0.0784822]
+INFO:root:Epoch 51    loss=0.0785 [20.2 s]	 dev=(HR@5:0.3790,NDCG@5:0.2778) test=(HR@5:0.3356,NDCG@5:0.2410) [14.4 s] 
+INFO:root:all_losses: [0.07663493]
+INFO:root:Epoch 52    loss=0.0766 [20.1 s]	 dev=(HR@5:0.3835,NDCG@5:0.2810) test=(HR@5:0.3370,NDCG@5:0.2411) [14.4 s] 
+INFO:root:Early stop at 52 based on dev result.
+INFO:root:
+Best Iter(dev)=   32	 dev=(HR@5:0.3935,NDCG@5:0.2866) test=(HR@5:0.3510,NDCG@5:0.2492) [1801.0 s] 
+INFO:root:Load model from ../model/GRU4Rec/GRU4Rec_Grocery_and_Gourmet_Food_2019_lr=0.001_l2=1e-06.pt
+INFO:root:
+Test After Training: (HR@10:0.4546,HR@5:0.3510,HR@50:0.7982,NDCG@10:0.2826,NDCG@5:0.2492,NDCG@50:0.3572)
+INFO:root:
+--------------------------------------------- END: 2025-03-18 17:07:05 ---------------------------------------------
